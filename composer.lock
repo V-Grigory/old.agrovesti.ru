@@ -41,20 +41,20 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462"
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/e11d84c6e018beedd929cff5220969a3c6d1d462",
-                "reference": "e11d84c6e018beedd929cff5220969a3c6d1d462",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^6.2"
@@ -62,7 +62,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -104,7 +104,11 @@
                 "singularize",
                 "string"
             ],
+<<<<<<< HEAD
             "time": "2017-07-22T12:18:28+00:00"
+=======
+            "time": "2018-01-09T20:05:19+00:00"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
         },
         {
             "name": "doctrine/lexer",
@@ -1382,6 +1386,7 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
             "version": "v3.4.3",
             "source": {
                 "type": "git",
@@ -1396,11 +1401,31 @@
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
+=======
+            "version": "v4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "f97600434e3141ef3cbb9ea42cf500fba88022b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/f97600434e3141ef3cbb9ea42cf500fba88022b7",
+                "reference": "f97600434e3141ef3cbb9ea42cf500fba88022b7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "3.4-dev"
+=======
+                    "dev-master": "4.0-dev"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
                 }
             },
             "autoload": {
@@ -1431,7 +1456,11 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-01-03T07:37:34+00:00"
+=======
+            "time": "2018-01-03T07:38:00+00:00"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
         },
         {
             "name": "symfony/debug",
@@ -1491,6 +1520,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
             "version": "v3.4.3",
             "source": {
                 "type": "git",
@@ -1515,6 +1545,32 @@
                 "symfony/dependency-injection": "~3.3|~4.0",
                 "symfony/expression-language": "~2.8|~3.0|~4.0",
                 "symfony/stopwatch": "~2.8|~3.0|~4.0"
+=======
+            "version": "v4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "74d33aac36208c4d6757807d9f598f0133a3a4eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/74d33aac36208c4d6757807d9f598f0133a3a4eb",
+                "reference": "74d33aac36208c4d6757807d9f598f0133a3a4eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<3.4"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~3.4|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/expression-language": "~3.4|~4.0",
+                "symfony/stopwatch": "~3.4|~4.0"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -1523,7 +1579,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "3.4-dev"
+=======
+                    "dev-master": "4.0-dev"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
                 }
             },
             "autoload": {
@@ -1550,7 +1610,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2018-01-03T07:37:34+00:00"
+=======
+            "time": "2018-01-03T07:38:00+00:00"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
         },
         {
             "name": "symfony/finder",
@@ -2226,6 +2290,7 @@
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
+<<<<<<< HEAD
             "version": "1.0.5",
             "source": {
                 "type": "git",
@@ -2240,18 +2305,43 @@
             },
             "require": {
                 "php": ">=5.3,<8.0-DEV"
+=======
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/instantiator.git",
+                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
+                "reference": "185b8868aa9bf7159f5f953ed5afb2d7fcdc3bda",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
             },
             "require-dev": {
                 "athletic/athletic": "~0.1.8",
                 "ext-pdo": "*",
                 "ext-phar": "*",
+<<<<<<< HEAD
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~2.0"
+=======
+                "phpunit/phpunit": "^6.2.3",
+                "squizlabs/php_codesniffer": "^3.0.2"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "1.0.x-dev"
+=======
+                    "dev-master": "1.2.x-dev"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
                 }
             },
             "autoload": {
@@ -2276,7 +2366,11 @@
                 "constructor",
                 "instantiate"
             ],
+<<<<<<< HEAD
             "time": "2015-06-14T21:17:01+00:00"
+=======
+            "time": "2017-07-22T11:58:36+00:00"
+>>>>>>> 4f8faa9fb393c383a870c7045260e18042f772e8
         },
         {
             "name": "filp/whoops",
