@@ -11,9 +11,10 @@
 |
 */
 
-Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth']], function (){
-    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
-    Route::resource('/category', 'CategoryController', ['as'=>'admin']);
+Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth']], function (){
+    Route::get('/', 'DashboardController@dashboard')->name('wpadmin.index');
+    Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
+    Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
 });
 
 Route::get('/', function () {

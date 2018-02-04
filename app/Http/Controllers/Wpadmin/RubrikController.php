@@ -15,9 +15,9 @@ class RubrikController extends Controller
      */
     public function index()
     {
-        return view('admin.rubriks.index', [
-            'rubriks' => Rubrik::paginate[10];
-        ])
+        return view('wpadmin.rubriks.index', [
+            'rubriks' => Rubrik::paginate(10)
+        ]);
     }
 
     /**
@@ -27,7 +27,11 @@ class RubrikController extends Controller
      */
     public function create()
     {
-        //
+        return view ('wpadmin.rubriks.create', [
+            'rubrik'    => [],
+            'rubriks'   => Rubrik::with('children')->where('parent_id', 0)->get(),
+            'delimiter' => ''
+        ]);
     }
 
     /**
@@ -38,7 +42,9 @@ class RubrikController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Rubrik::create($request->all());
+
+        return redirect()->route('wpadmin.rubrik.index');
     }
 
     /**
@@ -60,7 +66,11 @@ class RubrikController extends Controller
      */
     public function edit(Rubrik $rubrik)
     {
-        //
+        return view ('wpadmin.rubriks.edit', [
+            'rubrik'    => $rubrik,
+            'rubriks'   => Rubrik::with('children')->where('parent_id', 0)->get(),
+            'delimiter' => ''
+        ]);
     }
 
     /**
@@ -72,7 +82,9 @@ class RubrikController extends Controller
      */
     public function update(Request $request, Rubrik $rubrik)
     {
-        //
+        $rubrik->update($request->except('name_en'));
+
+        return redirect()->route('wpadmin.rubrik.index');
     }
 
     /**
@@ -83,6 +95,8 @@ class RubrikController extends Controller
      */
     public function destroy(Rubrik $rubrik)
     {
-        //
+        $rubrik->delete();
+
+        return redirect()->route('wpadmin.rubrik.index');
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.app_admin')
+@extends('wpadmin.layouts.wpadmin')
 
 @section('content')
     <div class="container">
