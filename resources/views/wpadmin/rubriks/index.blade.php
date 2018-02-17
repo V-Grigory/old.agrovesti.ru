@@ -2,37 +2,60 @@
 
 @section('content')
 
-    <div class="container">
-
+    {{--
         @component('wpadmin.components.breadcrumb')
             @slot('title') Список категория @endslot
             @slot('parent') Главная @endslot
             @slot('active') Категории @endslot
-        @endcomponent
+      @endcomponent
+     --}}
 
+        <h1>Рубрики</h1> <hr />
+
+        @if($params->no_delete)
+            <div style="padding:10px;background-color:#ec7063;color:white;">
+                {{$params->no_delete}}
+            </div>
+        @endif
+        @if($params->ok_delete)
+            <div style="padding:10px;background-color:#17a589;color:white;">
+                {{$params->ok_delete}}
+            </div>
+        @endif
+
+        <!-- === СОЗДАТЬ РУБРИКУ === -->
+        @if($rubrik)
+            <form action="{{route('wpadmin.rubrik.update', $rubrik)}}" method="post" class="form-inline" >
+            <input type="hidden" name="_method" value="PUT" />
+        @else
+            <form action="{{route('wpadmin.rubrik.store', $rubrik)}}" method="post" class="form-inline" >
+        @endif
+            {{ csrf_field() }}
+            @include('wpadmin.rubriks.partials.form')
+        </form>
+
+        <!-- === ВЫВОД РУБРИК === -->
         <hr />
-
-        <a href="{{route('wpadmin')}}" class="btn btn-primary pull-right"><i class="fafa-plus-square-o"></i> Создать категорию</a>
-
         <table class="table table-striped">
             <thead>
-                <th>Наименование</th>
-                <th>Публикация</th>
-                <th class="text-right">Действие</th>
+                <th>Наименование</th><th class="text-right">Действие</th>
             </thead>
             <tbody>
                 @forelse($rubriks as $rubrik)
                     <tr>
-                        <td>{{$rubrik->name_ru}}</td>
-                        <td>{{$rubrik->name_en}}</td>
-                        <td class="text-right">
+                        <td style="padding: 0;">
+                            <form action="{{route('wpadmin.rubrik.edit', $rubrik)}}" method="get">
+                                <input type="hidden" name="_method" value="EDIT" />
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-link">{{$rubrik->name_ru}}</button>
+                            </form>
+                        </td>
+                        <td class="text-right" style="padding: 0;">
                             <form onsubmit="if(confirm('Удалить?')){ return true } else { return false }"
-                                  action="{{route('admin.rubrik.destroy', $rubrik)}}" method="post">
+                                  action="{{route('wpadmin.rubrik.destroy', $rubrik)}}" method="post">
                                 <input type="hidden" name="_method" value="DELETE" />
                                 {{ csrf_field() }}
-
-                                <a class="btn btn-default" href="{{route('admin.rubrik.edit', $rubrik)}}" ><i class="fafa-edit">11</i></a>
-                                <button type="submit" class="btn"><i class="fa fa-trash-o">22</i></button>
+                                <button type="submit" class="btn btn-link">Удалить</button>
                             </form>
                         </td>
                     </tr>
@@ -46,13 +69,13 @@
                 <tr>
                     <td colspan="3">
                         <ul class="pagination pull-right">
-                            <?php //{{$rubriks->links}} ?>
+                            {{-- $rubriks->links --}}
                         </ul>
                     </td>
                 </tr>
             </tfoot>
         </table>
 
-    </div>
+
 
 @endsection

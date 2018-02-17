@@ -17,6 +17,10 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('name_ru');
             $table->string('name_en')->unique();
+            $table->text('article');
+            $table->string('image')->nullable();
+            $table->integer('on_main')->default(0);
+            $table->integer('need_pay')->default(0);
 
             $table->timestamps();
         });

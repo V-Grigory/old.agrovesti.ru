@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Wpadmin;
 
 use App\Rubrik;
 use Illuminate\Http\Request;
@@ -8,38 +7,22 @@ use App\Http\Controllers\Controller;
 
 class RubrikController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
         return view('wpadmin.rubriks.index', [
-            'rubriks' => Rubrik::paginate(10)
+            //'rubriks' => Rubrik::paginate(10)
+            'rubrik'    => [],
+            'rubriks'   => Rubrik::with('children')->get(),
+            'delimiter' => '',
+            'params' => $request
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view ('wpadmin.rubriks.create', [
-            'rubrik'    => [],
-            'rubriks'   => Rubrik::with('children')->where('parent_id', 0)->get(),
-            'delimiter' => ''
-        ]);
+        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         Rubrik::create($request->all());
@@ -47,39 +30,20 @@ class RubrikController extends Controller
         return redirect()->route('wpadmin.rubrik.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Rubrik  $rubrik
-     * @return \Illuminate\Http\Response
-     */
     public function show(Rubrik $rubrik)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Rubrik  $rubrik
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Rubrik $rubrik)
     {
-        return view ('wpadmin.rubriks.edit', [
+        return view ('wpadmin.rubriks.index', [
             'rubrik'    => $rubrik,
-            'rubriks'   => Rubrik::with('children')->where('parent_id', 0)->get(),
+            'rubriks'   => Rubrik::all(),
             'delimiter' => ''
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rubrik  $rubrik
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Rubrik $rubrik)
     {
         $rubrik->update($request->except('name_en'));
@@ -87,16 +51,19 @@ class RubrikController extends Controller
         return redirect()->route('wpadmin.rubrik.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Rubrik  $rubrik
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Rubrik $rubrik)
     {
-        $rubrik->delete();
-
-        return redirect()->route('wpadmin.rubrik.index');
+        if($rubrik->articles()->count() > 0) {
+            $ok_delete = '';
+            $no_delete = "В данной рубрике есть статьи";
+        } else {
+            $rubrik->delete();
+            $ok_delete = "Рубрика успешно удалена";
+            $no_delete = '';
+        }
+        return redirect()->route('wpadmin.rubrik.index', [
+            'no_delete' => $no_delete,
+            'ok_delete' => $ok_delete
+        ]);
     }
 }
