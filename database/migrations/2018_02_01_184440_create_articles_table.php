@@ -15,12 +15,18 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_ru');
-            $table->string('name_en')->unique();
-            $table->text('article');
-            $table->string('image')->nullable();
+            $table->string('id_rubriks');
+            $table->string('name_ru', 300);
+            $table->string('name_en', 300)->unique();
+            $table->longText('article');
+            $table->string('image', 300)->nullable();
             $table->integer('on_main')->default(0);
             $table->integer('need_pay')->default(0);
+            $table->string('image_620_300', 300)->nullable();
+            $table->string('image_300_620', 300)->nullable();
+            $table->integer('on_month')->default(0)->nullable();
+            $table->integer('on_month_2')->default(0)->nullable();
+            $table->integer('on_month_3')->default(0)->nullable();
 
             $table->timestamps();
         });

@@ -37,7 +37,7 @@ class ArticleController extends Controller
         if ($request->name_ru == '') $error_validate = "Укажите название статьи.  ";
         if (!isset($request->rubrik_id)) $error_validate .= "Укажите хотя бы 1 рубрику.  ";
         if ($request->article == '') $error_validate .= "Отсутствует контент статьи.  ";
-        if (isset($request->on_main) && !isset($request->image)) $error_validate .= "При размещении на главной нужно изображение.  ";
+        //if (isset($request->on_main) && !isset($request->image)) $error_validate .= "При размещении на главной нужно изображение.  ";
 
         if ($error_validate == '') {
             if(!$articleBD = Article::find($request->id)) {
@@ -89,11 +89,38 @@ class ArticleController extends Controller
 
     public function update(Request $request, Article $article)
     {
-        //
+        $articleBD = Article::with('rubriks')->find($article->id);
+        $rubrik_id = [];
+        foreach ($articleBD['rubriks'] as $rubr) {
+            $rubrik_id[] = $rubr->id;
+        }
+        $article->name_ru = $articleBD->name_ru;
+        $article->name_en = $articleBD->name_en;
+        $article->rubrik_id = $rubrik_id;
+        $article->on_main = ($articleBD->on_main == 1) ? 1 : NULL;
+        $article->need_pay = ($articleBD->need_pay == 1) ? 1 : NULL;
+        $article->article = $articleBD->article;
+
+        $error_validate = ''; $article_saved = '';
+        return view ('wpadmin.articles.create', [
+            'article'    => $article,
+            'rubriks'   => Rubrik::with('children')->get(),
+            'error_validate' => $error_validate,
+            'article_saved' => $article_saved
+        ]);
     }
 
     public function destroy(Article $article)
     {
-        //
+//        print_r('<pre>');
+//        print_r($article);
+//        print_r('</pre>');
+        exit();
+        $article->rubriks()->detach();
+        $article->delete();
+        if($article->image != NULL) {
+            unlink(public_path().'/images/'.$article->image);
+        }
+        return redirect()->route('wpadmin.rubrik.index');
     }
 }

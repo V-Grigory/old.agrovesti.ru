@@ -62,7 +62,7 @@
             </div>
 
             <div class="form-group">
-                <textarea class="form-control" name="article">{{$article->article or ""}}</textarea>
+                <textarea id="content_article" class="form-control" name="article">{{$article->article or ""}}</textarea>
             </div>
 
             <div class="form-group">

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Wpadmin;
 
+use App\Article;
 use App\Rubrik;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,7 +33,11 @@ class RubrikController extends Controller
 
     public function show(Rubrik $rubrik)
     {
-        //
+        $list_articles = Rubrik::with('articles')->orderByDesc('id')->where('id', $rubrik->id)->get();
+
+        return view('wpadmin.rubriks.list_articles', [
+            'list_articles' => $list_articles[0]['articles'],
+        ]);
     }
 
     public function edit(Rubrik $rubrik)

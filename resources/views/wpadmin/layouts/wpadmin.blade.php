@@ -13,6 +13,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my.css') }}" rel="stylesheet">
+    <!-- redactor -->
+    <link rel="stylesheet" href="/redactor/assets/redactor.css" />
+
 </head>
 
 <body>
@@ -82,7 +85,7 @@
                             </a>
                             <div class="dropdown-menu" style="border:none;background-color:#f5f8fa;padding:10px;">
                                 @foreach(\App\Rubrik::with('articles')->get() as $rubrik_list)
-                                    <a class="dropdown-item" href="{{route('wpadmin.article.create', $rubrik_list->id)}}" style="display:block;line-height:1;padding:2px 0;">
+                                    <a class="dropdown-item" href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}" style="display:block;line-height:1;padding:2px 0;">
                                         {{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})
                                     </a>
                                 @endforeach
@@ -111,5 +114,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/redactor/assets/redactor.js"></script>
+    <script type="text/javascript">
+        $(function()
+        {
+            $('#content_article').redactor();
+        });
+    </script>
 </body>
 </html>
