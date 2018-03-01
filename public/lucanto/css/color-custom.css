@@ -1,0 +1,233 @@
+.entry-title a:hover {
+  color: #2196f3;
+}
+
+.luxento-categories {
+  background-color: #e91e63;
+}
+
+.widget-title .luxento-viewall:hover {
+  color: #2196f3;
+}
+.widget-title .luxento-viewall:hover:before {
+  border-left: 2px solid #2196f3;
+}
+.widget-title .luxento-viewall:hover:after {
+  border-left: 2px solid #2196f3;
+}
+
+.widget-title .luxento-title-color-2 .luxento-viewall:hover {
+  color: #2196f3;
+}
+.widget-title .luxento-title-color-2 .luxento-viewall:hover:before {
+  border-left: 2px solid #2196f3;
+}
+.widget-title .luxento-title-color-2 .luxento-viewall:hover:after {
+  border-left: 2px solid #2196f3;
+}
+
+.luxento-widget-show-best {
+  background-color: #2196f3;
+}
+
+.luxento-widget-3-slice .widget-content .luxento-wrap {
+  background-color: #2196f3;
+}
+
+.luxento-icon-article {
+  background-color: #2196f3;
+}
+.luxento-icon-article:hover {
+  background-color: #e91e63;
+}
+
+.luxento-paginator .current {
+  background-color: #2196f3;
+}
+.luxento-paginator .page-numbers {
+  text-decoration: none;
+}
+.luxento-paginator .page-numbers:hover {
+  background-color: #2196f3;
+}
+
+.luxento-list-tag a:hover {
+  background-color: #2196f3;
+  border: 1px solid #2196f3;
+}
+
+#luxento-before-footer .luxento-widget-tags .widget-content li a:hover {
+  border: 1px solid #2196f3;
+}
+
+.luxento-list-social a:hover i {
+  color: #2196f3;
+}
+
+.luxento-call i, .luxento-mail i {
+  color: #2196f3;
+}
+
+.luxento-widget-contact .widget-content a:hover {
+  color: #2196f3;
+}
+
+.widget-title a:hover {
+  color: #2196f3;
+}
+.widget-title .luxento-title-color-1 a:hover {
+  color: #2196f3;
+}
+.widget-title .luxento-title-color-2 a:hover {
+  color: #2196f3;
+}
+
+.luxento-account-social:hover {
+  color: #2196f3;
+}
+.luxento-account-social i {
+  color: #2196f3;
+}
+
+.luxento-widget-comment .widget-content .luxento-item-no-thumb .entry-title a:hover {
+  color: #2196f3;
+}
+
+.luxento-goto-top {
+  background-color: #2196f3;
+}
+.luxento-goto-top:hover {
+  background-color: #e91e63;
+}
+
+.luxento-load-more:hover {
+  background-color: #2196f3;
+}
+
+.luxento-breadcrumb a:hover {
+  color: #2196f3;
+}
+
+.luxento-owl-img .owl-controls .owl-buttons div span:hover {
+  background-color: #2196f3;
+}
+
+.entry-thumb > i {
+  background-color: #e91e63;
+}
+.entry-thumb .luxento-number-like {
+  background-color: #2196f3;
+}
+.entry-thumb .luxento-feature-product {
+  background-color: #e91e63;
+}
+.entry-thumb:hover .luxento-feature-product:hover {
+  background-color: #2196f3;
+}
+
+.luxento-button {
+  background-color: #e91e63;
+}
+.luxento-button:hover {
+  background-color: #2196f3;
+}
+
+.luxento-widget-has-slider-pro .sp-thumbnails-container .sp-selected-thumbnail .luxento-custom-entry-title a {
+  color: #2196f3;
+}
+
+.luxento-widget-has-1-article-has-slider .sp-thumbnails-container .sp-selected-thumbnail .luxento-custom-entry-title a {
+  color: #2196f3;
+}
+
+.luxento-widget-has-4-article-has-owl .widget-content .owl-controls .owl-buttons div span:hover {
+  background-color: #2196f3;
+}
+
+.luxento-button-add:hover {
+  background-color: #e91e63;
+}
+
+.luxento-widget-2-article-has-price .widget-content .entry-item-product .luxento-button-add:hover {
+  background-color: #2196f3;
+}
+
+.luxento-button-add2 {
+  background-color: #2196f3;
+}
+.luxento-button-add2:hover {
+  background-color: #e91e63;
+}
+
+.luxento-name-product:hover {
+  color: #2196f3;
+}
+
+.luxento-widget-has-tab-in-single .widget-content .luxento-megatab .active a {
+  background-color: #2196f3;
+}
+
+.luxento-form-comment .luxento-button {
+  line-height: 36px;
+  font-size: 18px;
+  background-color: #2196f3;
+}
+.luxento-form-comment .luxento-button:hover {
+  background-color: #e91e63;
+}
+
+.luxento-meta-data-right a:hover i {
+  color: #2196f3;
+}
+
+.entry-related-single li:before {
+  content: "";
+  background-color: #2196f3;
+}
+.entry-related-single a:hover {
+  color: #2196f3;
+}
+
+.luxento-single-tag i {
+  color: #2196f3;
+}
+.luxento-single-tag a:hover {
+  color: #2196f3;
+}
+
+.author-name {
+  color: #2196f3;
+}
+
+.luxento-widget-controll-post .luxento-controll-next-post div a:hover, .luxento-widget-controll-post .luxento-controll-pre-post div a:hover {
+  color: #2196f3;
+}
+.luxento-widget-controll-post .luxento-controll-next-post:hover div h6 a:hover, .luxento-widget-controll-post .luxento-controll-pre-post:hover div h6 a:hover {
+  color: #2196f3;
+}
+
+.luxento-comment-lv1 .comment-content .luxento-user-name, .luxento-comment-lv2 .comment-content .luxento-user-name {
+  color: #2196f3;
+}
+
+.luxento-categories-custom-01 {
+  background-color: #2196f3;
+}
+
+.luxento-categories-custom-02 {
+  background-color: #880e4f;
+}
+.luxento-categories-custom-02:hover {
+  background-color: #212121;
+}
+
+.luxento-categories-custom-04 {
+  background-color: #0d47a1;
+}
+.luxento-categories-custom-04:hover {
+  background-color: #000000;
+}
+
+.luxento-categories-custom-03 {
+  background-color: #e91e63 !important;
+}

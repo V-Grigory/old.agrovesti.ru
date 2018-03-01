@@ -17,11 +17,13 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
 });
 
-Route::get('/', function () {
-    return view('page.welcome');
-});
+//Route::get('/', function () {
+//    return view('page.welcome');
+//    //return view('main');
+//});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/dev', 'DevController@dev');

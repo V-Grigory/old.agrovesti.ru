@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('id_rubriks');
             $table->string('name_ru', 300);
-            $table->string('name_en', 300)->unique();
+            $table->string('name_en', 300);
             $table->longText('article');
             $table->string('image', 300)->nullable();
             $table->integer('on_main')->default(0);
