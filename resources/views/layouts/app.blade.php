@@ -13,6 +13,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
@@ -67,14 +68,35 @@
             </div>
         </div>
 
-        <div class="container">
+        @yield('content')
 
-            @yield('content')
 
-        </div>
-
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="/"><img src="{{ asset('images/assets/logo-footer.png') }}" /></a>
+                        <p class="footer_left_content">"Аграрные Известия" - профессиональный опыт, мнения руководителей предприятий АПК, производственные решения для сельского хозяйства.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="footer_h2">КОНТАКТЫ</h2>
+                        <p class="footer_contact footer_contact_title">ООО «Издательский Дом «Аграрные известия»</p>
+                        <p class="footer_contact footer_contact_p">г. Тюмень, ул. Осипенко, 81, офис 3/22</p>
+                        <p class="footer_contact footer_contact_phone"><span class="fa fa-phone"></span>8 (3452) 595-202, 595-203, 595-204, 595-206</p>
+                        <p class="footer_contact footer_contact_email"><span class="fa fa-envelope"></span>agrogazeta@inbox.ru</p>
+                    </div>
+                    <div class="col-md-5">
+                        <h2 class="footer_h2">ПОЛЕЗНЫЕ ССЫЛКИ</h2>
+                        <a class="footer_link" href="#">Медиа-кит</a>
+                        <a class="footer_link" href="#">Контакты</a>
+                        <a class="footer_link" href="#">Партнеры</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/my.js') }}"></script>
     </body>
 </html>
