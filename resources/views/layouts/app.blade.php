@@ -27,10 +27,12 @@
     <body>
 
         <div class="container">
-            <img class="main_img" src="{{ asset('images/assets/main.png') }}" />
+            {{--<img class="main_img" src="{{ asset('main.png') }}" />--}}
+            <img class="main_img" src="/images/assets/main.png" />
         </div>
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="wrap_main_menu">
+        <div class="navbar navbar-default navbar-fixed-top navbar-absolute" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,21 +45,22 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Главная</a></li>
-                        <li><a href="#about">Тренды</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Опыт <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Урал</a></li>
-                                <li><a href="#">Сибирь</a></li>
-                                <li><a href="#">Поволжье</a></li>
-                                <li><a href="#">Центр</a></li>
-                                <li><a href="#">Юг</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#contact">Инновации</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                        <li><a href="#contact">Подписка</a></li>
+                        <li class="active"><a class="with_delimiter" href="#">ГЛАВНАЯ</a></li>
+                        <li><a class="with_delimiter" href="#about">ТРЕНДЫ</a></li>
+                        <li><a class="with_delimiter" href="#about">ОПЫТ</a></li>
+                        {{--<li class="dropdown">--}}
+                            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">ОПЫТ <b class="caret"></b></a>--}}
+                            {{--<ul class="dropdown-menu">--}}
+                                {{--<li><a href="#">Урал</a></li>--}}
+                                {{--<li><a href="#">Сибирь</a></li>--}}
+                                {{--<li><a href="#">Поволжье</a></li>--}}
+                                {{--<li><a href="#">Центр</a></li>--}}
+                                {{--<li><a href="#">Юг</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        <li><a class="with_delimiter" href="#contact">ИННОВАЦИИ</a></li>
+                        <li><a class="with_delimiter" href="#contact">КОНТАКТЫ</a></li>
+                        <li><a href="#contact">ПОДПИСКА</a></li>
                     </ul>
                     {{--<ul class="nav navbar-nav navbar-right">--}}
                         {{--<li><a href="../navbar/">Меню</a></li>--}}
@@ -66,6 +69,7 @@
                     {{--</ul>--}}
                 </div>
             </div>
+        </div>
         </div>
 
         @yield('content')

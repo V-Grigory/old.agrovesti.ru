@@ -1,16 +1,14 @@
 $(document).ready(function() {
 
-    // pos_top_navbar = $(".navbar").offset();
-    // console.log('pos - ' + pos_top_navbar.top);
-    //
-    // $(window).scroll(function(){
-    //     if( $(this).scrollTop() > pos_top_navbar.top ) {
-    //         $('body').css('padding-top', '70px');
-    //         $('.navbar').addClass('navbar-fixed-top');
-    //     } else {
-    //         $('body').css('padding-top', '0px');
-    //         $('.navbar').removeClass('navbar-fixed-top');
-    //     }
-    //     console.log($(this).scrollTop());
-    // });
+    var wrap_main_menu_position = $('.wrap_main_menu').position();
+    //console.log(wrap_main_menu_position.top);
+    $(window).scroll(function() {
+         //console.log($(this).scrollTop());
+         if($(this).scrollTop() > wrap_main_menu_position.top) {
+             $('.navbar').removeClass("navbar-absolute");
+         } else {
+             $('.navbar').addClass("navbar-absolute");
+         }
+    });
+
 });
