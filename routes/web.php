@@ -27,3 +27,6 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/dev', 'DevController@dev');
+
+Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');
+Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
