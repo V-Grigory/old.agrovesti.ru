@@ -45,9 +45,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a class="with_delimiter" href="#">ГЛАВНАЯ</a></li>
-                        <li><a class="with_delimiter" href="#about">ТРЕНДЫ</a></li>
-                        <li><a class="with_delimiter" href="#about">ОПЫТ</a></li>
+                        <li class="active"><a class="with_delimiter" href="/">ГЛАВНАЯ</a></li>
+                        <li><a class="with_delimiter" href="{{route('rubrika', 'trends')}}">ТРЕНДЫ</a></li>
+                        <li><a class="with_delimiter" href="{{route('rubrika', 'opyt')}}">ОПЫТ</a></li>
                         {{--<li class="dropdown">--}}
                             {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">ОПЫТ <b class="caret"></b></a>--}}
                             {{--<ul class="dropdown-menu">--}}
@@ -58,9 +58,9 @@
                                 {{--<li><a href="#">Юг</a></li>--}}
                             {{--</ul>--}}
                         {{--</li>--}}
-                        <li><a class="with_delimiter" href="#contact">ИННОВАЦИИ</a></li>
-                        <li><a class="with_delimiter" href="#contact">КОНТАКТЫ</a></li>
-                        <li><a href="#contact">ПОДПИСКА</a></li>
+                        <li><a class="with_delimiter" href="{{route('rubrika', 'innovacii')}}">ИННОВАЦИИ</a></li>
+                        <li><a class="with_delimiter" href="#">КОНТАКТЫ</a></li>
+                        <li><a href="#">ПОДПИСКА</a></li>
                     </ul>
                     {{--<ul class="nav navbar-nav navbar-right">--}}
                         {{--<li><a href="../navbar/">Меню</a></li>--}}
