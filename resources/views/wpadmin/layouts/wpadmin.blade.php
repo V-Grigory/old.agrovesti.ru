@@ -73,7 +73,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container" style="width: 100%;">
             <div class="row">
 
                 <div class="col-sm-3 col-md-2 sidebar">
@@ -83,7 +83,7 @@
                             <a href="#" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align: left;">
                                 Статьи по рубрикам
                             </a>
-                            <div class="dropdown-menu" style="border:none;background-color:#f5f8fa;padding:10px;">
+                            <div class="dropdown-menu" style="border:none;background-color:#f5f8fa;padding:10px;width:300px;">
                                 @foreach(\App\Rubrik::with('articles')->get() as $rubrik_list)
                                     <a class="dropdown-item" href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}" style="display:block;line-height:1;padding:2px 0;">
                                         {{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})
@@ -94,7 +94,7 @@
                             </div>
                         </li>
                         <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
-                        <li><a href="#">Analytics</a></li>
+                        <li><a href="/wpadmin/banners">Баннеры</a></li>
 
                         <li><a href="#">Analytics</a></li>
 

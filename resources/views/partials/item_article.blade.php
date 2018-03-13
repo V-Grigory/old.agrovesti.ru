@@ -1,6 +1,6 @@
 
 <div class="row">
-    @php $articles = \App\Rubrik::with('articles')->find($rubrik_id); @endphp
+    @php $articles = \App\Rubrik::with('articles')->find($rubrik_id); //echo $articles->name_en; @endphp
     @foreach($articles['articles'] as $article)
         @if($article->on_main == 1)
             <div class="col-md-3">

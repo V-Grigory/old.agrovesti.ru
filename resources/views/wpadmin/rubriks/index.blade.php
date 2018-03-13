@@ -12,12 +12,12 @@
 
         <h1>Рубрики</h1> <hr />
 
-        @if($params->no_delete)
+        @if(isset($params) && $params->no_delete)
             <div style="padding:10px;background-color:#ec7063;color:white;">
                 {{$params->no_delete}}
             </div>
         @endif
-        @if($params->ok_delete)
+        @if(isset($params) && $params->ok_delete)
             <div style="padding:10px;background-color:#17a589;color:white;">
                 {{$params->ok_delete}}
             </div>
