@@ -2,6 +2,9 @@
 
 @section('content')
 
+    <!-- соберем массив баннеров для передачи в partials -->
+    @php $banners = \App\Banner::all(); @endphp
+
     <!-- ТРЕНДЫ -->
     <div class="container">
         <div class="title_block">

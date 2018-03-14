@@ -3,14 +3,14 @@ body {/*min-height: 2000px;*/ /*padding-top: 70px;*/}
 
 /* ======================================= */
 /*.with_delimiter {border-right: 2px solid #757575;}*/
-.wrap_main_menu {position: relative;/*margin: 20px 0;*/ height: 40px;}
+.wrap_main_menu {position: relative;/*margin: 20px 0;*/ height: 46px;}
     .navbar-absolute {position: absolute;/*width: 100%;*//*top:140px;*/}
 .navbar {margin: 0;min-height: 0;}
 .navbar-fixed-top {}
-.navbar-collapse {padding: 0;margin: 0!important;text-align: center;border-top: 2px solid #757575!important;border-bottom: 2px solid #757575!important;}
-.navbar-default {/*background-color: #f4f6f6;border-bottom: 1px solid #212121;*/background-color: #fff;border: none;line-height: 0;}
+.navbar-collapse {padding: 0;margin: 0!important;text-align: center;/*border-top: 2px solid #332f2e!important;border-bottom: 2px solid #332f2e!important;*/}
+.navbar-default {border-top: 2px solid #332f2e!important;border-bottom: 2px solid #332f2e!important;background-color: #fff;border: none;line-height: 0;}
 .nav {display: inline-block;float: none;}
-.nav > li > a {font-family: "Native";font-size: 18px;color: #757575!important;margin: 8px 0px;padding:0px 10px;font-weight: bold;}
+.nav > li > a {font-family: "Native";font-size: 18px;color: #332f2e!important;margin: 11px 11px;padding:0px 10px;/*font-weight: bold;*/}
 .nav > .active > a, .nav > li > a:hover {color: #9fa8a3!important;background-color: #fff!important;}
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {color: gray!important;background-color: #f4f6f6!important;}
 .dropdown-menu {background-color: #f4f6f6!important;}
@@ -33,6 +33,8 @@ body {/*min-height: 2000px;*/ /*padding-top: 70px;*/}
         .fa {margin-right: 7px;}
     .item_block > .content_article {border-bottom: 1px solid #e0e0e0; padding-bottom: 16px; color: #616161; font-size: 15px; text-align: justify;height: 133px; overflow: hidden;}
 .item_block_in_rubrik {/*display: inline-block; width: 30%;margin: 30px 24px 10px 0px;*/}
+/* banner */
+.item_block > a > img {width: 100%;}
 
 /* ======================================= */
 .h3_rubriks {margin-top: 30px;}

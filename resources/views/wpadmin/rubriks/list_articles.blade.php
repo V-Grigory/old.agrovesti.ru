@@ -11,6 +11,7 @@
             @forelse($list_articles as $article)
                 <tr>
                     <td style="padding: 0;">
+                        @if($article->on_main == 1) <span class="mark_art_on_main">Выводится на главной</span> @endif
                         <form action="{{route('wpadmin.article.update', $article->id)}}" method="post">
                             <input type="hidden" name="_method" value="put" />
                             {{ csrf_field() }}
