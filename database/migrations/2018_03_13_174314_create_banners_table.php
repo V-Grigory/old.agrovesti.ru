@@ -17,7 +17,6 @@ class CreateBannersTable extends Migration
             $table->increments('id');
             $table->string('name', 300);
             $table->string('position', 300);
-            $table->string('position_name', 300);
             $table->string('image', 300);
             $table->string('link', 300);
         });
