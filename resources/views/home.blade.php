@@ -74,9 +74,14 @@
         @include('partials.item_article', ['rubrik_id'=>'46'])
 
         <div class="title_block_livel_2">
-            <h2>Защита и питание растений</h2>
+            <h2>Защита растений</h2>
         </div>
         @include('partials.item_article', ['rubrik_id'=>'31'])
+
+        <div class="title_block_livel_2">
+            <h2>Питание растений</h2>
+        </div>
+        @include('partials.item_article', ['rubrik_id'=>'32'])
 
         <div class="title_block_livel_2">
             <h2>Очистка и сушка зерна</h2>
