@@ -18,7 +18,7 @@
                     {{--<p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>--}}
                 {{--</div>--}}
 
-                <div class="article_wrap">{{ $page->content }}</div>
+                <div class="article_wrap">@php echo($page->content); @endphp</div>
             </div>
 
             <div class="col-md-3">

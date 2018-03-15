@@ -60,7 +60,7 @@
                             {{--</ul>--}}
                         {{--</li>--}}
                         <li><a class="with_delimiter" href="{{route('rubrika', 'innovacii')}}">Инновации</a></li>
-                        <li><a class="with_delimiter" href="#">Контакты</a></li>
+                        <li><a class="with_delimiter" href="/kontakty">Контакты</a></li>
                         <li><a href="#">Подписка</a></li>
                     </ul>
                     {{--<ul class="nav navbar-nav navbar-right">--}}
