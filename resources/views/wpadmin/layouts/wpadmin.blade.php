@@ -89,16 +89,11 @@
                                         {{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})
                                     </a>
                                 @endforeach
-                                {{--<a class="dropdown-item" href="{{route('wpadmin.article.index', 2)}}" style="display:block;line-height:1;padding:2px 0;">переработка id2</a>--}}
-                                {{--<a class="dropdown-item" href="{{route('wpadmin.article.index', 3)}}" style="display:block;line-height:1;padding:2px 0;">переработка id3</a>--}}
                             </div>
                         </li>
                         <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
                         <li><a href="/wpadmin/banners">Баннеры</a></li>
-
-                        <li><a href="#">Analytics</a></li>
-
-
+                        <li><a href="/wpadmin/kontakty">Контакты</a></li>
                     </ul>
                 </div>
 

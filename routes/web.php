@@ -16,6 +16,7 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
+    Route::resource('/{page}', 'PageController', ['as'=>'wpadmin']);
 });
 
 //Route::get('/', function () {
@@ -31,3 +32,5 @@ Route::get('/dev', 'DevController@dev');
 
 Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
+
+Route::get('/{page}', 'HomeController@page')->name('page');

@@ -31,7 +31,7 @@ body {/*min-height: 2000px;*/ /*padding-top: 70px;*/}
         .item_block > .title_article:hover {text-decoration: none;color: #0080ff;}
     .item_block > .meta_block {margin: 0;color: #c0c0c0;font-size: 12px;}
         .fa {margin-right: 7px;}
-    .item_block > .content_article {border-bottom: 1px solid #e0e0e0; padding-bottom: 16px; color: #616161; font-size: 15px; text-align: justify;height: 133px; overflow: hidden;}
+    .item_block > .content_article {border-bottom: 1px solid #e0e0e0; /*padding-bottom: 16px;*/ color: #544b48; font-size: 16px; text-align: justify;height: 140px; overflow: hidden;}
 .item_block_in_rubrik {/*display: inline-block; width: 30%;margin: 30px 24px 10px 0px;*/}
 /* banner */
 .item_block > a > img {width: 100%;}

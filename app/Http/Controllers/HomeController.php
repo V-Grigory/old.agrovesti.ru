@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Rubrik;
+use App\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +28,13 @@ class HomeController extends Controller
     public function article($name_en)
     {
         return view('article', ['article' => Article::with('rubriks')->where('name_en', $name_en)->first()]);
+    }
+
+    public function page($page)
+    {
+//        var_dump(Page::where('name_en', $page)->first());
+//        exit();
+        return view('page', ['page' => Page::where('name_en', $page)->first()]);
     }
 
 }
