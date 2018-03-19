@@ -46,9 +46,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         {{--<li class="active"><a class="with_delimiter" href="/">Главная</a></li>--}}
-                        <li><a class="with_delimiter" href="/">Главная</a></li>
-                        <li><a class="with_delimiter" href="{{route('rubrika', 'trends')}}">Тренды</a></li>
-                        <li><a class="with_delimiter" href="{{route('rubrika', 'opyt')}}">Опыт</a></li>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="{{route('rubrika', 'trends')}}">Тренды</a></li>
+                        <li><a href="{{route('rubrika', 'opyt')}}">Опыт</a></li>
                         {{--<li class="dropdown">--}}
                             {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">ОПЫТ <b class="caret"></b></a>--}}
                             {{--<ul class="dropdown-menu">--}}
@@ -59,10 +59,17 @@
                                 {{--<li><a href="#">Юг</a></li>--}}
                             {{--</ul>--}}
                         {{--</li>--}}
-                        <li><a class="with_delimiter" href="{{route('rubrika', 'innovacii')}}">Инновации</a></li>
-                        <li><a class="with_delimiter" href="/kontakty">Контакты</a></li>
-                        <li><a href="#">Подписка</a></li>
+                        <li><a href="{{route('rubrika', 'innovacii')}}">Инновации</a></li>
+                        <li><a href="/kontakty">Контакты</a></li>
+                        <li><a class="lid lk" href="/kontakty">Войти</a></li>
+                        <li><a class="lid subscribe" href="/kontakty">Подписаться</a></li>
+                        <li><a class="lid search" href="/">&nbsp;</a></li>
                     </ul>
+                    <div style="display: none;">
+                        <img src="/images/assets/logIn_hover.png" />
+                        <img src="/images/assets/subscribe_hover.png" />
+                        <img src="/images/assets/search_hover.png" />
+                    </div>
                     {{--<ul class="nav navbar-nav navbar-right">--}}
                         {{--<li><a href="../navbar/">Меню</a></li>--}}
                         {{--<li><a href="../navbar-static-top/">Статическое</a></li>--}}
@@ -93,8 +100,8 @@
                     <div class="col-md-5">
                         <h2 class="footer_h2">ПОЛЕЗНЫЕ ССЫЛКИ</h2>
                         <a class="footer_link" href="#">Медиа-кит</a>
-                        <a class="footer_link" href="#">Контакты</a>
-                        <a class="footer_link" href="#">Партнеры</a>
+                        <a class="footer_link" href="/kontakty">Контакты</a>
+                        <a class="footer_link" href="#">Подписаться</a>
                     </div>
                 </div>
             </div>
