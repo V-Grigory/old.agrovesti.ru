@@ -99,9 +99,9 @@
                     </div>
                     <div class="col-md-5">
                         <h2 class="footer_h2">ПОЛЕЗНЫЕ ССЫЛКИ</h2>
-                        <a class="footer_link" href="#">Медиа-кит</a>
+                        <a class="footer_link" href="/images/assets/mediaKit_2017.pdf" target="_blank">Медиа-кит</a>
                         <a class="footer_link" href="/kontakty">Контакты</a>
-                        <a class="footer_link" href="#">Подписаться</a>
+                        <a class="footer_link" href="/kontakty">Подписаться</a>
                     </div>
                 </div>
             </div>
