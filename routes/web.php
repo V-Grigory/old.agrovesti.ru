@@ -16,7 +16,7 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
-    //Route::resource('/{page}', 'PageController', ['as'=>'wpadmin']);
+    Route::resource('/pages', 'PageController', ['as'=>'wpadmin']);
 });
 
 //Route::get('/', function () {

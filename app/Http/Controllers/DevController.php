@@ -19,9 +19,9 @@ class DevController extends Controller
 //            $arr = explode(',',  $article->id_rubriks);
 //            $article->rubriks()->attach($arr);
 //        }
-//        return view('dev', [
+        return view('dev', [
 //            'articles' => $articles
-//        ]);
+        ]);
     }
 
 }

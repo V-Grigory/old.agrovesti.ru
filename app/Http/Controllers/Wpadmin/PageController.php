@@ -11,7 +11,7 @@ class PageController extends Controller
     public function index(Request $request)
     {
         return view('wpadmin.pages.index', [
-            'page'   => Page::where('name_en', $request->page)->first(),
+            'pages'   => Page::all(),
             'params' => $request
         ]);
     }

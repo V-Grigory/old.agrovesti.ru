@@ -93,7 +93,7 @@
                         </li>
                         <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
                         <li><a href="/wpadmin/banners">Баннеры</a></li>
-                        <li><a href="/wpadmin/kontakty">Контакты</a></li>
+                        <li><a href="/wpadmin/pages">Страницы (tilda)</a></li>
                     </ul>
                 </div>
 

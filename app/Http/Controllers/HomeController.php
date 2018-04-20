@@ -32,8 +32,8 @@ class HomeController extends Controller
 
     public function page($page)
     {
-//        var_dump(Page::where('name_en', $page)->first());
-//        exit();
+        //var_dump(Page::where('name_en', $page)->first());
+        //exit();
         return view('page', ['page' => Page::where('name_en', $page)->first()]);
     }
 
