@@ -23,7 +23,7 @@
 
             <div class="col-md-3">
 
-                @include('partials.sideBar_rubriks_and_last_articles')
+                @include('partials.sideBar_rubriks')
 
             </div>
 

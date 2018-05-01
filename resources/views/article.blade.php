@@ -30,7 +30,8 @@
 
             <div class="col-md-3">
 
-                @include('partials.sideBar_rubriks_and_last_articles')
+                @include('partials.sideBar_rubriks')
+                @include('partials.sideBar_last_articles_in_cerrunt_rubrik')
 
             </div>
 
