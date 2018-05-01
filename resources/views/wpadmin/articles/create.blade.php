@@ -62,17 +62,16 @@
             </div>
 
             <div class="form-group">
-                <textarea id="content_article" class="form-control" name="article">{{$article->article or ""}}</textarea>
+                <button type="submit" class="btn btn-primary">СОХРАНИТЬ СТАТЬЮ</button>
             </div>
 
             <div class="form-group">
+                <textarea id="content_article" class="form-control" name="article">{{$article->article or ""}}</textarea>
+            </div>
 
-                {{--@if($rubrik)--}}
-                    {{--<button type="submit" class="btn btn-primary">Сохранить рубрику</button>--}}
-                {{--@else--}}
-                    {{--<button type="submit" class="btn btn-primary">Добавить рубрику</button>--}}
-                {{--@endif--}}
-                <input type="hidden" name="id" value="{{$article->id or ""}}" />
+            <input type="hidden" name="id" value="{{$article->id or ""}}" />
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary">СОХРАНИТЬ СТАТЬЮ</button>
             </div>
 

@@ -33,4 +33,4 @@ Route::get('/dev', 'DevController@dev');
 Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
 
-Route::get('/{page}', 'HomeController@page')->name('page');
+//Route::get('/{page}', 'HomeController@page')->name('page');
