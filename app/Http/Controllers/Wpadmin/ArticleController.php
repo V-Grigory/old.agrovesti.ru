@@ -115,7 +115,7 @@ class ArticleController extends Controller
 //        print_r('<pre>');
 //        print_r($article);
 //        print_r('</pre>');
-        exit();
+        //exit();
         $article->rubriks()->detach();
         $article->delete();
         if($article->image != NULL) {
