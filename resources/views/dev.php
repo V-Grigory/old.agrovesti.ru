@@ -46,27 +46,21 @@
 //echo '</pre>';
 
 //file_put_contents("/home/grigory/projects/centr.agrovesti.ru/files.txt", "ssss1");
-$cnt = 0;
-if ($handle = opendir('/home/grigory/projects/centr.agrovesti.ru/public/images/')) {
-    while (false !== ($file = readdir($handle))) {
-        if($file != '.' && $file != '..' && $file != 'assets' && $file != 'banners')
-        {
-            $users = DB::table('articles')->where('article', 'like', "%$file%")->get();
-            if(!isset($users[0])) {
-                $cnt++;
-                echo $file . '<br>';
-                unlink('/home/grigory/projects/centr.agrovesti.ru/public/images/'.$file);
-            }
-        }
-        if($cnt == 1) break;
-    }
-    closedir($handle);
-}
-echo 'COUNT - ' . $cnt;
-
-//$users = DB::table('articles')->where('article', 'like', "%1b188188688c88f51f5f27d748f103133.jpg%")->get();
-//if(isset($users[0])) {
-//    echo 'DAA';
-//} else {
-//    echo 'NOO';
+//$cnt = 0;
+//if ($handle = opendir('/home/grigory/projects/centr.agrovesti.ru/public/images/')) {
+//    while (false !== ($file = readdir($handle))) {
+//        if($file != '.' && $file != '..' && $file != 'assets' && $file != 'banners')
+//        {
+//            $users = DB::table('articles')->where('article', 'like', "%$file%")->get();
+//            if(!isset($users[0])) {
+//                $cnt++;
+//                echo $file . '<br>';
+//                unlink('/home/grigory/projects/centr.agrovesti.ru/public/images/'.$file);
+//            }
+//        }
+//        if($cnt == 1) break;
+//    }
+//    closedir($handle);
 //}
+//echo 'COUNT - ' . $cnt;
+
