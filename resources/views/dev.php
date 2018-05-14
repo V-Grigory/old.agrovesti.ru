@@ -1,49 +1,48 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: grigory
- * Date: 17.02.18
- * Time: 22:32
- */
-
-//print_r('<pre>');
-//var_dump($articles);
-//print_r('</pre>');
-
-//foreach ($articles as $article) {
-//    $arr = explode(',',  $article->id_rubriks);
-//    echo $article->id . '; arr: '.  json_encode($arr) .'<br>';
+//
+//$dirs['images'] = public_path().'/tilda/images';
+//$dirs['css'] = public_path().'/tilda/css';
+//$dirs['js'] = public_path().'/tilda/js';
+//
+//if(!is_dir($dirs['images'])) mkdir($dirs['images']);
+//if(!is_dir($dirs['css'])) mkdir($dirs['css']);
+//if(!is_dir($dirs['js'])) mkdir($dirs['js']);
+//
+///* Получаем информацию по нужному нам проекту для экспорта */
+//$result = file_get_contents('http://api.tildacdn.info/v1/getprojectexport/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=627900');
+//$project=json_decode($result, true);
+//
+//foreach ($project['result'] as $key=>$value) {
+//    if($key == 'images' || $key == 'css' || $key == 'js') {
+//        foreach ($value as $resource) {
+//            $get_resource = file_get_contents($resource['from']);
+//            file_put_contents($dirs[$key].'/'.$resource['to'], $get_resource);
+//        }
+//    }
+//    if($key == 'htaccess') {
+//        file_put_contents(public_path().'/tilda/.htaccess', $value);
+//    }
+//}
+//
+///* Получаем список всех страниц в нашем проекте. Запрос getpageslist */
+//$getpageslist = file_get_contents('http://api.tildacdn.info/v1/getpageslist/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=627900');
+//$pageslist=json_decode($getpageslist, true);
+//
+//foreach ($pageslist['result'] as $key=>$value) {
+//    /* Для каждой страницы получаем информацию для экспорта. */
+//    $getpagefullexport = file_get_contents('http://api.tildacdn.info/v1/getpageexport/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&pageid='.$value['id']);
+//    $pagefullexport=json_decode($getpagefullexport, true);
+//
+//    // загрузим картинки со страницы
+//    foreach ($pagefullexport['result']['images'] as $k=>$v) {
+//        $get_resource = file_get_contents($v['from']);
+//        file_put_contents($dirs['images'].'/'.$v['to'], $get_resource);
+//    }
+//    // созданим файл страницы
+//    file_put_contents(public_path().'/tilda/'.$pagefullexport['result']['filename'], $pagefullexport['result']['html']);
 //}
 
-//echo 'ss';
-// Public key: vgne4ejqrfpj09moy8wl
-// Secret key: mw39g6nc6c72sugw90m1
 
-//Получить список проектов
-// http://api.tildacdn.info/v1/getprojectslist/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1
-
-// 0
-// id	"5710"
-// title	"День поля"
-// descr	"Агропромышленная выставка"
-// 1
-// id	"627900"
-// title	"Агровести"
-// descr
-
-//Получить информацию о проекте // projectid=5710
-// http://api.tildacdn.info/v1/getproject/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=5710
-
-// Получить информацию о проекте для экспорта
-// http://api.tildacdn.info/v1/getprojectexport/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=5710
-
-// http://api.tildacdn.info/v1/getpageexport/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&pageid=22542
-
-//$result = file_get_contents('http://api.tildacdn.info/v1/getprojectexport/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=5710');
-//$project=json_decode($result, true);
-//echo '<pre>';
-//print_r($project);
-//echo '</pre>';
 
 //file_put_contents("/home/grigory/projects/centr.agrovesti.ru/files.txt", "ssss1");
 //$cnt = 0;

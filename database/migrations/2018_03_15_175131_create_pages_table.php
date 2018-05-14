@@ -17,6 +17,7 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('name_ru');
             $table->string('name_en', 300);
+            $table->string('source')->default('tilda');
             $table->longText('content');
             $table->timestamps();
         });

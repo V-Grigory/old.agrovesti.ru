@@ -22,10 +22,29 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        @php /* если страница тильдовская */
+            if(isset($page->source)) {
+                if ($handle = opendir(public_path().'/tilda/js')) {
+                    while (false !== ($file = readdir($handle))) {
+                        if($file != '.' && $file != '..') {
+                            echo '<script src="/tilda/js/'.$file.'"></script>';
+                        }
+                    }
+                }
+                if ($handle = opendir(public_path().'/tilda/css')) {
+                    while (false !== ($file = readdir($handle))) {
+                        if($file != '.' && $file != '..') {
+                            echo '<link href="/tilda/css/'.$file.'" rel="stylesheet">';
+                        }
+                    }
+                }
+                closedir($handle);
+            }
+        @endphp
     </head>
 
     <body>
-
         <div class="container">
             {{--<img class="main_img" src="{{ asset('main.png') }}" />--}}
             <img class="main_img" src="/images/assets/main.png" />

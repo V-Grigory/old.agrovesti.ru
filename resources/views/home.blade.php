@@ -190,19 +190,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <h3 class="h3_rubriks">РУБРИКИ</h3>
-                <div class="wrap_rubriks">
-                    @foreach(\App\Rubrik::with('articles')->orderBy('order')->get() as $rubrik_list)
-                        <div class="item_ribrik">
-                            <span class="fon_item_rubrik"></span>
-                            <a class="link_in_rubrik" href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}"> {{$rubrik_list->name_ru}} </a>
-                            <span class="count_art_in_rubrik">
-                                ({{$rubrik_list->articles()->count()}})
-                            </span>
-                        </div>
-                    @endforeach
-
-                </div>
+                @include('partials.sideBar_rubriks')
             </div>
             <div class="col-md-8">
                 <br />
