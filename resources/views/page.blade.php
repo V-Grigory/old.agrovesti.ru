@@ -21,7 +21,7 @@
                 <div class="article_wrap">
                     @php
                         if($page->source == 'tilda') {
-                            include(public_path().'/tilda/page2755600.html');
+                            include(public_path().'/tilda/'.$page->tilda_filename);
                         } else {
                             echo($page->content);
                         }

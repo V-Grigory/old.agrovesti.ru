@@ -25,13 +25,18 @@
 
         @php /* если страница тильдовская */
             if(isset($page->source)) {
-                //if ($handle = opendir(public_path().'/tilda/js')) {
-                //    while (false !== ($file = readdir($handle))) {
-                //       if($file != '.' && $file != '..') {
-                //            echo '<script src="/tilda/js/'.$file.'"></script>';
-                //        }
-                //    }
-                //}
+                $files = [];
+                if ($handle = opendir(public_path().'/tilda/js')) {
+                    while (false !== ($file = readdir($handle))) {
+                       if($file != '.' && $file != '..') {
+                            $files[filesize(public_path().'/tilda/js/'.$file)] = $file;
+                        }
+                    }
+                }
+                krsort($files);
+                foreach ($files as $f) {
+                    echo '<script src="/tilda/js/'.$f.'"></script>';
+                }
                 if ($handle = opendir(public_path().'/tilda/css')) {
                     while (false !== ($file = readdir($handle))) {
                         if($file != '.' && $file != '..') {
@@ -42,11 +47,6 @@
                 closedir($handle);
             }
         @endphp
-        <script src="/tilda/js/jquery-1.10.2.min.js"></script>
-        <script src="/tilda/js/tilda-scripts-2.8.min.js"></script>
-        <script src="/tilda/js/tilda-animation-1.0.min.js"></script>
-        <script src="/tilda/js/tilda-blocks-2.7.js"></script>
-        <script src="/tilda/js/lazyload-1.3.min.js"></script>
     </head>
 
     <body>
