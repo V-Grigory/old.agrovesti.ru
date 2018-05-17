@@ -24,8 +24,4 @@ class DevController extends Controller
         ]);
     }
 
-    public function syncTilda() {
-        return view('sync-tilda');
-    }
-
 }

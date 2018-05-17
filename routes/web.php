@@ -23,9 +23,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/dev', 'DevController@dev');
-Route::get('/sync-tilda', 'DevController@syncTilda');
 
 Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
 
+Route::get('/sync-tilda', 'HomeController@syncTilda');
 Route::get('/{page}', 'HomeController@page')->name('page');

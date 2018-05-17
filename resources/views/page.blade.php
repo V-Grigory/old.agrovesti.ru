@@ -39,5 +39,3 @@
     </div>
 
 @endsection
-
-{{--@php include(public_path().'/tilda/page2755600.html');  //echo($page->content); @endphp--}}

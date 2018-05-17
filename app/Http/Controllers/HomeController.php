@@ -32,6 +32,12 @@ class HomeController extends Controller
         ]);
     }
 
+    public function syncTilda() {
+        //return redirect()->action('HomeController@syncTildaWebhook');
+        return view('sync-tilda');
+    }
+
+
     public function page($page)
     {
         return view('page', ['page' => Page::where('name_en', $page)->first()]);
