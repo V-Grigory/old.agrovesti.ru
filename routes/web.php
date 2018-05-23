@@ -22,6 +22,7 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/404', 'HomeController@404');
 Route::get('/dev', 'DevController@dev');
 
 Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');

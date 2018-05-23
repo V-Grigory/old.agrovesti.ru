@@ -18,29 +18,44 @@ class HomeController extends Controller
     public function rubrika($name_en)
     {
         $list_articles = Rubrik::with('articles')->orderByDesc('id')->where('name_en', $name_en)->get();
-        return view('rubrika', [
-            'list_articles' => $list_articles[0]['articles'],
-            'rubrika_name_ru' => $list_articles[0]['name_ru']
-            //'rubrika_id' => $list_articles[0]['id']
-        ]);
+        if(isset($list_articles[0])) {
+            return view('rubrika', [
+                'list_articles' => $list_articles[0]['articles'],
+                'rubrika_name_ru' => $list_articles[0]['name_ru']
+            ]);
+        } else {
+            return view('404');
+        }
+
     }
 
     public function article($name_en)
     {
-        return view('article', [
-            'article' => Article::with('rubriks')->where('name_en', $name_en)->first()
-        ]);
+        $article = Article::with('rubriks')->where('name_en', $name_en)->first();
+        if($article) {
+            return view('article', [
+                'article' => $article
+            ]);
+        } else {
+            return view('404');
+        }
+
     }
 
     public function syncTilda() {
-        //return redirect()->action('HomeController@syncTildaWebhook');
         return view('sync-tilda');
     }
 
 
     public function page($page)
     {
-        return view('page', ['page' => Page::where('name_en', $page)->first()]);
+        $page = Page::where('name_en', $page)->first();
+        if($page) {
+            return view('page', ['page' => $page]);
+        } else {
+            return view('404');
+        }
+
     }
 
 }

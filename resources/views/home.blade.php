@@ -129,58 +129,6 @@
         @include('partials.item_article', ['rubrik_name_en'=>'genetika-i-selektsiya3004180303'])
     </div>
 
-    <!-- ТЕХНИКА И ТЕХНОЛОГИИ -->
-    {{--<div class="container">--}}
-        {{--<div class="title_block">--}}
-            {{--<div class="bgr_title_block"></div> <div class="bgr_title_block bgr_title_block_2"></div>--}}
-            {{--<h1>Техника и технологии</h1>--}}
-        {{--</div>--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Обработка почвы</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'41'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Посев</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'43'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Тракторы</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'42'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Уборка</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'45'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Кормозаготовка</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'46'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Защита растений</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'31'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Питание растений</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'32'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Очистка и сушка зерна</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'34'])--}}
-
-        {{--<div class="title_block_livel_2">--}}
-            {{--<h2>Животноводство</h2>--}}
-        {{--</div>--}}
-        {{--@include('partials.item_article', ['rubrik_id'=>'38'])--}}
-    {{--</div>--}}
 
     <!-- СВЕЖИЕ СТАТЬИ -->
     <div class="container">

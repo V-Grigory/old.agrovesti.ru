@@ -38,7 +38,7 @@
         <hr />
         <table class="table table-striped">
             <thead>
-                <th>Наименование</th><th class="text-right">Действие</th>
+                <th>Наименование</th><th>На главной</th><th>Позиция</th><th>Шаблон</th><th class="text-right">Действие</th>
             </thead>
             <tbody>
                 @forelse($rubriks as $rubrik)
@@ -49,6 +49,15 @@
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn btn-link">{{$rubrik->name_ru}}</button>
                             </form>
+                        </td>
+                        <td>
+                            @if ($rubrik->on_main == 1) <b>Да</b> @else Нет @endif
+                        </td>
+                        <td>
+                            @if ($rubrik->on_main == 1) {{$rubrik->position_number}} @endif
+                        </td>
+                        <td>
+                            @if ($rubrik->on_main == 1) {{$rubrik->template_number}} @endif
                         </td>
                         <td class="text-right" style="padding: 0;">
                             <form onsubmit="if(confirm('Удалить?')){ return true } else { return false }"
