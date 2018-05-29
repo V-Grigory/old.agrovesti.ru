@@ -13,7 +13,7 @@ class RubrikController extends Controller
         return view('wpadmin.rubriks.index', [
             //'rubriks' => Rubrik::paginate(10)
             'rubrik'    => [],
-            'rubriks'   => Rubrik::with('children')->get(),
+            'rubriks'   => Rubrik::with('children')->orderBy('order', 'ASC')->get(),
             'delimiter' => '',
             'params' => $request
         ]);
@@ -44,7 +44,7 @@ class RubrikController extends Controller
     {
         return view ('wpadmin.rubriks.index', [
             'rubrik'    => $rubrik,
-            'rubriks'   => Rubrik::all(),
+            'rubriks'   => Rubrik::with('children')->orderBy('order', 'ASC')->get(),
             'delimiter' => ''
         ]);
     }

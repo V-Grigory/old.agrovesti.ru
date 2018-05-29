@@ -85,7 +85,7 @@
                         <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
                         <li>
                             <b style="padding:10px 15px;">Статьи по рубрикам</b>
-                            @foreach(\App\Rubrik::with('articles')->get() as $rubrik_list)
+                            @foreach(\App\Rubrik::with('articles')->orderBy('order', 'ASC')->get() as $rubrik_list)
                                 <a href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}" style="padding:0px 0px 0px 25px;">
                                     {{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})
                                 </a>

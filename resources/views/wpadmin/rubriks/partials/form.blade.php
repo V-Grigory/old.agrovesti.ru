@@ -24,6 +24,13 @@
         </select>
     </div>
 
+    <!-- ====== ПОЗИЦИЯ В РУБРИКАТОРЕ ====== -->
+    <br><br>
+    <div class="form-group">
+        <p style="margin:0 0 8px 0;color:#666666;"><b>Позиция в рубрикаторе</b></p>
+        <input type="text" class="form-control" name="order" value="{{$rubrik->order or "0"}}" />
+    </div>
+
     <!-- ====== НА ГЛАВНОЙ ====== -->
     <div class="form-group">
         <p style="margin:0 10px 8px 0;color:#666666;"><b>На главной</b></p>
@@ -33,9 +40,9 @@
         </select>
     </div>
 
-    <!-- ====== ПОЗИЦИЯ ====== -->
+    <!-- ====== ПОЗИЦИЯ ШАБЛОНА ====== -->
     <div class="form-group">
-        <p style="margin:0 0 8px 0;color:#666666;"><b>Позиция (порядковый №)</b></p>
+        <p style="margin:0 0 8px 0;color:#666666;"><b>Позиция на главной (порядковый №)</b></p>
         <input type="text" class="form-control" name="position_number" value="{{$rubrik->position_number or "0"}}"  />
     </div>
 
@@ -83,6 +90,35 @@
                    @if($rubrik && $rubrik->template_number == 6) checked @endif >
             <label for="template_number_6">№ 6</label>
             <img style="width:190px;" src="/images/assets/preview_template_number_6.png">
+        </div>
+    </div>
+
+    <!-- ====== ИКОНКА РУБРИКИ ====== -->
+    <br><br>
+    <div class="form-group">
+        <p style="margin:0 0 8px 0;color:#666666;"><b>Иконка рубрики</b></p>
+
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="icon_number" value="1" id="icon_number_1"
+                   @if($rubrik)
+                        @if($rubrik->icon_number == 1) checked @endif
+                   @else
+                        checked
+                   @endif >
+            <label for="icon_number_1">№ 1</label>
+            <img src="/images/assets/icon_rubrik_1.png">
+        </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="icon_number" value="2" id="icon_number_2"
+                   @if($rubrik && $rubrik->icon_number == 2) checked @endif >
+            <label for="icon_number_2">№ 2</label>
+            <img src="/images/assets/icon_rubrik_2.png">
+        </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="icon_number" value="3" id="icon_number_3"
+                   @if($rubrik && $rubrik->icon_number == 3) checked @endif >
+            <label for="icon_number_3">№ 3</label>
+            <img src="/images/assets/icon_rubrik_3.png">
         </div>
     </div>
 

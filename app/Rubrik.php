@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Rubrik extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['parent_id', 'name_ru', 'name_en', 'on_main', 'position_number', 'template_number'];
+    protected $fillable = ['parent_id', 'name_ru', 'name_en', 'order', 'on_main', 'position_number', 'template_number', 'icon_number'];
 
     public function setNameEnAttribute($value) {
         $this->attributes['name_en'] = Str::slug(

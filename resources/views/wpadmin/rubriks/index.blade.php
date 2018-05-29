@@ -38,7 +38,8 @@
         <hr />
         <table class="table table-striped">
             <thead>
-                <th>Наименование</th><th>На главной</th><th>Позиция</th><th>Шаблон</th><th class="text-right">Действие</th>
+                <th>Наименование</th><th>Позиция в рубрикаторе</th><th>На главной</th><th>Позиция на главной</th>
+                <th>Иконка рубрики</th><th>№ шаблона</th><th class="text-right">Действие</th>
             </thead>
             <tbody>
                 @forelse($rubriks as $rubrik)
@@ -51,10 +52,16 @@
                             </form>
                         </td>
                         <td>
+                            {{ $rubrik->order }}
+                        </td>
+                        <td>
                             @if ($rubrik->on_main == 1) <b>Да</b> @else Нет @endif
                         </td>
                         <td>
                             @if ($rubrik->on_main == 1) {{$rubrik->position_number}} @endif
+                        </td>
+                        <td>
+                            <img src="/images/assets/icon_rubrik_{{ $rubrik->icon_number }}.png">
                         </td>
                         <td>
                             @if ($rubrik->on_main == 1) {{$rubrik->template_number}} @endif
