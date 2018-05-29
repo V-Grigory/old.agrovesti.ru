@@ -17,15 +17,16 @@
                 <div class="row">
                 @forelse($list_articles as $article)
                      <div class="col-md-4">
-                     <div class="item_block item_block_in_rubrik">
-                         <img src="{{ asset('images/'.$article->image) }}" />
-                         <a href="{{route('article', $article->name_en)}}" class="title_article">{{ $article->name_ru }}</a>
-                         <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+                     <div class="item_article">
+                         <img class="item_article_img" src="{{ asset('images/'.$article->image) }}" />
+                         <a class="item_article_title" href="{{route('article', $article->name_en)}}">{{ $article->name_ru }}</a>
+                         <p class="item_article_meta"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
                          @php
                              $norm = strip_tags($article->article); $words = explode(' ', $norm);
                              if( sizeof($words) > 30 ) { $words = array_slice($words, 0, 30); $norm = implode(' ', $words) . ''; }
                          @endphp
-                         <p class="content_article">{{ $norm }}</p>
+                         <p class="item_article_content">{{ $norm }}</p>
+                         <div class="tochki"></div>
                      </div>
                      </div>
 
