@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Wpadmin;
 
 use App\Banner;
+use App\Rubrik;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
@@ -13,6 +14,7 @@ class BannerController extends Controller
         return view('wpadmin.banners.index', [
             'banner'    => [],
             'banners'   => Banner::all(),
+            'rubriks'   => Rubrik::all(),
             'delimiter' => '',
             'params' => $request
         ]);
@@ -59,6 +61,7 @@ class BannerController extends Controller
         return view ('wpadmin.banners.index', [
             'banner'    => $banner,
             'banners'   => Banner::all(),
+            'rubriks'   => Rubrik::all(),
             'delimiter' => ''
         ]);
     }

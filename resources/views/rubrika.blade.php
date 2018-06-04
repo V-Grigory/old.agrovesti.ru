@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- РУБРИКАТОР И САМА СТАТЬЯ -->
+    <!-- СТАТЬИ В РУБРИКЕ И РУБРИКАТОР -->
     <div class="container">
 
         <div class="breadcrumb">

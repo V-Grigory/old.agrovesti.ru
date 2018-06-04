@@ -19,7 +19,7 @@
                         <p class="item_article_meta"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
                         @php
                             $norm = strip_tags($article->article); $words = explode(' ', $norm);
-                            if( sizeof($words) > 30 ) {	$words = array_slice($words, 0, 30); $norm = implode(' ', $words) . ''; }
+                            if( sizeof($words) > 20 ) {	$words = array_slice($words, 0, 20); $norm = implode(' ', $words) . ''; }
                         @endphp
                         <p class="item_article_content">{{ $norm }}</p>
                         <div class="tochki"></div>
@@ -29,20 +29,5 @@
             @endif
         @endforeach
 
-
-        <!-- BANNERS -->
-            {{--@foreach($banners as $banner)--}}
-                {{--@if($banner->position == $articles->name_en)--}}
-                    {{--<div class="col-md-3">--}}
-                        {{--<div class="item_block">--}}
-                            {{--<a href="{{$banner->link}}" title="{{$banner->name}}" target="_blank">--}}
-                                {{--<img src="/images/banners/{{$banner->image}}" alt="{{$banner->name}}">--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--@endif--}}
-            {{--@endforeach--}}
-
     </div>
-
 </div>

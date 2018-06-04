@@ -17,11 +17,3 @@
     </a>
 
 @endforeach
-
-{{--{{ $rubrik->id }}--}}
-
-    {{--@foreach(\App\Rubrik::with('articles')->orderBy('order')->get() as $rubrik_list)--}}
-        {{--<div class="rubrikator_item_ribrik">--}}
-            {{--<a class="rubrikator_link" href="{{route('rubrika', $rubrik_list->name_en)}}"> {{$rubrik_list->name_ru}} </a>--}}
-        {{--</div>--}}
-    {{--@endforeach--}}

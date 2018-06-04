@@ -54,10 +54,16 @@
             <div class="form-group">
                 <p style="margin:0 0 8px 0;color:#666666;"><b>Опции</b></p>
                 <label class="checkbox-inline">
-                    <input type="checkbox" name="on_main" value="1" @if(isset($article->on_main)) checked @endif > Разместить на главной
+                    <input type="checkbox" name="on_main" value="1" @if(isset($article->on_main)) checked @endif >
+                    Разместить на главной
                 </label>
                 <label class="checkbox-inline">
-                    <input type="checkbox" name="need_pay" value="1" @if(isset($article->need_pay)) checked @endif > Платная статья
+                    <input type="checkbox" name="main_article" value="1" @if(isset($article->main_article)) checked @endif >
+                    Главная статья рубрики
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="need_pay" value="1" @if(isset($article->need_pay)) checked @endif >
+                    Платная статья
                 </label>
             </div>
 

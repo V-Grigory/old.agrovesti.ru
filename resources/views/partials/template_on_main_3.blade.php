@@ -1,21 +1,51 @@
 
 <div class="container">
 
-    <h1 class="title_block_rubrik icon_rubrik_1">{{ $rubrik->name_ru }}</h1>
+    <h1 class="title_block_rubrik icon_rubrik_{{ $rubrik->icon_number }}">{{ $rubrik->name_ru }}</h1>
 
     <div class="row">
 
-        @foreach($rubrik['articles'] as $article)
-            @if($article)
+        <!-- слева статьи -->
+        <div class="col-md-9" style="padding:0;">
 
-                <div class="col-md-3">
-                    <div class="item_block">
-                        Блок в разработке
+            @foreach($rubrik['articles'] as $article)
+                @if($article)
+                    <!-- статьи в широком формате -->
+                    <div class="col-md-12" style="padding:0;margin: 10px 0;">
+                        <div class="col-md-6">
+                            <img class="item_article_img item_article_img_wide" src="{{ asset('images/'.$article->image) }}" />
+                        </div>
+                        <div class="col-md-6">
+                            <a class="item_article_title item_article_title_wide" href="{{route('article', $article->name_en)}}">
+                                {{ $article->name_ru }}
+                            </a>
+                            <p class="item_article_meta"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+                            @php
+                                $norm = strip_tags($article->article); $words = explode(' ', $norm);
+                                if( sizeof($words) > 30 ) {	$words = array_slice($words, 0, 30); $norm = implode(' ', $words) . ''; }
+                            @endphp
+                            <p class="item_article_content item_article_content_wide">{{ $norm }}</p>
+                            <div class="tochki"></div>
+                        </div>
                     </div>
-                </div>
+                @endif
+            @endforeach
 
+        </div>
+
+        <!-- справа баннер и другие статьи -->
+        <div class="col-md-3">
+
+            @php $banner = \App\Banner::where('position', $rubrik->name_en)->first(); @endphp
+            @if($banner)
+                <a href="{{$banner->link}}" title="{{$banner->name}}" target="_blank">
+                    <img style="width: 265px;height: 590px;margin-bottom:15px;" src="/images/banners/{{$banner->image}}" alt="{{$banner->name}}">
+                </a>
             @endif
-        @endforeach
+
+            @include('partials.other_articles')
+
+        </div>
 
     </div>
 </div>

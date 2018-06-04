@@ -24,16 +24,11 @@
                         <input type="text" class="form-control" name="name" value="{{$banner->name or ""}}"  />
                     </div>
 
-                    @php $positions = ["trends"=>"Тренды (рубрика)","opyt"=>"Опыт (рубрика)","nablyudenie"=>"Наблюдение (рубрика)",
-                            "innovacii"=>"Инновации (рубрика)","obrabotka_pochvy"=>"Обработка почвы (рубрика)","posev"=>"Посев (рубрика)",
-                            "traktory"=>"Тракторы (рубрика)","uborka"=>"Уборка (рубрика)","kormozagotovka"=>"Кормозаготовка (рубрика)",
-                            "zashchitarasteniy"=>"Защита и питание растений (рубрика)","ochistka_zerna"=>"Очистка и сушка зерна (рубрика)",
-                            "jivotnovodstvo"=>"Животноводство (рубрика)"]; @endphp
                     <div class="form-group" style="width: 50%;">
                         <p style="margin:0 0 8px 0;color:#666666;"><b>Позиция баннера (рубрика)</b></p>
                         <select class="form-control" name="position">
-                            @forelse($positions as $k => $v)
-                                <option value="{{$k}}">{{$v}}</option>
+                            @foreach($rubriks as $rubrik)
+                                <option value="{{$rubrik->name_en}}">{{$rubrik->name_ru}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -76,7 +71,11 @@
                                 </form>
                             </td>
                             <td>
-                                {{$positions[$banner->position]}}
+                                @foreach($rubriks as $rubrik)
+                                    @if($rubrik->name_en == $banner->position)
+                                        {{$rubrik->name_ru}}
+                                    @endif
+                                @endforeach
                             </td>
                             <td>
                                 {{$banner->link}}

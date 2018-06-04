@@ -53,6 +53,7 @@ class ArticleController extends Controller
                 $articleBD->image = $name_image;
             }
             $articleBD->on_main = (isset($request->on_main)) ? 1 : 0;
+            $articleBD->main_article = (isset($request->main_article)) ? 1 : 0;
             $articleBD->need_pay = (isset($request->need_pay)) ? 1 : 0;
             $articleBD->save();
             $articleBD->rubriks()->sync($request->rubrik_id);
@@ -65,6 +66,7 @@ class ArticleController extends Controller
         $article->name_en = $request->name_en;
         $article->rubrik_id = $request->rubrik_id;
         $article->on_main = $request->on_main;
+        $article->main_article = $request->main_article;
         $article->need_pay = $request->need_pay;
         $article->article = $request->article;
         //return redirect()->route('wpadmin.article.create', $error_validate);
@@ -98,6 +100,7 @@ class ArticleController extends Controller
         $article->name_en = $articleBD->name_en;
         $article->rubrik_id = $rubrik_id;
         $article->on_main = ($articleBD->on_main == 1) ? 1 : NULL;
+        $article->main_article = ($articleBD->main_article == 1) ? 1 : NULL;
         $article->need_pay = ($articleBD->need_pay == 1) ? 1 : NULL;
         $article->article = $articleBD->article;
 

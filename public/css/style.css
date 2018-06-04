@@ -53,16 +53,16 @@ body {/*min-height: 2000px;*/ /*padding-top: 70px;*/}
     .icon_rubrik_2 {background: url("/images/assets/icon_rubrik_2.png") no-repeat;}
     .icon_rubrik_3 {background: url("/images/assets/icon_rubrik_3.png") no-repeat;}
 /* ---------- */
-.item_article {margin: 20px 0 25px 0;}
-    .item_article_title {display: block; color: #000; margin: 15px 0 5px 0; font-size: 16px;line-height: 1.4;height: 90px; overflow: hidden;font-weight: bold;}
+.item_article {margin: 20px 0 15px 0;/*height: 560px;overflow: hidden;*/}
+    .item_article_title {display: block; color: #000; margin: 15px 0 5px 0; font-size: 16px;line-height: 1.4;/*height: 90px; overflow: hidden;*/font-weight: bold;}
     .item_article_title:hover {text-decoration: none;color: #0080ff;}
     .item_article_meta {margin: 12px 0 4px 0;color: grey;font-size: 12px;} .fa {margin-right: 7px;}
     .item_article_img {width:100%;}
-    .item_article_content {color: #544b48; font-size:15px; text-align: left;height: 153px; overflow: hidden;margin: 0;}
+    .item_article_content {color: #544b48; font-size:15px; text-align: left;/*height: 153px; overflow: hidden;*/margin: 0;}
     /* статья в широком варианте */
     .item_article_img_wide {width: 100%; max-height: 280px;}
-    .item_article_title_wide {font-size: 18px;height: 58px;}
-    .item_article_content_wide {font-size: 16px;height: 165px;}
+    .item_article_title_wide {font-size: 18px;/*height: 58px;*/}
+    .item_article_content_wide {font-size: 16px;/*height: 165px;*/}
     .tochki {background: url("/images/assets/tochki.png") right bottom no-repeat;height: 5px;}
 
 
