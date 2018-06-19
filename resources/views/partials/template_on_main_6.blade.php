@@ -50,7 +50,7 @@
                     <div class="tochki"></div>
                 </div>
             @endif
-            
+
 
             @include('partials.other_articles')
 

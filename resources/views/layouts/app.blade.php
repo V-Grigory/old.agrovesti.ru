@@ -111,24 +111,92 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <a href="/"><img src="{{ asset('images/assets/logo-footer.png') }}" /></a>
-                        <p class="footer_left_content">"Аграрные Известия" - профессиональный опыт, мнения руководителей предприятий АПК, производственные решения для сельского хозяйства.</p>
+                        <div class="wrap_footer_logo">
+                            <a class="footer_logo_link" href="/">
+                                <img class="footer_logo_img" src="{{ asset('images/assets/logo-footer.png') }}" />
+                            </a>
+                            <p class="footer_slogan fs1">общероссийский журнал</p>
+                            <p class="footer_slogan fs2">онлайн центр опыта и инноваций</p>
+                            <div class="footer_notes">
+                                <img class="footer_notes_img" src="{{ asset('images/assets/16.png') }}" />
+                                <p class="footer_notes_text">
+                                    Журнал "Аграрная политика" зарегистрирован в Федеральной
+                                    службе по надзору в сфере связи, информационных технологий
+                                    и массовых коммуникаций.<br>
+                                    Свидетельство № ..... от .....
+                                </p>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <h2 class="footer_h2">КОНТАКТЫ</h2>
-                        <p class="footer_contact footer_contact_title">ООО «Издательский Дом «Аграрные известия»</p>
-                        <p class="footer_contact footer_contact_p">г. Тюмень, ул. Осипенко, 81, офис 3/22</p>
-                        <p class="footer_contact footer_contact_phone"><span class="fa fa-phone"></span>8 (3452) 595-202, 595-203, 595-204, 595-206</p>
-                        <p class="footer_contact footer_contact_email"><span class="fa fa-envelope"></span>agrogazeta@inbox.ru</p>
+
+                    <div class="col-md-3">
+                        <div class="footer_block_title">ЦЕНТРАЛЬНЫЕ ТЕМЫ</div>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик управления производством</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик управления производством</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик управления производством</a></p>
                     </div>
-                    <div class="col-md-5">
-                        <h2 class="footer_h2">ПОЛЕЗНЫЕ ССЫЛКИ</h2>
-                        <a class="footer_link" href="/images/assets/mediaKit_2017.pdf" target="_blank">Медиа-кит</a>
-                        <a class="footer_link" href="/kontakty">Контакты</a>
-                        <a class="footer_link" href="/kontakty">Подписаться</a>
+
+                    <div class="col-md-3">
+                        <div class="footer_block_title">РЕКЛАМА</div>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Медиа-кит</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Медиа-кит</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Медиа-кит</a></p>
                     </div>
+
+                    <div class="col-md-3">
+                        <div class="footer_block_title">КОНТАКТЫ</div>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Редакция</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Отдел подписки</a></p>
+                        <p style="margin:0;"><a class="footer_block_link" href="#">Оформить подписку</a></p>
+
+                        <div class="footer_socNets">
+                            <a class="footer_socNets_link" href="#" target="_blank">
+                                <img class="footer_socNets_img" src="{{ asset('images/assets/icon_vk.png') }}" />
+                            </a>
+                            <a class="footer_socNets_link" href="#" target="_blank">
+                                <img class="footer_socNets_img" src="{{ asset('images/assets/icon_fb.png') }}" />
+                            </a>
+                            <a class="footer_socNets_link" href="#" target="_blank">
+                                <img class="footer_socNets_img" src="{{ asset('images/assets/icon_twitter.png') }}" />
+                            </a>
+                            <a class="footer_socNets_link" href="#" target="_blank">
+                                <img class="footer_socNets_img" src="{{ asset('images/assets/icon_ok.png') }}" />
+                            </a>
+                            <a class="footer_socNets_link" href="#" target="_blank">
+                                <img class="footer_socNets_img" src="{{ asset('images/assets/icon_instagram.png') }}" />
+                            </a>
+                        </div>
+
+                    </div>
+
+                    {{--<div class="col-md-3">--}}
+                        {{--<a href="/"><img src="{{ asset('images/assets/logo-footer.png--}}
+                        {{--<p class="footer_left_content">"Аграрные Известия" - профессиональный опыт, мнения руководителей предприятий АПК, производственные решения для сельского хозяйства.</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-4">--}}
+                        {{--<h2 class="footer_h2">КОНТАКТЫ</h2>--}}
+                        {{--<p class="footer_contact footer_contact_title">ООО «Издательский Дом «Аграрные известия»</p>--}}
+                        {{--<p class="footer_contact footer_contact_p">г. Тюмень, ул. Осипенко, 81, офис 3/22</p>--}}
+                        {{--<p class="footer_contact footer_contact_phone"><span class="fa fa-phone"></span>8 (3452) 595-202, 595-203, 595-204, 595-206</p>--}}
+                        {{--<p class="footer_contact footer_contact_email"><span class="fa fa-envelope"></span>agrogazeta@inbox.ru</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-5">--}}
+                        {{--<h2 class="footer_h2">ПОЛЕЗНЫЕ ССЫЛКИ</h2>--}}
+                        {{--<a class="footer_link" href="/images/assets/mediaKit_2017.pdf" target="_blank">Медиа-кит</a>--}}
+                        {{--<a class="footer_link" href="/kontakty">Контакты</a>--}}
+                        {{--<a class="footer_link" href="/kontakty">Подписаться</a>--}}
+                    {{--</div>--}}
+
                 </div>
             </div>
+
+            <hr style="margin-bottom: 0px;border: none;">
+            <div class="footer_copyright">
+                Copyright 2018. Аграрные Известия
+            </div>
+
         </footer>
 
         <script src="{{ asset('js/jquery.min.js') }}"></script>
