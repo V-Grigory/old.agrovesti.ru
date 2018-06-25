@@ -65,6 +65,24 @@
                     <input type="checkbox" name="need_pay" value="1" @if(isset($article->need_pay)) checked @endif >
                     Платная статья
                 </label>
+                <br/>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="in_footer_block_1" value="in_footer_block_1"
+                    @if(isset($article->features) && strpos($article->features,'in_footer_block_1') !== false) checked @endif >
+                    Выводить в подвале - Центральные темы
+                </label>
+                <br/>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="in_footer_block_2" value="in_footer_block_2"
+                    @if(isset($article->features) && strpos($article->features,'in_footer_block_2') !== false) checked @endif >
+                    Выводить в подвале - Реклама
+                </label>
+                <br/>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="in_footer_block_3" value="in_footer_block_3"
+                    @if(isset($article->features) && strpos($article->features,'in_footer_block_3') !== false) checked @endif >
+                    Выводить в подвале - Контакты
+                </label>
             </div>
 
             <div class="form-group">

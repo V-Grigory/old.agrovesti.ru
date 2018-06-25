@@ -29,6 +29,25 @@ class ArticleController extends Controller
         ]);
     }
 
+    private function changeFeatures($action, $feature, $row) {
+        switch ($action) {
+            case 'add':
+                if($row == NULL) {
+                    $row = $feature;
+                } elseif(strpos($row, $feature) === false) {
+                    $row .= $feature;
+                }
+                break;
+            case 'remove':
+                if($row == NULL) {
+                    break;
+                } else {
+                    $row = str_replace($feature, '', $row);
+                }
+        }
+        return $row;
+    }
+
     public function store(Request $request, Article $article)
     {
         //var_dump($request->all()); exit;
@@ -55,6 +74,16 @@ class ArticleController extends Controller
             $articleBD->on_main = (isset($request->on_main)) ? 1 : 0;
             $articleBD->main_article = (isset($request->main_article)) ? 1 : 0;
             $articleBD->need_pay = (isset($request->need_pay)) ? 1 : 0;
+            $articleBD->features = (isset($request->in_footer_block_1))
+                ? $this->changeFeatures('add', 'in_footer_block_1', $articleBD->features)
+                : $this->changeFeatures('remove', 'in_footer_block_1', $articleBD->features);
+            $articleBD->features = (isset($request->in_footer_block_2))
+                ? $this->changeFeatures('add', 'in_footer_block_2', $articleBD->features)
+                : $this->changeFeatures('remove', 'in_footer_block_2', $articleBD->features);
+            $articleBD->features = (isset($request->in_footer_block_3))
+                ? $this->changeFeatures('add', 'in_footer_block_3', $articleBD->features)
+                : $this->changeFeatures('remove', 'in_footer_block_3', $articleBD->features);
+
             $articleBD->save();
             $articleBD->rubriks()->sync($request->rubrik_id);
             $article_saved = 'Статья успешно сохранена';
@@ -69,6 +98,7 @@ class ArticleController extends Controller
         $article->main_article = $request->main_article;
         $article->need_pay = $request->need_pay;
         $article->article = $request->article;
+        $article->features = $request->in_footer_block_1 . $request->in_footer_block_2 . $request->in_footer_block_3;
         //return redirect()->route('wpadmin.article.create', $error_validate);
         return view ('wpadmin.articles.create', [
             'article'    => $article,
@@ -103,6 +133,7 @@ class ArticleController extends Controller
         $article->main_article = ($articleBD->main_article == 1) ? 1 : NULL;
         $article->need_pay = ($articleBD->need_pay == 1) ? 1 : NULL;
         $article->article = $articleBD->article;
+        $article->features = $articleBD->features;
 
         $error_validate = ''; $article_saved = '';
         return view ('wpadmin.articles.create', [

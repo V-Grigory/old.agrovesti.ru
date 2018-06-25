@@ -132,24 +132,41 @@
 
                     <div class="col-md-3">
                         <div class="footer_block_title">ЦЕНТРАЛЬНЫЕ ТЕМЫ</div>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик управления производством</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик управления производством</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Примеры лучших практик управления производством</a></p>
+                        @php
+                        $articles_in_footer = App\Article::where('features', 'like', '%in_footer_block_1%')->get();
+                        foreach ($articles_in_footer as $article_in_footer) { @endphp
+                            <p style="margin:0;">
+                                <a class="footer_block_link" href="{{route('article', $article_in_footer["name_en"])}}">
+                                    {{$article_in_footer["name_ru"]}}
+                                </a>
+                            </p>
+                        @php } @endphp
                     </div>
 
                     <div class="col-md-3">
                         <div class="footer_block_title">РЕКЛАМА</div>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Медиа-кит</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Медиа-кит</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Медиа-кит</a></p>
+                        @php
+                            $articles_in_footer = App\Article::where('features', 'like', '%in_footer_block_2%')->get();
+                            foreach ($articles_in_footer as $article_in_footer) { @endphp
+                        <p style="margin:0;">
+                            <a class="footer_block_link" href="{{route('article', $article_in_footer["name_en"])}}">
+                                {{$article_in_footer["name_ru"]}}
+                            </a>
+                        </p>
+                        @php } @endphp
                     </div>
 
                     <div class="col-md-3">
                         <div class="footer_block_title">КОНТАКТЫ</div>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Редакция</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Отдел подписки</a></p>
-                        <p style="margin:0;"><a class="footer_block_link" href="#">Оформить подписку</a></p>
+                        @php
+                            $articles_in_footer = App\Article::where('features', 'like', '%in_footer_block_3%')->get();
+                            foreach ($articles_in_footer as $article_in_footer) { @endphp
+                        <p style="margin:0;">
+                            <a class="footer_block_link" href="{{route('article', $article_in_footer["name_en"])}}">
+                                {{$article_in_footer["name_ru"]}}
+                            </a>
+                        </p>
+                        @php } @endphp
 
                         <div class="footer_socNets">
                             <a class="footer_socNets_link" href="#" target="_blank">
