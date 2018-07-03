@@ -5,7 +5,7 @@
     @php
     $rubriks = App\Rubrik::with(
                     ['articles' => function ($query) {
-                        $query->where('on_main', '=', 1);
+                        $query->where('on_main', '=', 1)->orderBy('updated_at', 'desc');
                     }]
                )->where('on_main', 1)->orderBy('position_number', 'asc')->get();
     @endphp
