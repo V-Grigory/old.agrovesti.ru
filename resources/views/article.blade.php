@@ -17,23 +17,31 @@
 
         <div class="row">
 
-            <div class="col-md-9">
-                {{--@php echo'<pre>'; var_dump($article['rubriks'][0]->name_ru);echo'</pre>'; @endphp--}}
+            <div class="col-md-12">
+
                 <h1>{{ $article->name_ru }}</h1>
                 <div class="article_meta">
                     <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
                 </div>
 
-                <div class="article_wrap">@php echo($article->article); @endphp</div>
-                {{--{{ $article->article }}--}}
+                <div class="article_wrap">
+                    @php
+                        if($article->tilda_filename != NULL) {
+                            include(public_path().'/tilda/'.$article->tilda_filename);
+                        } else {
+                            echo($article->article);
+                        }
+                    @endphp
+                </div>
+
             </div>
 
-            <div class="col-md-3">
+            {{--<div class="col-md-3">--}}
 
-                @include('partials.sideBar_rubriks')
-                @include('partials.sideBar_last_articles_in_cerrunt_rubrik')
+                {{--@include('partials.sideBar_rubriks')--}}
+                {{--@include('partials.sideBar_last_articles_in_cerrunt_rubrik')--}}
 
-            </div>
+            {{--</div>--}}
 
         </div>
     </div>

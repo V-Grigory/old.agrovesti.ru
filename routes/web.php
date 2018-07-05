@@ -16,7 +16,7 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
-    Route::resource('/pages', 'PageController', ['as'=>'wpadmin']);
+    //Route::resource('/pages', 'PageController', ['as'=>'wpadmin']);
 });
 
 Auth::routes();
@@ -29,4 +29,4 @@ Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubri
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
 
 Route::get('/sync-tilda', 'HomeController@syncTilda');
-Route::get('/{page}', 'HomeController@page')->name('page');
+//Route::get('/{page}', 'HomeController@page')->name('page');

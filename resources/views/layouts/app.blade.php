@@ -24,7 +24,7 @@
         <![endif]-->
 
         @php /* если страница тильдовская */
-            if(isset($page->source)) {
+            if(isset($article) && $article->tilda_filename != NULL) {
                 $files = [];
                 if ($handle = opendir(public_path().'/tilda/js')) {
                     while (false !== ($file = readdir($handle))) {

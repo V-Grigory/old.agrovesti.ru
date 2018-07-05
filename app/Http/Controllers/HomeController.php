@@ -46,16 +46,4 @@ class HomeController extends Controller
         return view('sync-tilda');
     }
 
-
-    public function page($page)
-    {
-        $page = Page::where('name_en', $page)->first();
-        if($page) {
-            return view('page', ['page' => $page]);
-        } else {
-            return view('404');
-        }
-
-    }
-
 }

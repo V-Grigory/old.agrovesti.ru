@@ -18,6 +18,12 @@
     $count_articles = count($rubrik['articles']);
     $cnt_art = 0;
 
+    // для оборачивание дивов в блоки по 3 штуки
+    $cnt_art_exclude = 1; // общее кол-во статей за вычетом главной и последней статьи
+    foreach( $rubrik['articles'] as $article ) { if( $article->main_article == 1 ) $cnt_art_exclude = 2; }
+    $cnt_art_div = 0;
+    $cnt_div = 0;
+
     foreach( $rubrik['articles'] as $article ) {
 
         $cnt_art++;
@@ -54,6 +60,9 @@
 
         } else {
             // остальные в ряд
+            $cnt_div++; $cnt_art_div++;
+            if($cnt_div == 1) $LS_art .= '<div>';
+
             $LS_art .= '
                 <div class="col-md-4">
                     <div class="item_article">
@@ -64,6 +73,10 @@
                         <div class="tochki"></div>
                     </div>
                 </div>';
+
+            if($cnt_div == 3 || ($cnt_art_div == $count_articles - $cnt_art_exclude)) {
+                $LS_art .= '<div style="clear: both;"></div></div>'; $cnt_div = 0;
+            }
         }
     }
 @endphp
@@ -75,7 +88,7 @@
 
     <div class="row">
 
-        <!-- LEFT SIDE -->
+        {{-- LEFT SIDE --}}
         <div class="col-md-9" style="padding:0;">
 
             @php echo $LS_art_main;  @endphp
@@ -83,7 +96,7 @@
 
         </div>
 
-        <!-- RIGHT SIDE -->
+        {{-- RIGHT SIDE --}}
         <div class="col-md-3">
 
             @php echo $LS_art_last; @endphp

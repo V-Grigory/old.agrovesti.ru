@@ -80,7 +80,6 @@
                     <ul class="nav nav-sidebar">
                         {{--<li><a href="/wpadmin/banners">Структура главной</a></li>--}}
                         <li><a href="/wpadmin/banners">Баннеры</a></li>
-                        <li><a href="/wpadmin/pages">Страницы (tilda)</a></li>
                         <li class="active"><a href="/wpadmin/rubrik">Рубрики</a></li>
                         <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
                         <li>

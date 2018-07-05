@@ -58,7 +58,11 @@ class RubrikController extends Controller
 
     public function destroy(Rubrik $rubrik)
     {
-        if($rubrik->articles()->count() > 0) {
+        if($rubrik->name_ru == 'Статьи из TILDA') {
+            $ok_delete = '';
+            $no_delete = "Эту рубрику лучше не удалять";
+        }
+        elseif($rubrik->articles()->count() > 0) {
             $ok_delete = '';
             $no_delete = "В данной рубрике есть статьи";
         } else {

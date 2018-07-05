@@ -5,14 +5,15 @@
 
     <div class="row">
 
-        <!-- слева статьи -->
+        {{-- слева статьи --}}
         <div class="col-md-9" style="padding:0;">
 
+            @php $cnt_div = 0; $count_articles = count($rubrik['articles']) - 1; $cnt_art = 0; @endphp
             @foreach($rubrik['articles'] as $article)
                 @if($article)
 
                     @if($loop->iteration == 1)
-                        <!-- первая статья в широком формате -->
+                        {{-- первая статья в широком формате --}}
                         <div class="col-md-12" style="padding:0;">
                             <div class="col-md-6">
                                 <img class="item_article_img item_article_img_wide" src="{{ asset('images/'.$article->image) }}" />
@@ -31,7 +32,11 @@
                             </div>
                         </div>
                     @else
-                        <!-- остальные в ряд -->
+                        {{-- остальные в ряд --}}
+                        @php
+                            $cnt_div++; $cnt_art++;
+                            if($cnt_div == 1) echo '<div>';
+                        @endphp
                         <div class="col-md-4">
                             <div class="item_article">
                                 <img class="item_article_img" src="{{ asset('images/'.$article->image) }}" />
@@ -45,6 +50,9 @@
                                 <div class="tochki"></div>
                             </div>
                         </div>
+                        @php
+                            if($cnt_div == 3 || $cnt_art == $count_articles) { echo '<div style="clear: both;"></div></div>'; $cnt_div = 0; }
+                        @endphp
                     @endif
 
                 @endif
@@ -52,7 +60,7 @@
 
         </div>
 
-        <!-- справа рубрикатор и другие статьи -->
+        {{-- справа рубрикатор и другие статьи --}}
         <div class="col-md-3">
 
             @include('partials.sideBar_rubriks')

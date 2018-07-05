@@ -9,9 +9,14 @@
 
     <div class="row">
 
+        @php $cnt_div = 0; $count_articles = count($rubrik['articles']); $cnt_art = 0; @endphp
         @foreach($rubrik['articles'] as $article)
             @if($article)
 
+                @php
+                    $cnt_div++; $cnt_art++;
+                    if($cnt_div == 1) echo '<div>';
+                @endphp
                 <div class="col-md-3">
                     <div class="item_article">
                         <img class="item_article_img" src="{{ asset('images/'.$article->image) }}" />
@@ -25,6 +30,9 @@
                         <div class="tochki"></div>
                     </div>
                 </div>
+                @php
+                    if($cnt_div == 4 || $cnt_art == $count_articles) { echo '<div style="clear: both;"></div></div>'; $cnt_div = 0; }
+                @endphp
 
             @endif
         @endforeach

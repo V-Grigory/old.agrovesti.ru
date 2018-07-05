@@ -1,5 +1,6 @@
 <?php
-use App\Page;
+use App\Article;
+//use App\Rubrik;
 use Illuminate\Support\Str;
 
 //$getpageslist = file_get_contents('http://api.tildacdn.info/v1/getpageslist/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=627900');
@@ -23,14 +24,15 @@ function savePageFromTilda($page_id) {
     // созданим файл страницы
     file_put_contents(public_path().'/tilda/'.$pagefullexport['result']['filename'], $pagefullexport['result']['html']);
     //запишем в БД, если нет
-    if(!$page = Page::where('tilda_filename', $pagefullexport['result']['filename'])->first()) {
-        $page = new Page();
-        $page->name_ru = $pagefullexport['result']['title'];
-        $page->name_en = Str::slug(mb_substr($pagefullexport['result']['title'],0,40));
-        $page->source = 'tilda';
-        $page->content = '';
-        $page->tilda_filename = $pagefullexport['result']['filename'];
-        $page->save();
+    if(!$article = Article::where('tilda_filename', $pagefullexport['result']['filename'])->first()) {
+        $article = new Article();
+        $article->name_ru = $pagefullexport['result']['title'];
+        $article->name_en = Str::slug(mb_substr($pagefullexport['result']['title'],0,40));
+        $article->source = 'tilda';
+        $article->article = '';
+        $article->tilda_filename = $pagefullexport['result']['filename'];
+        $article->save();
+        $article->rubriks()->sync(env('ID_RUBRIK_FROM_TILDA',72));
     }
 }
 

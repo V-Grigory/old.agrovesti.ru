@@ -55,7 +55,7 @@ class ArticleController extends Controller
         $error_validate = ''; $article_saved = '';
         if ($request->name_ru == '') $error_validate = "Укажите название статьи.  ";
         if (!isset($request->rubrik_id)) $error_validate .= "Укажите хотя бы 1 рубрику.  ";
-        if ($request->article == '') $error_validate .= "Отсутствует контент статьи.  ";
+        if ($request->article == '') $request->article = 'Статья из конструктора сайтов Tilda Publishing'; //$error_validate .= "Отсутствует контент статьи.  ";
         //if (isset($request->on_main) && !isset($request->image)) $error_validate .= "При размещении на главной нужно изображение.  ";
 
         if ($error_validate == '') {
