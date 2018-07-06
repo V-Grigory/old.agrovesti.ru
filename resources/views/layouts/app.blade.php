@@ -23,8 +23,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        @php /* если страница тильдовская */
-            if(isset($article) && $article->tilda_filename != NULL) {
+        @php /* если страница, и она тильдовская */
+            if(Route::currentRouteName() != 'rubrika' && isset($article) && $article->tilda_filename != NULL) {
                 $files = [];
                 if ($handle = opendir(public_path().'/tilda/js')) {
                     while (false !== ($file = readdir($handle))) {
