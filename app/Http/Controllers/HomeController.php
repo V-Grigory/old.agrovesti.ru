@@ -17,7 +17,12 @@ class HomeController extends Controller
 
     public function rubrika($name_en)
     {
-        $list_articles = Rubrik::with('articles')->orderByDesc('id')->where('name_en', $name_en)->get();
+        $list_articles = Rubrik::with(
+                                ['articles' => function ($query) {
+                                    $query->orderBy('updated_at', 'desc');
+                                }]
+                            )->where('name_en', $name_en)->get();
+
         if(isset($list_articles[0])) {
             return view('rubrika', [
                 'list_articles' => $list_articles[0]['articles'],

@@ -20,6 +20,12 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
+    /* "запрет" сброса пароля. переопределим метод из трейта SendsPasswordResetEmails */
+    public function showLinkRequestForm()
+    {
+        return redirect('/');
+    }
+
     /**
      * Create a new controller instance.
      *

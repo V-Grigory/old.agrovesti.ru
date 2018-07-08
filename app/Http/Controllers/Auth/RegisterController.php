@@ -22,6 +22,12 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    /* "запрет" регистрации. переопределим метод из трейта RegistersUsers */
+    public function showRegistrationForm()
+    {
+        return redirect('/');
+    }
+
     /**
      * Where to redirect users after registration.
      *
