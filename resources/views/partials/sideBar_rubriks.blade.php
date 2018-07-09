@@ -1,5 +1,5 @@
 
-<h3 class="rubrikator_h3">РУБРИКИ</h3>
+<h3 class="rubrikator_h3">ТЕМЫ</h3>
 <div class="rubrikator_wrap">
     @foreach(\App\Rubrik::with('articles')->where('order', '>', 0)->orderBy('order', 'ASC')->get() as $rubrik_list)
         <div class="rubrikator_item_ribrik">

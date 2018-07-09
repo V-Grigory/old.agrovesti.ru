@@ -20,13 +20,9 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
 });
 
 //Auth::routes();
-//Route::delete('login', 'Auth\LoginController@showLoginForm');
-//Route::get('loginn', ['uses' => 'Auth\LoginController@showLoginForm'])->name('login');
-
 Route::post('login', 'Auth\LoginController@login');
 Route::get('login',  'Auth\LoginController@showLoginForm')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
 
 Route::get('/', 'HomeController@index')->name('home');
 //Route::get('/404', 'HomeController@404');
@@ -37,3 +33,10 @@ Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('articl
 
 Route::get('/sync-tilda', 'HomeController@syncTilda');
 //Route::get('/{page}', 'HomeController@page')->name('page');
+
+Route::group(['prefix'=>'lk', /*'middleware'=>['auth']*/], function () {
+    Route::get('/', 'LkController@profile')->name('profile');
+    Route::get('/profile', 'LkController@profile')->name('profile');
+    Route::post('/profile', 'LkController@profile')->name('profile');
+    //Route::get('/login', 'LkController@profile')->name('login');
+});

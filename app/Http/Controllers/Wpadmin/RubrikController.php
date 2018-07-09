@@ -33,7 +33,11 @@ class RubrikController extends Controller
 
     public function show(Rubrik $rubrik)
     {
-        $list_articles = Rubrik::with('articles')->orderByDesc('id')->where('id', $rubrik->id)->get();
+        $list_articles = Rubrik::with(
+            ['articles' => function ($query) {
+                $query->orderBy('updated_at', 'desc');
+            }]
+        )->orderByDesc('id')->where('id', $rubrik->id)->get();
 
         return view('wpadmin.rubriks.list_articles', [
             'list_articles' => $list_articles[0]['articles'],
