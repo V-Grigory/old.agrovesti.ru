@@ -52,7 +52,9 @@
 
 <div class="container">
 
-    <h1 class="title_block_rubrik icon_rubrik_{{ $rubrik->icon_number }}">{{ $rubrik->name_ru }}</h1>
+    <h1 class="title_block_rubrik icon_rubrik_{{ $rubrik->icon_number }}">
+        <a class="title_block_rubrik_a" href="/rubrika/articles/{{ $rubrik->name_en }}">{{ $rubrik->name_ru }}</a>
+    </h1>
 
     <div class="row">
 

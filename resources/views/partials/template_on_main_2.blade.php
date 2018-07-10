@@ -1,11 +1,9 @@
 
 <div class="container">
 
-    {{--<div class="title_block">--}}
-        {{--<div class="bgr_title_block"></div> <div class="bgr_title_block bgr_title_block_2"></div>--}}
-        {{--<h1>{{ $rubrik->name_ru }}</h1>--}}
-    {{--</div>--}}
-    <h1 class="title_block_rubrik icon_rubrik_1">{{ $rubrik->name_ru }}</h1>
+    <h1 class="title_block_rubrik icon_rubrik_{{ $rubrik->icon_number }}">
+        <a class="title_block_rubrik_a" href="/rubrika/articles/{{ $rubrik->name_en }}">{{ $rubrik->name_ru }}</a>
+    </h1>
 
     <div class="row">
 

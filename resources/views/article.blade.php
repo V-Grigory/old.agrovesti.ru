@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- РУБРИКАТОР И САМА СТАТЬЯ -->
+    {{-- СТАТЬЯ --}}
     <div class="container">
 
         <div class="breadcrumb">
@@ -17,40 +17,48 @@
                 <span class="end_breadcrumb">{{ $article->name_ru }}</span>
             @php } @endphp
         </div>
+    </div>
 
-        <div class="row">
+    {{-- если статья из админки --}}
+    @if($article->tilda_filename == NULL)
 
-            <div class="col-md-12">
+        <div class="container">
 
-                {{-- и заголовок --}}
-                @php if($article->tilda_filename == NULL) { @endphp
-                    <h1>{{ $article->name_ru }}</h1>
-                @php } @endphp
+            <h1>{{ $article->name_ru }}</h1>
 
-                <div class="article_meta">
-                    <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
-                </div>
-
-                <div class="article_wrap">
-                    @php
-                        if($article->tilda_filename != NULL) {
-                            include(public_path().'/tilda/'.$article->tilda_filename);
-                        } else {
-                            echo($article->article);
-                        }
-                    @endphp
-                </div>
-
+            <div class="article_meta">
+                <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
             </div>
 
-            {{--<div class="col-md-3">--}}
-
-                {{--@include('partials.sideBar_rubriks')--}}
-                {{--@include('partials.sideBar_last_articles_in_cerrunt_rubrik')--}}
-
-            {{--</div>--}}
+            <div class="article_wrap">
+                @php
+                    echo($article->article);
+                @endphp
+            </div>
 
         </div>
-    </div>
+
+    {{-- иначе статья из тильды --}}
+    @else
+
+        <div class="container">
+            <div class="article_meta">
+                <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+            </div>
+        </div>
+
+        @php
+            include(public_path().'/tilda/'.$article->tilda_filename);
+        @endphp
+
+    @endif
+
+
+    {{--<div class="col-md-3">--}}
+
+    {{--@include('partials.sideBar_rubriks')--}}
+    {{--@include('partials.sideBar_last_articles_in_cerrunt_rubrik')--}}
+
+    {{--</div>--}}
 
 @endsection
