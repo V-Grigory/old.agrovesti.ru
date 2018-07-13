@@ -14,7 +14,7 @@ class ChangeTypeColumnPhoneInClients extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('phone')->change();
+            $table->string('phone',20)->change();
         });
     }
 
