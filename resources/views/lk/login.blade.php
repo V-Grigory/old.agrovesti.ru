@@ -1,13 +1,13 @@
 
 <div class="container">
     <div class="row">
-        <br><br>
+        <br>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
                 <div class="panel-body">
-                    {{--<form class="form-horizontal" method="POST" action="{{Request::url()}}">--}}
-                    <form class="form-horizontal" method="POST" action="{{route('profile')}}">
+                    <form class="form-horizontal" method="POST" action="{{ Request::url() }}">
+                    {{--<form class="form-horizontal" method="POST" action="{{route('profile')}}">--}}
                         {{ csrf_field() }}
 
                         <div class="form-group">

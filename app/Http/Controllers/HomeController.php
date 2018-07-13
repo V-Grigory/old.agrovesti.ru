@@ -34,12 +34,13 @@ class HomeController extends Controller
 
     }
 
-    public function article($name_en)
+    public function article($name_en, Request $request)
     {
         $article = Article::with('rubriks')->where('name_en', $name_en)->first();
         if($article) {
             return view('article', [
-                'article' => $article
+                'article' => $article,
+                'is_login' => $this->is_login($request)
             ]);
         } else {
             return view('404');

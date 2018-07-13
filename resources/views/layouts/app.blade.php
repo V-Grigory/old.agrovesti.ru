@@ -87,9 +87,10 @@
                         {{--</li>--}}
                         <li><a href="{{route('rubrika', 'innovacii')}}">Инновации</a></li>
                         <li><a href="/rubrika/article/kontakty">Контакты</a></li>
-                        @if(!session('phone'))
-                            <li><a class="lid lk" href="/lk/login">Войти</a></li>
-                        @else
+                        @if(!session()->has('phone'))
+                            <li><a class="lid lk" href="/lk">Войти</a></li>
+                        @endif
+                        @if(session()->has('phone'))
                             <li><a class="lid lk" href="/lk/logout">Выйти</a></li>
                         @endif
                         <li><a class="lid subscribe" href="/kontakty">Подписаться</a></li>

@@ -16,7 +16,6 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
-    //Route::resource('/pages', 'PageController', ['as'=>'wpadmin']);
 });
 
 //Auth::routes();
@@ -25,18 +24,20 @@ Route::get('login',  'Auth\LoginController@showLoginForm')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/404', 'HomeController@404');
 Route::get('/dev', 'DevController@dev');
 
 Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
 
 Route::get('/sync-tilda', 'HomeController@syncTilda');
-//Route::get('/{page}', 'HomeController@page')->name('page');
 
 Route::group(['prefix'=>'lk', /*'middleware'=>['auth']*/], function () {
     Route::get('/', 'LkController@profile')->name('profile');
     Route::get('/profile', 'LkController@profile')->name('profile');
-    Route::post('/profile', 'LkController@profile')->name('profile');
-    //Route::get('/login', 'LkController@profile')->name('login');
+    Route::get('/logout', 'LkController@logout')->name('logout');
 });
+
+// для авторизации
+Route::post('lk', 'LkController@profile')->name('profile');
+Route::post('lk/profile', 'LkController@profile')->name('profile');
+Route::post('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
