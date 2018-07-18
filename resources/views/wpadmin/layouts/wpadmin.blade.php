@@ -78,29 +78,28 @@
 
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        {{--<li><a href="/wpadmin/banners">Структура главной</a></li>--}}
-                        <li><a href="/wpadmin/banners">Баннеры</a></li>
-                        <li class="active"><a href="/wpadmin/rubrik">Рубрики</a></li>
-                        <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
-                        <li>
-                            <b style="padding:10px 15px;">Статьи по рубрикам</b>
-                            @foreach(\App\Rubrik::with('articles')->orderBy('order', 'ASC')->get() as $rubrik_list)
-                                <a href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}" style="padding:0px 0px 0px 25px;">
-                                    {{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})
-                                </a>
-                            @endforeach
 
-                            {{--<a href="#" class="btn btn-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-align: left;">--}}
-                                {{--Статьи по рубрикам--}}
-                            {{--</a>--}}
-                            {{--<div class="dropdown-menu" style="border:none;background-color:#f5f8fa;padding:10px;width:300px;">--}}
-                                {{--@foreach(\App\Rubrik::with('articles')->get() as $rubrik_list)--}}
-                                    {{--<a class="dropdown-item" href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}" style="display:block;line-height:1;padding:2px 0;">--}}
-                                        {{--{{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})--}}
-                                    {{--</a>--}}
-                                {{--@endforeach--}}
-                            {{--</div>--}}
-                        </li>
+                        {{-- если зашла Анжела --}}
+                        @if( Auth::user()->email == 'agrotmn2016@mail.ru' )
+
+                            <li><a href="/wpadmin/banners">Баннеры</a></li>
+                            <li class="active"><a href="/wpadmin/rubrik">Рубрики</a></li>
+                            <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>
+                            <li>
+                                <b style="padding:10px 15px;">Статьи по рубрикам</b>
+                                @foreach(\App\Rubrik::with('articles')->orderBy('order', 'ASC')->get() as $rubrik_list)
+                                    <a href="{{route('wpadmin.rubrik.show', $rubrik_list->id)}}" style="padding:0px 0px 0px 25px;">
+                                        {{$rubrik_list->name_ru}} ({{$rubrik_list->articles()->count()}})
+                                    </a>
+                                @endforeach
+                            </li>
+                        {{-- иначе если зашла Лена --}}
+                        @elseif( Auth::user()->email == '89222654748@mail.ru' )
+
+                            <li><a href="{{route('wpadmin.clients.readers')}}">Подписчики</a></li>
+
+                        @endif
+
                     </ul>
                     <br>
                 </div>

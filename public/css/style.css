@@ -74,11 +74,19 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
     .other_articles_link:hover {text-decoration: none;}
 
 /*закрытие платной статьи*/
-.close_article {height: 500px;overflow: hidden;position: relative;}
+.close_article {height: 1200px;overflow: hidden;position: relative;}
     .close_article_bottom_gradient {position: absolute;bottom: 0;height: 100px;
         background: #fff; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); width: 100%;}
     .close_article_login {}
         .close_article_login_title {text-align: center;margin: 40px 0 0 0;font-size: 20px;}
+    .close_article_ul {}
+        .close_article_ul > li {margin: 9px 0;color: #666362;}
+
+
+/* ======================================= */
+.lk_h1 {font-size: 24px;margin: 30px 0 0 0;}
+    .lk_a_logout {float: right;font-size: 16px;}
+.lk_h2 {font-size: 20px;margin: 30px 0 0 0;border-bottom: 1px solid;padding: 0 0 5px 0;color: #736F6E;}
 
 
 

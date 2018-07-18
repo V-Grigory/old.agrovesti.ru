@@ -91,7 +91,7 @@
                             <li><a class="lid lk" href="/lk">Войти</a></li>
                         @endif
                         @if(session()->has('phone'))
-                            <li><a class="lid lk" href="/lk/logout">Выйти</a></li>
+                            <li><a class="lid lk" href="/lk">Профиль</a></li>
                         @endif
                         <li><a class="lid subscribe" href="/kontakty">Подписаться</a></li>
                         <li><a class="lid search" href="/">&nbsp;</a></li>

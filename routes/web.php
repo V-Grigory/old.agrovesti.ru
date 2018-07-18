@@ -13,9 +13,13 @@
 
 Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth']], function (){
     Route::get('/', 'DashboardController@dashboard')->name('wpadmin.index');
+    // анжелино
     Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
+    // ленино
+    Route::get('/clients/readers', 'ClientController@readers')->name('wpadmin.clients.readers');
+    Route::resource('/clients', 'ClientController', ['as'=>'wpadmin']);
 });
 
 //Auth::routes();
@@ -34,7 +38,7 @@ Route::get('/sync-tilda', 'HomeController@syncTilda');
 Route::group(['prefix'=>'lk', /*'middleware'=>['auth']*/], function () {
     Route::get('/', 'LkController@profile')->name('profile');
     Route::get('/profile', 'LkController@profile')->name('profile');
-    Route::get('/logout', 'LkController@logout')->name('logout');
+    Route::get('/logout', 'LkController@logout');
 });
 
 // для авторизации
