@@ -29,104 +29,90 @@
     </form>
 
 
-                <!-- === Вывод подписчиков === -->
-                <table class="table table-striped">
-                    <thead>
-                        <th>Телефон</th>
-                        <th>Фамилия</th>
-                        <th>Имя</th>
-                        <th>Отчество</th>
-                        <th>Email</th>
-                        <th>Компания</th>
-                        <th>Оплата</th>
-                        <th>Период оплаты</th>
-                        <th>Статус</th>
-                        <th class="text-right">Действие</th>
-                    </thead>
-                    <tbody>
-                    @forelse($clients as $client)
-                        <tr>
-                            <form class="form_wpadmin_readers" action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
-                                <input type="hidden" name="_method" value="PUT" />
-                                <input type="hidden" name="id" value="{{$client->id}}" />
-                                {{ csrf_field() }}
+    {{-- === Вывод подписчиков === --}}
+    <table class="table table-striped">
+        <thead>
+            <th>Телефон</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Email</th>
+            <th>Компания</th>
+            <th>Оплата</th>
+            <th>Период оплаты</th>
+            <th>Статус</th>
+            <th class="text-right">Действие</th>
+        </thead>
+        <tbody>
+        @forelse($clients as $client)
+            <tr>
+                <td style="padding:5px;"> {{ $client->phone }} </td>
+                <td> {{ $client->f_name }} </td>
+                <td> {{ $client->i_name }} </td>
+                <td> {{ $client->o_name }} </td>
+                <td> {{ $client->email }} </td>
+                <td> {{ $client->company }} </td>
+                <td> {{ $client->status_pay }} </td>
+                <td> {{ $client->range_pay }} </td>
+                <td> {{ $client->status_activity }} </td>
+                <td> <button type="submit" class="btn btn-primary">Добавить баннер</button> </td>
+            </tr>
+            {{-- строка для редактирования --}}
+            <tr>
+                <td colspan="10">
+                    <form class="form-inline" action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
+                        <input type="hidden" name="_method" value="PUT" />
+                        <input type="hidden" name="id" value="{{$client->id}}" />
+                        {{ csrf_field() }}
 
-                                <td style="padding:5px;">
-                                    {{ $client->phone }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->phone}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->f_name }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->f_name}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->i_name }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->i_name}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->o_name }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->o_name}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->email }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->email}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->company }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->company}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->status_pay }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->status_pay}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->range_pay }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->range_pay}}" />
-                                </td>
-
-                                <td>
-                                    {{ $client->status_activity }}
-                                    <input type="text" class="form-control" name="name" value="{{$client->status_activity}}" />
-                                </td>
-
-                                <td class="text-right" style="padding: 0;">
-                                    <button type="submit" class="btn btn-primary">Добавить баннер</button>
-                                </td>
-
-                            </form>
-                        </tr>
-                        <tr>
-                            <td colspan="10">
-                            <form class="form_wpadmin_readers form-inline" action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
-                                <input type="hidden" name="_method" value="PUT" />
-                                <input type="hidden" name="id" value="{{$client->id}}" />
-                                {{ csrf_field() }}
-
-                                <div class="form-group">
-                                    <label for="exampleInputEmail2">Email</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword2">Пароль</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                                </div>
-
-                            </form>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="3" class="text-center"><h2>Данные отсутствуют</h2></td>
-                        </tr>
-                    @endforelse
-                    </tbody>
-                </table>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Телефон</label>
+                            <input type="text" class="form-control" name="phone" value="{{$client->phone}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Фамилия</label>
+                            <input type="text" class="form-control" name="f_name" value="{{$client->f_name}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Имя</label>
+                            <input type="text" class="form-control" name="i_name" value="{{$client->i_name}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Отчество</label>
+                            <input type="text" class="form-control" name="o_name" value="{{$client->o_name}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Email</label>
+                            <input type="text" class="form-control" name="email" value="{{$client->email}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Компания</label>
+                            <input type="text" class="form-control" name="company" value="{{$client->company}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Оплата</label>
+                            <input type="text" class="form-control" name="status_pay" value="{{$client->status_pay}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Период</label>
+                            <input type="text" class="form-control" name="range_pay" value="{{$client->range_pay}}" style="width: 100%;" />
+                        </div>
+                        <div class="col-md-1 readers_col-md">
+                            <label>Статус</label>
+                            <input type="text" class="form-control" name="status_activity" value="{{$client->status_activity}}" />
+                        </div>
+                        <div class="col-md-3 readers_col-md">
+                            <button type="submit" class="btn btn-primary">Добавить баннер</button>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="3" class="text-center"><h2>Данные отсутствуют</h2></td>
+            </tr>
+        @endforelse
+        </tbody>
+    </table>
 
 @endsection

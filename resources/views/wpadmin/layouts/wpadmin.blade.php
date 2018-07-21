@@ -94,7 +94,7 @@
                                 @endforeach
                             </li>
                         {{-- иначе если зашла Лена --}}
-                        @elseif( Auth::user()->email == '89222654748@mail.ru' )
+                        @elseif( Auth::user()->email == '89222654748@mail.ru' || Auth::user()->email == 'test@mail.ru' )
 
                             <li><a href="{{route('wpadmin.clients.readers')}}">Подписчики</a></li>
 

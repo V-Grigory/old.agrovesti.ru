@@ -3,4 +3,4 @@ body {
 }
 .mark_art_on_main {padding: 1px 12px;background-color: #777;color: #fff;font-size: 13px;}
 
-.form_wpadmin_readers > input {}
+.readers_col-md {padding: 0 2px;}
