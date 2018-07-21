@@ -10,25 +10,32 @@
         </div>
     @endif
 
-    <!-- === Добавить / править подписчика === -->
-    @if($client)
-        <form action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
-            <input type="hidden" name="_method" value="PUT" />
-            @else
-                <form action="{{route('wpadmin.clients.store', $client)}}" method="post" enctype="multipart/form-data" >
-                    @endif
-                    {{ csrf_field() }}
+
+    <form class="form_wpadmin_readers" action="{{route('wpadmin.clients.store', $client)}}" method="post" enctype="multipart/form-data" >
+        <input type="hidden" name="_method" value="PUT" />
+        <input type="hidden" name="id" value="22" />
+        {{ csrf_field() }}
 
 
 
-                </form>
+            <input type="text" class="form-control" name="name" value="wqwq" />
+
+
+
+
+            <button type="submit" class="btn btn-primary">Добавить баннер</button>
+
+
+    </form>
+
 
                 <!-- === Вывод подписчиков === -->
-                <hr />
                 <table class="table table-striped">
                     <thead>
                         <th>Телефон</th>
-                        <th>ФИО</th>
+                        <th>Фамилия</th>
+                        <th>Имя</th>
+                        <th>Отчество</th>
                         <th>Email</th>
                         <th>Компания</th>
                         <th>Оплата</th>
@@ -39,23 +46,79 @@
                     <tbody>
                     @forelse($clients as $client)
                         <tr>
-                            <td style="padding: 0;">
+                            <form class="form_wpadmin_readers" action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
+                                <input type="hidden" name="_method" value="PUT" />
+                                <input type="hidden" name="id" value="{{$client->id}}" />
+                                {{ csrf_field() }}
 
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
+                                <td style="padding:5px;">
+                                    {{ $client->phone }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->phone}}" />
+                                </td>
 
-                            </td>
-                            <td class="text-right" style="padding: 0;">
-                                <form action="{{route('wpadmin.clients.edit', $client)}}" method="get">
-                                    <input type="hidden" name="_method" value="EDIT" />
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-link">Изменить</button>
-                                </form>
+                                <td>
+                                    {{ $client->f_name }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->f_name}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->i_name }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->i_name}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->o_name }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->o_name}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->email }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->email}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->company }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->company}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->status_pay }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->status_pay}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->range_pay }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->range_pay}}" />
+                                </td>
+
+                                <td>
+                                    {{ $client->status_activity }}
+                                    <input type="text" class="form-control" name="name" value="{{$client->status_activity}}" />
+                                </td>
+
+                                <td class="text-right" style="padding: 0;">
+                                    <button type="submit" class="btn btn-primary">Добавить баннер</button>
+                                </td>
+
+                            </form>
+                        </tr>
+                        <tr>
+                            <td colspan="10">
+                            <form class="form_wpadmin_readers form-inline" action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
+                                <input type="hidden" name="_method" value="PUT" />
+                                <input type="hidden" name="id" value="{{$client->id}}" />
+                                {{ csrf_field() }}
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail2">Email</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword2">Пароль</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                </div>
+
+                            </form>
                             </td>
                         </tr>
                     @empty
