@@ -117,6 +117,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/redactor/assets/redactor.js"></script>
+    <script src="{{ asset('js/myadmin.js') }}"></script>
     <script type="text/javascript">
         $(function()
         {

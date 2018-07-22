@@ -15,33 +15,32 @@ class ClientController extends Controller
             'clients'   => Client::all(),
             //'rubriks'   => Rubrik::all(),
             //'delimiter' => '',
-            //'params' => $request
+            'params' => $request
         ]);
     }
 
-    public function update(Request $request, Client $client)
+    public function update(Request $request/*, Client $client*/)
     {
-       return redirect()->route('wpadmin.clients.readers');
+       if($request['phone'] != '') {
 
-       if($request['name'] != '' && $request['link'] != '') {
+           $client = Client::find($request->id);
+           $client->phone = $request->phone;
+           $client->f_name = $request->f_name;
+           $client->i_name = $request->i_name;
+           $client->o_name = $request->o_name;
+           $client->email = $request->email;
+           $client->company = $request->company;
+           $client->status_pay = $request->status_pay;
+           $client->range_pay = $request->range_pay;
+           $client->status_activity = $request->status_activity;
 
-           $banner = Banner::find($request->id);
-           $banner->name = $request->name;
-           $banner->position = $request->position;
 
-           if($request['image'] != NULL) {
-               unlink(public_path().'/images/banners/'.$banner->image);
-               $name_image = Str::slug(\Carbon\Carbon::now()->format('dmyHi') . '-' . mb_substr($request->file('image')->getClientOriginalName(), 0, 40));
-               $name_image = $name_image . '.' . $request->file('image')->getClientOriginalExtension();
-               $request->file('image')->move(public_path() . '/images/banners/', $name_image);
-               $banner->image = $name_image;
-           }
-           $banner->link = $request->link;
-           $banner->save();
+
+           $client->save();
 
            return redirect()->route('wpadmin.clients.readers');
        } else {
-           return redirect()->route('wpadmin.banners.index', ['err_store' => "Необходимо заполнить все поля!"]);
+           return redirect()->route('wpadmin.clients.readers', ['err_store' => "Телефон является обязательным полем!"]);
        }
     }
 

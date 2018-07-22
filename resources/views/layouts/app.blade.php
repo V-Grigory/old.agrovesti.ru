@@ -93,7 +93,7 @@
                         @if(session()->has('phone'))
                             <li><a class="lid lk" href="/lk">Профиль</a></li>
                         @endif
-                        <li><a class="lid subscribe" href="/kontakty">Подписаться</a></li>
+                        <li><a class="lid subscribe" href="/rubrika/article/podpishites-seychas">Подписаться</a></li>
                         <li><a class="lid search" href="/">&nbsp;</a></li>
                     </ul>
                     <div style="display: none;">
@@ -130,7 +130,7 @@
                                     Журнал "Аграрная политика" зарегистрирован в Федеральной
                                     службе по надзору в сфере связи, информационных технологий
                                     и массовых коммуникаций.<br>
-                                    Свидетельство № ..... от .....
+                                    Свидетельство: ПИ № ФС 77-71663 от 23.11.2017 г.
                                 </p>
                                 <div style="clear: both;"></div>
                             </div>
@@ -176,19 +176,19 @@
                         @php } @endphp
 
                         <div class="footer_socNets">
-                            <a class="footer_socNets_link" href="#" target="_blank">
+                            <a class="footer_socNets_link" href="http://vk.com/agrovesti" target="_blank" title="ВКонтакте">
                                 <img class="footer_socNets_img" src="{{ asset('images/assets/icon_vk.png') }}" />
                             </a>
-                            <a class="footer_socNets_link" href="#" target="_blank">
+                            <a class="footer_socNets_link" href="http://facebook.com/groups/agrovesti" target="_blank" title="Facebook">
                                 <img class="footer_socNets_img" src="{{ asset('images/assets/icon_fb.png') }}" />
                             </a>
-                            <a class="footer_socNets_link" href="#" target="_blank">
+                            <a class="footer_socNets_link" href="http://twitter.com/agrovesti" target="_blank" title="Twitter">
                                 <img class="footer_socNets_img" src="{{ asset('images/assets/icon_twitter.png') }}" />
                             </a>
-                            <a class="footer_socNets_link" href="#" target="_blank">
+                            <a class="footer_socNets_link" href="http://ok.ru/profile/577033813172" target="_blank" title="Одноклассники">
                                 <img class="footer_socNets_img" src="{{ asset('images/assets/icon_ok.png') }}" />
                             </a>
-                            <a class="footer_socNets_link" href="#" target="_blank">
+                            <a class="footer_socNets_link" href="http://instagram.com/agrarnaya_politika" target="_blank" title="Instagram">
                                 <img class="footer_socNets_img" src="{{ asset('images/assets/icon_instagram.png') }}" />
                             </a>
                         </div>
