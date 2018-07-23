@@ -81,6 +81,7 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
         .close_article_login_title {text-align: center;margin: 40px 0 0 0;font-size: 20px;}
     .close_article_ul {}
         .close_article_ul > li {margin: 9px 0;color: #666362;}
+    .wait_authorize {padding: 14px;background-color: #3EA99F;color: #fff;font-size: 15px;margin: 10px 0;}
 
 
 /* ======================================= */

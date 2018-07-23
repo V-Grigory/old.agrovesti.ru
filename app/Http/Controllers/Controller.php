@@ -26,10 +26,21 @@ class Controller extends BaseController
                 $client = new Client();
                 $client->phone = $request->phone;
                 $client->save();
+                $request->session()->flash('reason_access_denied', 'new_client');
+                return false;
+
+            // если зареган и активен
+            } elseif($client->status_activity == 'active') {
+                session(['phone' => $request->phone]);
+                return $request->phone;
+
+            // если зареган и заблокирован (при первоначальной регистрации или по истечении срока)
+            } else {
+                $request->session()->flash('reason_access_denied', 'wait_allow');
+                return false;
             }
-            session(['phone' => $request->phone]);
-            return $request->phone;
         }
+        // не авторизован, не отправлен запрос на авторизацию\регистрацию, обычная загрузка страницы
         else
             return false;
     }

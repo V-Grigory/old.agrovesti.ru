@@ -7,6 +7,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="shortcut icon" href="favicon.ico">
+        <title>Аграрная Политика - Новое имя общероссийского журнала «Аграрные Известия».
+            Обзоры практик управления, повышения рентабельности производства. Инновации. Тренды.</title>
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
