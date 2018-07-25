@@ -270,5 +270,79 @@
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/my.js') }}"></script>
+
+        <script type="text/javascript">
+          $(document).ready(function() {
+            /* === свежий номер бесплатно === */
+            $('#call_back').click(function(){
+              if ($('#block_form_callBack').css('display') == 'block') {
+                $('#block_form_callBack').css('display', 'none');
+              } else {
+                $('#block_form_callBack').css('display', 'block');
+              }
+            });
+
+            $("#ajax-email").submit(function() {
+              var adr_pattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+              var num = $("#inputphone").val();
+              var prov1 = adr_pattern.test(num);
+              //var prov1 = true;
+              if (prov1 == true) {
+                //alert(num);
+                var str = $(this).serialize();
+                $.ajax({
+                  type: "POST",
+                  url: "http://smszerno.ru/site/callbackagrovesti",
+                  data: str,
+                  success: function(msg) {
+                      /*if(msg == 'OK') {
+                       result = '<div class="notification_ok">Ваш запрос отправлен! Мы свяжемся с Вами в ближайшее время.</div>';
+                       } else {
+                       result = msg;
+                       }
+                       $('#note').html(result);*/
+                  }
+                });
+                //return false;
+                $('#note').html('<div class="notification_ok" style="color:green;font-size:12px;font-weight:bold;">Ваш запрос отправлен! Мы свяжемся с Вами в ближайшее время.</div>');
+              }
+              else $('#note').html('<div class="notification_err" style="color:red;font-size:12px;font-weight:bold;">Не верный формат телефона.</div>'); //alert("NO NO!");
+              return false;
+            });
+          });
+        </script>
+
+        {{-- свежий номер бесплатно --}}
+        <div id="block_form_callBack" style="bottom:49px;left:5px;position:fixed;background-color:#ffffff;display:none;width:370px;padding:10px;box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);border: 1px solid #cccccc;border-radius: 6px;">
+            <p style="padding-bottom:7px;border-bottom:1px solid #e0e0e0;font-size: 13px;">Мы вам отправим один номер журнала бесплатно, для того, чтобы вы смогли ознакомиться с изданием.</p>
+            <div class="row" style="margin-left:10px;">
+                <div id="note"></div>
+            </div>
+            <form role="form" id="ajax-email">
+                <div class="row" style="margin:10px;">
+                    <p style="font-size:13px;">Для кого?</p>
+                    <input id="adresat" name="adresat" type="text" placeholder="Сидорова Евгения Федоровича" class="form-control" value="">
+                </div>
+                <div class="row" style="margin:10px;">
+                    <p style="font-size:13px;">Адрес доставки:</p>
+                    <textarea name="adress" id="adress" style="" class="form-control" placeholder="625000, Тюменская область, г. Тюмень, ул. Осипенко 81." rows="3"></textarea>
+                    <!--<input id="adress" name="adress" type="text" placeholder="Адрес доставки" class="form-control" value="">-->
+                </div>
+                <div class="row" style="margin:10px;">
+                    <p style="font-size:13px;">Телефон:</p>
+                    <!--<input id="inputphone" name="phone" type="phone" class="form-control" value="+7">-->
+                    <input id="inputphone" name="phone" type="phone" placeholder="8 905 858 99 19" class="form-control" value="">
+                </div>
+                <div class="row" style="margin:10px;">
+                    <p style="font-size:13px;">E-mail:</p>
+                    <input id="inputemail" name="email" type="email" placeholder="info@mail.ru" class="form-control" value="">
+                </div>
+                <div class="row" style="margin:10px;">
+                    <button type="submit" class="btn sendemail" style="background-color: #ff6600;color:#ffffff;">Отправить</button>
+                </div>
+            </form>
+        </div>
+        <div class="btn btn-primary" id="call_back" style="background-color: #e91e63;border:none;padding:7px 19px;bottom: 3px;left:5px;position:fixed;">СВЕЖИЙ НОМЕР В ПОДАРОК!</div>
+
     </body>
 </html>
