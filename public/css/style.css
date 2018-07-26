@@ -84,6 +84,9 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
     .wait_authorize {padding: 14px;font-size: 16px; /*background-color: #3EA99F;color: #fff;margin: 10px 0;*/}
         .wait_authorize_title {font-size: 18px;color: green;font-weight: bold;}
 
+/* комменты к статьям */
+.comment_note {margin: 30px 0 0 0;font-size: 18px;padding: 8px 0;border-top: 1px solid #c0c0c0;}
+
 
 /* ======================================= */
 .lk_h1 {font-size: 24px;margin: 30px 0 0 0;}

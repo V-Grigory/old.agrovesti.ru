@@ -31,12 +31,12 @@ class Controller extends BaseController
 
             // если зареган и активен
             } elseif($client->status_activity == 'active') {
-                session(['phone' => $request->phone]);
+                session(['phone' => $request->phone, 'client_id' => $client->id]);
                 return $request->phone;
 
             // если зареган и заблокирован (при первоначальной регистрации или по истечении срока)
             } else {
-                $request->session()->flash('reason_access_denied', 'wait_allow');
+                //$request->session()->flash('reason_access_denied', 'wait_allow'); // пока этот флеш не нужен
                 return false;
             }
         }

@@ -13,4 +13,9 @@ class Article extends Model
         return $this->belongsToMany('App\Rubrik');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comments');
+    }
+
 }

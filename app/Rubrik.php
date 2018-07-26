@@ -25,7 +25,4 @@ class Rubrik extends Model
         return $this->belongsToMany('App\Article');
     }
 
-//    public function on_main_articles() {
-//        return $this->articles()->where('on_main','=', 1);
-//    }
 }

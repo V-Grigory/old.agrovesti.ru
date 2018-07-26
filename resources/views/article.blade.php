@@ -26,7 +26,7 @@
     @if($close_article)
         <div class="close_article">
     @endif
-
+        {{-- ================================================= --}}
             {{-- если статья из админки --}}
             @if($article->tilda_filename == NULL)
 
@@ -54,6 +54,7 @@
                 @endphp
 
             @endif
+        {{-- ================================================= --}}
 
     @if($close_article)
             <div class="close_article_bottom_gradient"></div>
@@ -66,18 +67,12 @@
 
             <div class="container">
                 @if( session('reason_access_denied') == 'new_client' )
-                    <div class="wait_authorize">
-                        <span class="wait_authorize_title">Вы еще не зарегистрированы в системе.</span><br>
-                        Для регистрации и получения доступа к материалам обратитесь в клиентский
-                        отдел по телефонам:<br>8-905-858-88-19, 8-905-858-87-34 или по e-mail: agrotmn2016@mail.ru.
-                    </div>
+                    <span class="wait_authorize_title">Вы еще не зарегистрированы в системе.</span><br>
                 @endif
-                @if( session('reason_access_denied') == 'wait_allow' )
-                    <div class="wait_authorize">
-                        Для получения доступа к материалам обратитесь в клиентский
-                        отдел по телефонам:<br>8-905-858-88-19, 8-905-858-87-34 или по e-mail: agrotmn2016@mail.ru.
-                    </div>
-                @endif
+                <div class="wait_authorize">
+                    Для регистрации и получения доступа к материалам обратитесь в клиентский
+                    отдел по телефонам:<br>8-905-858-88-19, 8-905-858-87-34 или по e-mail: agrotmn2016@mail.ru.
+                </div>
                 <ul class="close_article_ul">
                     <li>Вход осуществляется по номеру мобильного телефона</li>
                     {{--<li>Мы рады новым читателям и предоставляем <b>30 дней бесплатного доступа</b> к статьям и сервисам центра.--}}
@@ -90,11 +85,36 @@
 
     @endif
 
-    {{--<div class="col-md-3">--}}
 
-    {{--@include('partials.sideBar_rubriks')--}}
-    {{--@include('partials.sideBar_last_articles_in_cerrunt_rubrik')--}}
+    {{-- Комментарии --}}
+    @if( !$close_article )
+        @if( $is_login )
 
-    {{--</div>--}}
+            {{-- вывод комментов --}}
+            comments!!!
+            {{$article['comments']}}
+
+            {{-- оставить коммент --}}
+            <div class="container">
+                <p class="comment_note" style="border:none;">Оставьте ваш комментарий</p>
+                <form method="POST" action="{{ Request::url() }}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <textarea class="form-control" name="comment"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="comment_article_id" value="{{$article->id}}" />
+                        <input type="hidden" name="comment_client_id" value="{{session('client_id')}}" />
+                        <button type="submit" class="btn btn-primary">ОПУБЛИКОВАТЬ</button>
+                    </div>
+                </form>
+            </div>
+
+        @else
+            <div class="container"><p class="comment_note">Чтобы оставить комментарий к статье, авторизуйтесь в системе</p></div>
+            @include('lk.login')
+        @endif
+
+    @endif
 
 @endsection

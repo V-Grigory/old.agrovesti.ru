@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Rubrik;
 use App\Page;
+use App\Comments;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,7 +37,24 @@ class HomeController extends Controller
 
     public function article($name_en, Request $request)
     {
-        $article = Article::with('rubriks')->where('name_en', $name_en)->first();
+        //var_dump($request->comment_article_id);
+        //exit();
+        // если пришел коммент, сохраним его
+        if($request->comment != NULL) {
+            $comment = new Comments();
+            $comment->article_id = $request->comment_article_id;
+            $comment->client_id = $request->comment_client_id;
+            $comment->comment = $request->comment;
+            $comment->save();
+        }
+        $article = Article::with('rubriks')->with(
+            ['comments' => function ($query) {
+                $query->orderBy('updated_at', 'desc');
+            }]
+        )->where('name_en', $name_en)->first();
+
+        //var_dump($article);
+
         if($article) {
             return view('article', [
                 'article' => $article,

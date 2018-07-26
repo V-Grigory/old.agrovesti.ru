@@ -281,6 +281,9 @@
                 $('#block_form_callBack').css('display', 'block');
               }
             });
+            $('#btn_close_block_form_callBack').click(function(){
+                $('#block_form_callBack').css('display', 'none');
+            });
 
             $("#ajax-email").submit(function() {
               var adr_pattern = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
@@ -314,7 +317,9 @@
 
         {{-- свежий номер бесплатно --}}
         <div id="block_form_callBack" style="bottom:49px;left:5px;position:fixed;background-color:#ffffff;display:none;width:370px;padding:10px;box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);border: 1px solid #cccccc;border-radius: 6px;">
-            <p style="padding-bottom:7px;border-bottom:1px solid #e0e0e0;font-size: 13px;">Мы вам отправим один номер журнала бесплатно, для того, чтобы вы смогли ознакомиться с изданием.</p>
+            <div id="btn_close_block_form_callBack" style="position: absolute;right: 10px;font-size: 18px;font-weight: bold;line-height: 1;border-radius: 15px;border: 1px solid grey;
+                    height: 23px;width: 23px;text-align: center;cursor: pointer;">x</div>
+            <p style="padding-bottom:7px;border-bottom:1px solid #e0e0e0;font-size: 13px;">Мы вам отправим один номер журнала<br>бесплатно, для того, чтобы вы смогли ознакомиться с изданием.</p>
             <div class="row" style="margin-left:10px;">
                 <div id="note"></div>
             </div>
@@ -326,11 +331,9 @@
                 <div class="row" style="margin:10px;">
                     <p style="font-size:13px;">Адрес доставки:</p>
                     <textarea name="adress" id="adress" style="" class="form-control" placeholder="625000, Тюменская область, г. Тюмень, ул. Осипенко 81." rows="3"></textarea>
-                    <!--<input id="adress" name="adress" type="text" placeholder="Адрес доставки" class="form-control" value="">-->
                 </div>
                 <div class="row" style="margin:10px;">
                     <p style="font-size:13px;">Телефон:</p>
-                    <!--<input id="inputphone" name="phone" type="phone" class="form-control" value="+7">-->
                     <input id="inputphone" name="phone" type="phone" placeholder="8 905 858 99 19" class="form-control" value="">
                 </div>
                 <div class="row" style="margin:10px;">
