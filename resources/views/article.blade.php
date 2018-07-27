@@ -90,12 +90,19 @@
     @if( !$close_article )
         @if( $is_login )
 
-            {{-- вывод комментов --}}
-            comments!!!
-            {{$article['comments']}}
-
-            {{-- оставить коммент --}}
             <div class="container">
+                <br>
+                {{-- вывод комментов --}}
+                @if( count($comments) > 0 ) <p class="comments_title">Комментарии к статье</p> @endif
+                @foreach($comments as $comment)
+                    <div class="item_comment">
+                        <div class="item_comment_date"><span class="item_comment_notes">Дата:</span> {{ $comment->updated_at }}</div>
+                        <div class="item_comment_client"><span class="item_comment_notes">Автор:</span> {{ $comment->client_id }}</div>
+                        <div class="item_comment_comment">{{ $comment->comment }}</div>
+                    </div>
+                @endforeach
+
+                {{-- оставить коммент --}}
                 <p class="comment_note" style="border:none;">Оставьте ваш комментарий</p>
                 <form method="POST" action="{{ Request::url() }}">
                     {{ csrf_field() }}

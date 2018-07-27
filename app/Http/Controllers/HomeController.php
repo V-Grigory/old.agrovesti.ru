@@ -37,8 +37,6 @@ class HomeController extends Controller
 
     public function article($name_en, Request $request)
     {
-        //var_dump($request->comment_article_id);
-        //exit();
         // если пришел коммент, сохраним его
         if($request->comment != NULL) {
             $comment = new Comments();
@@ -47,17 +45,23 @@ class HomeController extends Controller
             $comment->comment = $request->comment;
             $comment->save();
         }
+
+        // найдем запрошенную статью
         $article = Article::with('rubriks')->with(
             ['comments' => function ($query) {
                 $query->orderBy('updated_at', 'desc');
             }]
         )->where('name_en', $name_en)->first();
 
-        //var_dump($article);
-
         if($article) {
+            // если есть комменты, отдадим их вместе с авторами
+            //var_dump($article['comments']);
+            //exit();
+            //if($article['comments'][0] != '') $comments = $article['comments'];
+
             return view('article', [
                 'article' => $article,
+                'comments' => $article['comments'],
                 'is_login' => $this->is_login($request)
             ]);
         } else {

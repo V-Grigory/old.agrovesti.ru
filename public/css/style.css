@@ -86,6 +86,12 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
 
 /* комменты к статьям */
 .comment_note {margin: 30px 0 0 0;font-size: 18px;padding: 8px 0;border-top: 1px solid #c0c0c0;}
+.comments_title {font-size: 22px;padding: 7px 0 0 0;border-top: 1px solid;}
+.item_comment {margin: 20px 0;}
+    .item_comment_date {display: inline-block;padding: 3px; margin-right: 15px;}
+    .item_comment_client {display: inline-block;padding: 3px;}
+    .item_comment_comment {border: 1px solid #c0c0c0;border-radius: 5px;padding: 25px;}
+    .item_comment_notes {color: grey;}
 
 
 /* ======================================= */
