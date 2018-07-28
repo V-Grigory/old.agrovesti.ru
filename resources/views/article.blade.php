@@ -95,9 +95,12 @@
                 {{-- вывод комментов --}}
                 @if( count($comments) > 0 ) <p class="comments_title">Комментарии к статье</p> @endif
                 @foreach($comments as $comment)
+                    {{--@php echo '<pre>'; var_dump($comment); echo '</pre>'; @endphp--}}
                     <div class="item_comment">
                         <div class="item_comment_date"><span class="item_comment_notes">Дата:</span> {{ $comment->updated_at }}</div>
-                        <div class="item_comment_client"><span class="item_comment_notes">Автор:</span> {{ $comment->client_id }}</div>
+                        <div class="item_comment_client"><span class="item_comment_notes">Автор:</span>
+                            {{ $comment->client['i_name'] }} {{ $comment->client['o_name'] }}, {{ $comment->client['company'] }}
+                        </div>
                         <div class="item_comment_comment">{{ $comment->comment }}</div>
                     </div>
                 @endforeach

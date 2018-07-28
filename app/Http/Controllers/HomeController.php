@@ -47,21 +47,15 @@ class HomeController extends Controller
         }
 
         // найдем запрошенную статью
-        $article = Article::with('rubriks')->with(
-            ['comments' => function ($query) {
-                $query->orderBy('updated_at', 'desc');
-            }]
-        )->where('name_en', $name_en)->first();
+        $article = Article::with('rubriks')->where('name_en', $name_en)->first();
 
         if($article) {
-            // если есть комменты, отдадим их вместе с авторами
-            //var_dump($article['comments']);
-            //exit();
-            //if($article['comments'][0] != '') $comments = $article['comments'];
+            // возьмем комменты с авторами
+            $comments = Comments::with('client')->where('article_id', $article->id)->get();
 
             return view('article', [
                 'article' => $article,
-                'comments' => $article['comments'],
+                'comments' => $comments,
                 'is_login' => $this->is_login($request)
             ]);
         } else {

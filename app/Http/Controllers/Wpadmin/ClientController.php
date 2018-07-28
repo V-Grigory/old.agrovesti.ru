@@ -11,15 +11,12 @@ class ClientController extends Controller
     public function readers(Request $request)
     {
         return view('wpadmin.clients.readers', [
-            'client'   => [],
             'clients'   => Client::all(),
-            //'rubriks'   => Rubrik::all(),
-            //'delimiter' => '',
             'params' => $request
         ]);
     }
 
-    public function update(Request $request/*, Client $client*/)
+    public function update(Request $request)
     {
        if($request['phone'] != '') {
 
@@ -33,9 +30,6 @@ class ClientController extends Controller
            $client->status_pay = $request->status_pay;
            $client->range_pay = $request->range_pay;
            $client->status_activity = $request->status_activity;
-
-
-
            $client->save();
 
            return redirect()->route('wpadmin.clients.readers');
@@ -45,33 +39,33 @@ class ClientController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
+//    public function create()
+//    {
+//        //
+//    }
 
 
-    public function store(Request $request)
-    {
-        if($request['name'] != '' && $request['link'] != '' && $request['image'] != NULL) {
-
-            $banner = new Banner();
-            $banner->name = $request->name;
-            $banner->position = $request->position;
-
-            $name_image = Str::slug(\Carbon\Carbon::now()->format('dmyHi').'-'.mb_substr($request->file('image')->getClientOriginalName(),0,40));
-            $name_image = $name_image .'.'. $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move(public_path().'/images/banners/', $name_image);
-
-            $banner->image = $name_image;
-            $banner->link = $request->link;
-            $banner->save();
-            //Banner::create($request->all());
-            return redirect()->route('wpadmin.banners.index');
-        } else {
-            return redirect()->route('wpadmin.banners.index', ['err_store' => "Необходимо заполнить все поля!"]);
-        }
-    }
+//    public function store(Request $request)
+//    {
+//        if($request['name'] != '' && $request['link'] != '' && $request['image'] != NULL) {
+//
+//            $banner = new Banner();
+//            $banner->name = $request->name;
+//            $banner->position = $request->position;
+//
+//            $name_image = Str::slug(\Carbon\Carbon::now()->format('dmyHi').'-'.mb_substr($request->file('image')->getClientOriginalName(),0,40));
+//            $name_image = $name_image .'.'. $request->file('image')->getClientOriginalExtension();
+//            $request->file('image')->move(public_path().'/images/banners/', $name_image);
+//
+//            $banner->image = $name_image;
+//            $banner->link = $request->link;
+//            $banner->save();
+//            //Banner::create($request->all());
+//            return redirect()->route('wpadmin.banners.index');
+//        } else {
+//            return redirect()->route('wpadmin.banners.index', ['err_store' => "Необходимо заполнить все поля!"]);
+//        }
+//    }
 
 
 //    public function show(Rubrik $rubrik)
@@ -83,15 +77,15 @@ class ClientController extends Controller
 //        ]);
 //    }
 
-    public function edit(Client $client)
-    {
-        return view ('wpadmin.clients.readers', [
-            'client'    => $client,
-            'clients'   => Client::all(),
-            //'rubriks'   => Rubrik::all(),
-            'delimiter' => ''
-        ]);
-    }
+//    public function edit(Client $client)
+//    {
+//        return view ('wpadmin.clients.readers', [
+//            'client'    => $client,
+//            'clients'   => Client::all(),
+//            //'rubriks'   => Rubrik::all(),
+//            'delimiter' => ''
+//        ]);
+//    }
 
 
     /*

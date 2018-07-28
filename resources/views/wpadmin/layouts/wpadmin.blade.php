@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my.css') }}" rel="stylesheet">
     <!-- redactor -->
     <link rel="stylesheet" href="/redactor/assets/redactor.css" />
@@ -117,6 +118,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/redactor/assets/redactor.js"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/locales/bootstrap-datepicker.ru.min.js') }}"></script>
     <script src="{{ asset('js/myadmin.js') }}"></script>
     <script type="text/javascript">
         $(function()

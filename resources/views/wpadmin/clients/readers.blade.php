@@ -10,10 +10,15 @@
         </div>
     @endif
 
+    @php
+        $status_activity = ['new_client'=>'Новый клиент','active'=>'Активен','inactive'=>'Заблокирован'];
+        $status_activity_style = ['new_client'=>'background-color:#52BE80;color:#ffffff;','active'=>'','inactive'=>'background-color:#CD6155;color:#fff;'];
+    @endphp
 
     {{-- === Вывод подписчиков === --}}
     <table class="table table-striped">
         <thead>
+            <th>Дата рег-ции</th>
             <th>Телефон</th>
             <th>Фамилия</th>
             <th>Имя</th>
@@ -27,16 +32,17 @@
         </thead>
         <tbody>
         @forelse($clients as $client)
-            <tr id="reader_{{ $client->id }}" class="reader">
-                <td style="padding:5px;"> {{ $client->phone }} </td>
+            <tr id="reader_{{ $client->id }}" class="reader" style="{{ $status_activity_style[$client->status_activity] }}" >
+                <td> {{ date_format($client->created_at, "d.m.Y") }} </td>
+                <td> {{ $client->phone }} </td>
                 <td> {{ $client->f_name }} </td>
                 <td> {{ $client->i_name }} </td>
                 <td> {{ $client->o_name }} </td>
                 <td> {{ $client->email }} </td>
                 <td> {{ $client->company }} </td>
                 <td> @if($client->status_pay == 'notpaid') Не оплачено @else Оплачено @endif </td>
-                <td> {{ $client->range_pay }} мес.</td>
-                <td> @if($client->status_activity == 'active') Активен @else Заблокирован @endif </td>
+                <td> {{ $client->range_pay }} </td>
+                <td> {{ $status_activity[$client->status_activity] }} </td>
                 <td>
                     <div id="{{ $client->id }}" class="wpadmin_btn_edit_reader"><img style="width:100%;" src="{{asset('images/assets/btn_edit.png')}}" /></div>
                 </td>
@@ -82,18 +88,12 @@
                         </div>
                         <div class="col-md-1 readers_col-md">
                             <label>Период</label>
-                            <select class="form-control" name="range_pay" style="width: 100%;">
-                                <option value="1">1 мес.</option>
-                                <option value="2">2 мес.</option>
-                                <option value="3">3 мес.</option>
-                                <option value="4">4 мес.</option>
-                                <option value="5">5 мес.</option>
-                                <option value="6">6 мес.</option>
-                            </select>
+                            <input type="text" class="form-control datepicker" name="range_pay" value="{{$client->range_pay}}" style="width: 100%;" />
                         </div>
                         <div class="col-md-1 readers_col-md">
                             <label>Статус</label>
                             <select class="form-control" name="status_activity" style="width: 100%;">
+                                <option value="new_client">Новый клиент</option>
                                 <option value="active">Активен</option>
                                 <option value="inactive">Заблокирован</option>
                             </select>
