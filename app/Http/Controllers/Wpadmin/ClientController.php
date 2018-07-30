@@ -88,12 +88,12 @@ class ClientController extends Controller
 //    }
 
 
-    /*
-    public function destroy(Banner $banner)
+
+    public function destroy(Client $client)
     {
-        unlink(public_path().'/images/banners/'.$banner->image);
-        $banner->delete();
-        return redirect()->route('wpadmin.banners.index');
+        //unlink(public_path().'/images/banners/'.$banner->image);
+        $client->delete();
+        return redirect()->route('wpadmin.clients.readers');
     }
-    */
+
 }

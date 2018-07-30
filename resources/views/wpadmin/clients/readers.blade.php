@@ -33,7 +33,7 @@
         <tbody>
         @forelse($clients as $client)
             <tr id="reader_{{ $client->id }}" class="reader" style="{{ $status_activity_style[$client->status_activity] }}" >
-                <td> {{ date_format($client->created_at, "d.m.Y") }} </td>
+                <td> {{ /*date_format($client->created_at, "d.m.Y")*/ $client->created_at }} </td>
                 <td> {{ $client->phone }} </td>
                 <td> {{ $client->f_name }} </td>
                 <td> {{ $client->i_name }} </td>
@@ -44,7 +44,17 @@
                 <td> {{ $client->range_pay }} </td>
                 <td> {{ $status_activity[$client->status_activity] }} </td>
                 <td>
-                    <div id="{{ $client->id }}" class="wpadmin_btn_edit_reader"><img style="width:100%;" src="{{asset('images/assets/btn_edit.png')}}" /></div>
+                    <div style="width: 50px;">
+                        <div id="{{ $client->id }}" class="wpadmin_btn_readers wpadmin_btn_edit_reader">
+                            <img style="width:100%;" src="{{asset('images/assets/btn_edit.png')}}" />
+                        </div>
+                        <form onsubmit="if(confirm('Удалить?')){ return true } else { return false }" style="display: inline-block;"
+                              action="{{route('wpadmin.clients.destroy', $client)}}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-link wpadmin_btn_readers wpadmin_btn_delete_reader"></button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             {{-- строка для редактирования --}}
@@ -82,8 +92,8 @@
                         <div class="col-md-1 readers_col-md">
                             <label>Оплата</label>
                             <select class="form-control" name="status_pay" style="width: 100%;">
-                                <option value="notpaid">Не оплачено</option>
-                                <option value="paid">Оплачено</option>
+                                <option value="notpaid" @if($client->status_pay == 'notpaid') selected @endif >Не оплачено</option>
+                                <option value="paid" @if($client->status_pay == 'paid') selected @endif >Оплачено</option>
                             </select>
                         </div>
                         <div class="col-md-1 readers_col-md">
@@ -93,13 +103,13 @@
                         <div class="col-md-1 readers_col-md">
                             <label>Статус</label>
                             <select class="form-control" name="status_activity" style="width: 100%;">
-                                <option value="new_client">Новый клиент</option>
-                                <option value="active">Активен</option>
-                                <option value="inactive">Заблокирован</option>
+                                <option value="new_client" @if($client->status_activity == 'new_client') selected @endif >Новый клиент</option>
+                                <option value="active" @if($client->status_activity == 'active') selected @endif >Активен</option>
+                                <option value="inactive" @if($client->status_activity == 'inactive') selected @endif >Заблокирован</option>
                             </select>
                         </div>
                         <div class="col-md-1 readers_col-md" style="text-align: center;">
-                            <button type="submit" class="wpadmin_btn_save_reader" title="Сохранить"></button>
+                            <button type="submit" class="wpadmin_btn_readers wpadmin_btn_save_reader" title="Сохранить"></button>
                         </div>
                     </form>
                 </td>

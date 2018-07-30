@@ -121,7 +121,7 @@
             </div>
 
         @else
-            <div class="container"><p class="comment_note">Чтобы оставить комментарий к статье, авторизуйтесь в системе</p></div>
+            <div class="container"><p class="comment_note">Чтобы обсудить статью с коллегами, авторизуйтесь в системе</p></div>
             @include('lk.login')
         @endif
 

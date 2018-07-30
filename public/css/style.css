@@ -1,4 +1,7 @@
 body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top: 70px;*/}
+.top_menu {background-color: #565051;padding: 8px 0;margin-bottom: 10px;}
+    .top_menu_a {color: #fff;font-size: 16px;}
+    .top_menu_a:hover {color: #c0c0c0;text-decoration: none;}
 .main_img {width: 100%; margin: 0 0 15px 0;}
 
 /* ======================================= */
@@ -25,7 +28,7 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
     .nav > li > a.subscribe:hover {background: url("/images/assets/subscribe_hover.png") no-repeat;background-size: contain;}
 .nav > li > a.search {background: url("/images/assets/search.png") no-repeat;background-size: contain;}
     .nav > li > a.search:hover {background: url("/images/assets/search_hover.png") no-repeat;background-size: contain;}
-
+.main_menu_delimiter {border-left: 4px double #332f2e;height: 20px;margin: 11px 0;}
 /* ======================================= */
 .breadcrumb {background: no-repeat;padding: 0;margin: 30px 0px 5px 0;text-transform: uppercase;}
 .breadcrumb > a {color: #9e9e9e;}

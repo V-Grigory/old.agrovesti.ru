@@ -87,6 +87,9 @@
     </head>
 
     <body>
+        <div class="top_menu">
+            <div class="container"><a class="top_menu_a" href="/rubrika/article/podpishites-seychas">ПОДПИСАТЬСЯ</a></div>
+        </div>
         <div class="container">
             {{--<img class="main_img" src="{{ asset('main.png') }}" />--}}
             <img class="main_img" src="/images/assets/main.png" />
@@ -108,7 +111,9 @@
                     <ul class="nav navbar-nav">
                         {{--<li class="active"><a class="with_delimiter" href="/">Главная</a></li>--}}
                         <li><a href="/">Главная</a></li>
+                        <li><div class="main_menu_delimiter"></div></li>
                         <li><a href="{{route('rubrika', 'trends')}}">Тренды</a></li>
+                        <li><div class="main_menu_delimiter"></div></li>
                         <li><a href="{{route('rubrika', 'opyt')}}">Опыт</a></li>
                         {{--<li class="dropdown">--}}
                             {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">ОПЫТ <b class="caret"></b></a>--}}
@@ -120,16 +125,18 @@
                                 {{--<li><a href="#">Юг</a></li>--}}
                             {{--</ul>--}}
                         {{--</li>--}}
+                        <li><div class="main_menu_delimiter"></div></li>
                         <li><a href="{{route('rubrika', 'innovacii')}}">Инновации</a></li>
+                        <li><div class="main_menu_delimiter"></div></li>
                         <li><a href="/rubrika/article/kontakty">Контакты</a></li>
-                        @if(!session()->has('phone'))
-                            <li><a class="lid lk" href="/lk">Войти</a></li>
-                        @endif
-                        @if(session()->has('phone'))
-                            <li><a class="lid lk" href="/lk">Профиль</a></li>
-                        @endif
-                        <li><a class="lid subscribe" href="/rubrika/article/podpishites-seychas">Подписаться</a></li>
-                        <li><a class="lid search" href="/">&nbsp;</a></li>
+                        {{--@if(!session()->has('phone'))--}}
+                            {{--<li><a class="lid lk" href="/lk">Войти</a></li>--}}
+                        {{--@endif--}}
+                        {{--@if(session()->has('phone'))--}}
+                            {{--<li><a class="lid lk" href="/lk">Профиль</a></li>--}}
+                        {{--@endif--}}
+                        {{--<li><a class="lid subscribe" href="/rubrika/article/podpishites-seychas">Подписаться</a></li>--}}
+                        {{--<li><a class="lid search" href="/">&nbsp;</a></li>--}}
                     </ul>
                     <div style="display: none;">
                         <img src="/images/assets/logIn_hover.png" />

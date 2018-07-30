@@ -5,6 +5,7 @@ body {
 
 .readers_col-md {padding: 0 2px;}
 
-.wpadmin_btn_edit_reader {height: 22px;width: 22px;cursor: pointer;float:right;}
-.wpadmin_btn_save_reader {height: 22px;width: 22px;padding: 0;border: none;background:
-        url("/images/assets/btn_save.png") no-repeat;background-size: cover;margin-top: 30px;}
+.wpadmin_btn_readers {height: 22px;width: 22px;padding: 0;border: none;cursor: pointer;margin:0;display: inline-block;}
+    .wpadmin_btn_edit_reader {/*float:right;*/}
+    .wpadmin_btn_save_reader {margin-top: 30px;background:url("/images/assets/btn_save.png") no-repeat;background-size: cover;}
+    .wpadmin_btn_delete_reader {background:url("/images/assets/btn_delete.svg") no-repeat;background-size: cover;}
