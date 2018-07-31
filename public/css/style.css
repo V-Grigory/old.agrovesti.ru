@@ -29,6 +29,9 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
 .nav > li > a.search {background: url("/images/assets/search.png") no-repeat;background-size: contain;}
     .nav > li > a.search:hover {background: url("/images/assets/search_hover.png") no-repeat;background-size: contain;}
 .main_menu_delimiter {border-left: 4px double #332f2e;height: 20px;margin: 11px 0;}
+@media (max-width: 767px) {
+    .main_menu_delimiter {display: none;}
+}
 /* ======================================= */
 .breadcrumb {background: no-repeat;padding: 0;margin: 30px 0px 5px 0;text-transform: uppercase;}
 .breadcrumb > a {color: #9e9e9e;}
