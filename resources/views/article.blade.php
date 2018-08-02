@@ -32,13 +32,13 @@
 
                 <div class="container">
                     <h1>{{ $article->name_ru }}</h1>
-                    <div class="article_meta">
-                        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
-                    </div>
                     <div class="article_wrap">
                         @php
                             echo($article->article);
                         @endphp
+                    </div>
+                    <div class="article_meta">
+                        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
                     </div>
                 </div>
             {{-- иначе статья из тильды --}}
