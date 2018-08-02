@@ -44,14 +44,14 @@
             {{-- иначе статья из тильды --}}
             @else
 
+                @php
+                    include(public_path().'/tilda/'.$article->tilda_filename);
+                @endphp
                 <div class="container">
                     <div class="article_meta">
                         <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
                     </div>
                 </div>
-                @php
-                    include(public_path().'/tilda/'.$article->tilda_filename);
-                @endphp
 
             @endif
         {{-- ================================================= --}}
