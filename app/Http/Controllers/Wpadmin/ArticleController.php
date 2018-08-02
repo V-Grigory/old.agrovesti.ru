@@ -74,6 +74,9 @@ class ArticleController extends Controller
             $articleBD->on_main = (isset($request->on_main)) ? 1 : 0;
             $articleBD->main_article = (isset($request->main_article)) ? 1 : 0;
             $articleBD->need_pay = (isset($request->need_pay)) ? 1 : 0;
+            $articleBD->features = (isset($request->disable_comments))
+                ? $this->changeFeatures('add', 'disable_comments', $articleBD->features)
+                : $this->changeFeatures('remove', 'disable_comments', $articleBD->features);
             $articleBD->features = (isset($request->in_footer_block_1))
                 ? $this->changeFeatures('add', 'in_footer_block_1', $articleBD->features)
                 : $this->changeFeatures('remove', 'in_footer_block_1', $articleBD->features);
@@ -98,7 +101,8 @@ class ArticleController extends Controller
         $article->main_article = $request->main_article;
         $article->need_pay = $request->need_pay;
         $article->article = $request->article;
-        $article->features = $request->in_footer_block_1 . $request->in_footer_block_2 . $request->in_footer_block_3;
+        $article->features = $request->disable_comments . $request->in_footer_block_1
+                             . $request->in_footer_block_2 . $request->in_footer_block_3;
         //return redirect()->route('wpadmin.article.create', $error_validate);
         return view ('wpadmin.articles.create', [
             'article'    => $article,

@@ -87,7 +87,7 @@
 
 
     {{-- Комментарии --}}
-    @if( !$close_article )
+    @if( !$close_article && strpos($article->features, 'disable_comments') === false )
         @if( $is_login )
 
             <div class="container">

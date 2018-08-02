@@ -67,6 +67,12 @@
                 </label>
                 <br/>
                 <label class="checkbox-inline">
+                    <input type="checkbox" name="disable_comments" value="disable_comments"
+                    @if(isset($article->features) && strpos($article->features,'disable_comments') !== false) checked @endif >
+                    Запретить комментировать статью
+                </label>
+                <br/>
+                <label class="checkbox-inline">
                     <input type="checkbox" name="in_footer_block_1" value="in_footer_block_1"
                     @if(isset($article->features) && strpos($article->features,'in_footer_block_1') !== false) checked @endif >
                     Выводить в подвале - Центральные темы
