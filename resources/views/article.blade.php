@@ -11,8 +11,8 @@
             <a href="/rubrika/articles/@php echo($article['rubriks'][0]->name_en);
                 @endphp">@php echo($article['rubriks'][0]->name_ru); @endphp
             </a>
-            {{-- статьям НЕ из тильды показываем крошки --}}
-            @php if($article->tilda_filename == NULL) { @endphp
+            {{-- статьям НЕ из тильды (обычным, из рубрик) показываем крошки --}}
+            @php if($article->tilda_filename == NULL && strpos($article->features, 'single_page') === false) { @endphp
                 <span>/</span>
                 <span class="end_breadcrumb">{{ $article->name_ru }}</span>
             @php } @endphp
@@ -28,22 +28,28 @@
     @endif
         {{-- ================================================= --}}
             {{-- если статья из админки --}}
-            @if($article->tilda_filename == NULL)
+            @if( $article->tilda_filename == NULL )
 
-                <div class="container">
-                    <h1>{{ $article->name_ru }}</h1>
-                    <div class="article_wrap">
-                        @php
-                            echo($article->article);
-                        @endphp
+                {{-- если статья из рубрики --}}
+                @if( strpos($article->features, 'single_page') === false )
+
+                    <div class="container">
+                        <h1>{{ $article->name_ru }}</h1>
+                        <div class="article_wrap">
+                            @php
+                                echo($article->article);
+                            @endphp
+                        </div>
+                        <div class="article_meta">
+                            <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+                        </div>
                     </div>
-                    <div class="article_meta">
-                        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
-                    </div>
-                </div>
+                {{-- иначе отдельная страница --}}
+                @else
+                    @include('pages.'.$article->name_en)
+                @endif
             {{-- иначе статья из тильды --}}
             @else
-
                 @php
                     include(public_path().'/tilda/'.$article->tilda_filename);
                 @endphp
@@ -52,7 +58,6 @@
                         <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
                     </div>
                 </div>
-
             @endif
         {{-- ================================================= --}}
 

@@ -43,6 +43,7 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
 .article_meta > p {margin: 0;}
 .article_wrap {text-align: justify;overflow: hidden;}
 
+.single_page_p {font-size: 16px;}
 
 /* ====== ГЛАВНАЯ ====== */
 .title_block_rubrik {font-size: 28px; text-transform: uppercase; font-weight: bold; color: #095394;display: block;border-bottom: 1px solid #9d9d9d; line-height: 1;padding: 0 0 3px 30px;margin: 35px 0 10px 0;}
