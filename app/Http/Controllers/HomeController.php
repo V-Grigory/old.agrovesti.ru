@@ -7,6 +7,7 @@ use App\Rubrik;
 use App\Page;
 use App\Comments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -37,6 +38,19 @@ class HomeController extends Controller
 
     public function article($name_en, Request $request)
     {
+        // реквест на отправку со страницы Ваша история
+        if($request->vasha_istoriya_phone != NULL) {
+            //$headers = "From: webmaster@http://agrovesti.ru'; Content-Type: text/html; charset=UTF-8;";
+            $msg = "ФИО: " . $request->vasha_istoriya_fio . "\r\n";
+            $msg .= "Телефон, эл. почта: " . $request->vasha_istoriya_phone . "\r\n";
+            $msg .= "Организация: " . $request->vasha_istoriya_company;
+            Mail::raw($msg, function($message) {
+                $message->from('webmaster@agrovesti.ru', 'Письмо со страницы "Ваша история", agrovesti.ru');
+                $message->to('v_grigory@mail.ru');
+                //$message->to('v_grigory@mail.ru')->cc('bar@example.com');;
+            });
+        }
+
         // если пришел коммент, сохраним его
         if($request->comment != NULL) {
             $comment = new Comments();

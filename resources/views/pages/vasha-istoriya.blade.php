@@ -14,17 +14,17 @@
 
         <div class="form-group">
             <p style="margin:0 0 8px 0;color:#666666;font-size:16px;"><b>Как вас зовут</b></p>
-            <input type="text" class="form-control" name="fio" value="" />
+            <input type="text" class="form-control" name="vasha_istoriya_fio" value="" />
         </div>
 
         <div class="form-group">
             <p style="margin:0 0 8px 0;color:#666666;font-size:16px;"><b>Ваш телефон или Эл. Почта</b></p>
-            <input type="text" class="form-control" name="phone" value="" />
+            <input type="text" class="form-control" name="vasha_istoriya_phone" value="" />
         </div>
 
         <div class="form-group">
             <p style="margin:0 0 8px 0;color:#666666;font-size:16px;"><b>Ваше предприятие. Ваша должность.</b></p>
-            <textarea class="form-control" name="company"></textarea>
+            <textarea class="form-control" name="vasha_istoriya_company"></textarea>
         </div>
 
 
