@@ -88,7 +88,10 @@
 
     <body>
         <div class="top_menu">
-            <div class="container"><a class="top_menu_a" href="/rubrika/article/podpishites-seychas">ПОДПИСАТЬСЯ</a></div>
+            <div class="container">
+                <a class="top_menu_a" href="/rubrika/article/podpishites-seychas">ПОДПИСАТЬСЯ</a>
+                <a class="top_menu_a" href="/rubrika/article/vasha-istoriya">ВАША ИСТОРИЯ</a>
+            </div>
         </div>
         <div class="container">
             {{--<img class="main_img" src="{{ asset('main.png') }}" />--}}

@@ -44,8 +44,11 @@ class HomeController extends Controller
             $msg = "ФИО: " . $request->vasha_istoriya_fio . "\r\n";
             $msg .= "Телефон, эл. почта: " . $request->vasha_istoriya_phone . "\r\n";
             $msg .= "Организация: " . $request->vasha_istoriya_company;
-            mail('agrotmn2016@mail.ru', 'Заявка на свежий номер в подарок', $msg, $headers);
-            mail('v_grigory@mail.ru', 'Заявка на свежий номер в подарок', $msg, $headers);
+            mail('v_grigory@mail.ru', 'Письмо со страницы "Ваша история", agrovesti.ru', $msg, $headers);
+            mail('agrotmn2016@mail.ru', 'Письмо со страницы "Ваша история", agrovesti.ru', $msg, $headers);
+            mail('0501agro@mail.ru', 'Письмо со страницы "Ваша история", agrovesti.ru', $msg, $headers);
+            mail('89222654748@mail.ru', 'Письмо со страницы "Ваша история", agrovesti.ru', $msg, $headers);
+            $request->session()->flash('email_sended');
             //Mail::raw($msg, function($message) {
             //    $message->from('webmaster@agrovesti.ru', 'Письмо со страницы "Ваша история", agrovesti.ru');
             //    $message->to('v_grigory@mail.ru');

@@ -1,5 +1,14 @@
 <div class="container">
 
+    @if( session('email_sended') )
+        <div class="div_notification_email_sended">
+            <h1 style="font-size:22px;">Спасибо. Ваше обращение отправлено в редакцию.</h1>
+            <p>Также вы можете обратиться в редакцию любым способом:</p>
+            <p>По телефонам - 8 (3452) 595-206, 595-204, 8-905-858-88-19</p>
+            <p>По электронной почте - agrotmn2016@mail.ru</p>
+        </div>
+    @endif
+
     <h1>Ваша история</h1>
     <br>
     <p class="single_page_p">Расскажите свою историю журналу "Аграрная Политика".</p>
