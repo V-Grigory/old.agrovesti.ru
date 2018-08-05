@@ -7,12 +7,12 @@
 
     <div class="row">
 
-        <!-- слева статьи -->
+        {{-- слева статьи --}}
         <div class="col-md-9" style="padding:0;">
 
             @foreach($rubrik['articles'] as $article)
                 @if($article)
-                    <!-- статьи в широком формате -->
+                    {{-- статьи в широком формате --}}
                     <div class="col-md-12" style="padding:0;margin: 10px 0;">
                         <div class="col-md-6">
                             <img class="item_article_img item_article_img_wide" src="{{ asset('images/'.$article->image) }}" />
@@ -35,7 +35,7 @@
 
         </div>
 
-        <!-- справа баннер и другие статьи -->
+        {{-- справа баннер и другие статьи --}}
         <div class="col-md-3">
 
             @php $banner = \App\Banner::where('position', $rubrik->name_en)->first(); @endphp

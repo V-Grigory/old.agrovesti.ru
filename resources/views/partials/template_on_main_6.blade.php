@@ -70,7 +70,7 @@
 
             @php echo $RS_art_main; @endphp
 
-            @include('partials.other_articles')
+            @include('partials.other_article_with_image')
 
         </div>
 
