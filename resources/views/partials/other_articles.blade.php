@@ -4,7 +4,7 @@
 @php
     $other_articles_in_current_rubriks = App\Rubrik::with(
                     ['articles' => function ($query) {
-                        $query->where('on_main', '=', 0)->orderby('updated_at', 'desc')->limit(3);
+                        $query->where('on_main', '=', 0)->orderby('updated_at', 'desc')->limit(2);
                     }]
                )->find($rubrik->id);
 @endphp
