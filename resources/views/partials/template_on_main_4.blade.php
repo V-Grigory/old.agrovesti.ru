@@ -1,16 +1,5 @@
 
 @php
-
-    function limit_words($data, $count_words){
-        $norm = strip_tags($data);
-        $words = explode(' ', $norm);
-        if( sizeof($words) > $count_words ) {
-            $words = array_slice($words, 0, $count_words);
-            $norm = implode(' ', $words) . '';
-        }
-        return $norm;
-    }
-
     $LS_art = '';       /*left_side_articles*/
     $LS_art_main = '';
     $LS_art_last = '';
@@ -103,7 +92,7 @@
 
             @php echo $LS_art_last; @endphp
 
-            @include('partials.other_articles')
+            @include('partials.other_article_with_image')
 
         </div>
 

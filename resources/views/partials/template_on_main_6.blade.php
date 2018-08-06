@@ -1,15 +1,5 @@
+
 @php
-
-    function limit_words($data, $count_words){
-        $norm = strip_tags($data);
-        $words = explode(' ', $norm);
-        if( sizeof($words) > $count_words ) {
-            $words = array_slice($words, 0, $count_words);
-            $norm = implode(' ', $words) . '';
-        }
-        return $norm;
-    }
-
     $LS_art = '';       /*left_side_articles*/
     $RS_art_main = '';  /*right_side_article*/
 

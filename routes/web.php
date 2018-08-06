@@ -15,6 +15,7 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::get('/', 'DashboardController@dashboard')->name('wpadmin.index');
     // анжелино
     Route::resource('/rubrik', 'RubrikController', ['as'=>'wpadmin']);
+    Route::post('/rubrik/uploadImageTemplate', 'RubrikController@uploadImageTemplate')->name('wpadmin.rubrik.uploadImageTemplate');
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
     // ленино

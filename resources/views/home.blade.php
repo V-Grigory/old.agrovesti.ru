@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('partials.limit_words')
+
 @section('content')
 
     @php

@@ -97,6 +97,12 @@
             <label for="template_number_7">№ 7</label>
             <img style="width:190px;" src="/images/assets/preview_template_number_7.png">
         </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="template_number" value="8" id="template_number_8"
+                   @if($rubrik && $rubrik->template_number == 8) checked @endif >
+            <label for="template_number_8">№ 8</label>
+            <img style="width:190px;" src="/images/assets/preview_template_number_8.png">
+        </div>
     </div>
 
     <!-- ====== ИКОНКА РУБРИКИ ====== -->

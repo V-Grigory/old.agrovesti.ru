@@ -79,4 +79,14 @@ class RubrikController extends Controller
             'ok_delete' => $ok_delete
         ]);
     }
+
+    public function uploadImageTemplate(Request $request){
+        if($request['image_template'] != NULL) {
+            $name_image = 'preview_template_number_' . $request['template_number'] . '.png';
+            if( file_exists(public_path().'/images/assets/'.$name_image) )
+                unlink(public_path().'/images/assets/'.$name_image);
+            $request->file('image_template')->move(public_path() . '/images/assets/', $name_image);
+        }
+        return redirect()->route('wpadmin.rubrik.index');
+    }
 }

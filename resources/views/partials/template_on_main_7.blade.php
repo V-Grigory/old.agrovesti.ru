@@ -1,15 +1,5 @@
+
 @php
-
-    function limit_words($data, $count_words){
-        $norm = strip_tags($data);
-        $words = explode(' ', $norm);
-        if( sizeof($words) > $count_words ) {
-            $words = array_slice($words, 0, $count_words);
-            $norm = implode(' ', $words) . '';
-        }
-        return $norm;
-    }
-
     $articles = '';       /*left_side_articles*/
 
     foreach( $rubrik['articles'] as $article ) {
@@ -54,7 +44,7 @@
 
             @include('partials.other_article_with_image')
 
-            @include('partials.other_articles')
+            @include('partials.other_articles_with_image')
 
         </div>
 

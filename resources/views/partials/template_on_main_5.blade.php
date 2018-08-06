@@ -39,23 +39,11 @@
             @endif
         @endforeach
 
-        <!-- берем последние 4 статьи текущей рубрики -->
-        <div class="col-md-12">
-            @php
-                $other_articles_in_current_rubriks = App\Rubrik::with(
-                                ['articles' => function ($query) {
-                                    $query->where('on_main', '=', 0)->orderby('updated_at', 'desc')->limit(4);
-                                }]
-                           )->find($rubrik->id);
-            @endphp
+        {{-- последние 4 статьи текущей рубрики --}}
+        <div class="row">
 
-            @foreach($other_articles_in_current_rubriks['articles'] as $other_article)
-                <div class="col-md-3">
-                    <a class="other_articles_link" href="{{route('article', $other_article->name_en)}}">
-                        &#9632; {{ $other_article->name_ru }}
-                    </a>
-                </div>
-            @endforeach
+            @include('partials.other_horizontal_articles_with_image')
+
         </div>
 
     </div>

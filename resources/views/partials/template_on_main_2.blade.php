@@ -36,4 +36,13 @@
         @endforeach
 
     </div>
+
+    {{-- последние 4 статьи текущей рубрики --}}
+    <div class="row">
+
+        @include('partials.other_horizontal_articles_with_image')
+
+    </div>
+
+
 </div>

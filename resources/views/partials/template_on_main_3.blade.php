@@ -45,7 +45,7 @@
                 </a>
             @endif
 
-            @include('partials.other_articles')
+            @include('partials.other_articles_with_image')
 
         </div>
 

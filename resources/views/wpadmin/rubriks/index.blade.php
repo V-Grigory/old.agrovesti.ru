@@ -34,6 +34,21 @@
             @include('wpadmin.rubriks.partials.form')
         </form>
 
+        {{-- ЗАГРУЗИТЬ КАРТИНКУ К 8-МУ ШАБЛОНУ --}}
+        <div style="margin-top:10px;padding: 10px 0;border-top: 2px solid #c0c0c0;border-bottom: 2px solid #c0c0c0;">
+            <p style="font-weight: bold;">Загрузить изображение 8-го шаблона</p>
+            <form class="form-inline" action="{{route('wpadmin.rubrik.uploadImageTemplate')}}" method="post" enctype="multipart/form-data" >
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <input type="file" name="image_template" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="template_number" value="8" />
+                    <button type="submit" class="btn btn-info btn-sm">Загрузить</button>
+                </div>
+            </form>
+        </div>
+
         <!-- === ВЫВОД РУБРИК === -->
         <hr />
         <table class="table table-striped">
