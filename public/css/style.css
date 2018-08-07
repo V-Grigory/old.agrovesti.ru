@@ -89,6 +89,15 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
 
 .image_as_template {width: 100%;}
 
+.wrap_template_9 {position: relative; margin: 25px 0; /*background: url("/images/assets/preview_template_number_9.png") center no-repeat;*/}
+    .template_9_image {width: 100%;}
+    .wrap_template_9_content {position: absolute;top: 0;left: 0;width: 100%;}
+        .template_9_rubrika_title {display: inline-block;margin: 20px 0;padding: 5px 17px;background-color: #f00014;text-transform: uppercase;font-size: 21px;color: #fff;font-weight: bold;}
+            .template_9_rubrika_title:hover {color: #fff;}
+        .template_9_article_title {display: inline-block;margin: 15px 0;color: #fff;font-size: 23px;text-align: center;}
+            .template_9_article_title:hover {color: #fff;}
+        .template_9_article_content {margin: 20px;color: #fff;font-size: 14px;}
+
 /*закрытие платной статьи*/
 .close_article {height: 1200px;overflow: hidden;position: relative;}
     .close_article_bottom_gradient {position: absolute;bottom: 0;height: 100px;
