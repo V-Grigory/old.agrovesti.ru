@@ -6,6 +6,7 @@ use App\Article;
 use App\Rubrik;
 use App\Page;
 use App\Comments;
+use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -85,6 +86,10 @@ class HomeController extends Controller
 
     public function syncTilda() {
         return view('sync-tilda');
+    }
+
+    public function checkClientsRangePay() {
+        Client::where('range_pay', date("d.m.Y"))->update(['status_pay'=>'notpaid','status_activity'=>'inactive']);
     }
 
 }

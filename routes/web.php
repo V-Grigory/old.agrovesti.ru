@@ -35,6 +35,7 @@ Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubri
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
 
 Route::get('/sync-tilda', 'HomeController@syncTilda');
+Route::get('/checkClientsRangePay', 'HomeController@checkClientsRangePay');
 
 Route::group(['prefix'=>'lk', /*'middleware'=>['auth']*/], function () {
     Route::get('/', 'LkController@profile')->name('profile');

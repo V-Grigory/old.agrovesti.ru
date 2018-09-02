@@ -11,8 +11,8 @@ class ClientController extends Controller
     public function readers(Request $request)
     {
         return view('wpadmin.clients.readers', [
-            'clients'   => Client::all(),
-            'params' => $request
+            'clients' => Client::all()->sortByDesc('created_at'),
+            'params'  => $request
         ]);
     }
 
