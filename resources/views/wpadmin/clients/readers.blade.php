@@ -2,7 +2,17 @@
 
 @section('content')
 
-    <h1>Подписчики</h1> <hr />
+    <h1>Подписчики</h1> <hr style="margin: 10px 0;" />
+
+    {{-- добавить нового --}}
+    <form class="form-inline" action="{{route('wpadmin.clients.store')}}" method="post" >
+        {{ csrf_field() }}
+        <div class="form-group">
+            <input type="text" name="phone" class="form-control" placeholder="Телефон" />
+        </div>
+        <button type="submit" name="addClient" class="btn btn-primary" title="Добавить">Добавить</button>
+    </form>
+    <hr style="margin: 10px 0;" />
 
     @if(isset($params) && $params->err_store)
         <div style="padding:10px;background-color:#ec7063;color:white;">
@@ -20,9 +30,10 @@
         <thead>
             <th>Дата рег-ции</th>
             <th>Телефон</th>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
+            <th>ФИО</th>
+            {{--<th>Фамилия</th>--}}
+            {{--<th>Имя</th>--}}
+            {{--<th>Отчество</th>--}}
             <th>Email</th>
             <th>Компания</th>
             <th>Оплата</th>
@@ -35,9 +46,10 @@
             <tr id="reader_{{ $client->id }}" class="reader" style="{{ $status_activity_style[$client->status_activity] }}" >
                 <td> {{ /*date_format($client->created_at, "d.m.Y")*/ $client->created_at }} </td>
                 <td> {{ $client->phone }} </td>
-                <td> {{ $client->f_name }} </td>
-                <td> {{ $client->i_name }} </td>
-                <td> {{ $client->o_name }} </td>
+                <td> {{ $client->f_name.' '.$client->i_name.' '.$client->o_name }} </td>
+                {{--<td> {{ $client->f_name }} </td>--}}
+                {{--<td> {{ $client->i_name }} </td>--}}
+                {{--<td> {{ $client->o_name }} </td>--}}
                 <td> {{ $client->email }} </td>
                 <td> {{ $client->company }} </td>
                 <td> @if($client->status_pay == 'notpaid') Не оплачено @else Оплачено @endif </td>

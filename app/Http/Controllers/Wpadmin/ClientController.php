@@ -16,6 +16,7 @@ class ClientController extends Controller
         ]);
     }
 
+    /* обновление клиента */
     public function update(Request $request)
     {
        if($request['phone'] != '') {
@@ -38,35 +39,25 @@ class ClientController extends Controller
        }
     }
 
+    /* Добавление нового клиента */
+    public function store(Request $request)
+    {
+        if( isset($request["addClient"]) && $request->phone != '' ) {
+            if( !$client = Client::where('phone', $request->phone)->first() ) {
+                $client = new Client();
+                $client->phone = $request->phone;
+                $client->save();
+                //$request->session()->flash('reason_access_denied', 'new_client');
+            }
+        }
+        return redirect()->route('wpadmin.clients.readers');
+    }
 
-//    public function create()
+
+    //    public function create()
 //    {
-//        //
+//        return redirect()->route('wpadmin.clients.readers');
 //    }
-
-
-//    public function store(Request $request)
-//    {
-//        if($request['name'] != '' && $request['link'] != '' && $request['image'] != NULL) {
-//
-//            $banner = new Banner();
-//            $banner->name = $request->name;
-//            $banner->position = $request->position;
-//
-//            $name_image = Str::slug(\Carbon\Carbon::now()->format('dmyHi').'-'.mb_substr($request->file('image')->getClientOriginalName(),0,40));
-//            $name_image = $name_image .'.'. $request->file('image')->getClientOriginalExtension();
-//            $request->file('image')->move(public_path().'/images/banners/', $name_image);
-//
-//            $banner->image = $name_image;
-//            $banner->link = $request->link;
-//            $banner->save();
-//            //Banner::create($request->all());
-//            return redirect()->route('wpadmin.banners.index');
-//        } else {
-//            return redirect()->route('wpadmin.banners.index', ['err_store' => "Необходимо заполнить все поля!"]);
-//        }
-//    }
-
 
 //    public function show(Rubrik $rubrik)
 //    {
