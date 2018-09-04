@@ -4,14 +4,23 @@ namespace App\Http\Controllers\Wpadmin;
 use App\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Collection;
 //use Illuminate\Support\Str;
 
 class ClientController extends Controller
 {
     public function readers(Request $request)
     {
+        $clients_raw = Client::all();
+        $clients_new_client = $clients_raw->where('status_activity', 'new_client')->sortByDesc('created_at')->all();
+        $clients_inactive = $clients_raw->where('status_activity', 'inactive')->sortByDesc('created_at')->all();
+        $clients_active = $clients_raw->where('status_activity', 'active')->sortByDesc('created_at')->all();
+
+        $collection  = new Collection;
+        $clients = $collection->merge($clients_new_client)->merge($clients_inactive)->merge($clients_active);
+
         return view('wpadmin.clients.readers', [
-            'clients' => Client::all()->sortByDesc('created_at'),
+            'clients' => $clients, //Client::all()->sortByDesc('created_at'),
             'params'  => $request
         ]);
     }
@@ -19,6 +28,14 @@ class ClientController extends Controller
     /* обновление клиента */
     public function update(Request $request)
     {
+
+       // echo 'DAAAA';
+//        $response = array(
+//            'status' => 'success',
+//            'msg' => 'Setting created successfully',
+//        );
+//        return \Response::json($response);
+
        if($request['phone'] != '') {
 
            $client = Client::find($request->id);

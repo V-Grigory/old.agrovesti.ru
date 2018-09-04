@@ -44,7 +44,7 @@
         <tbody>
         @forelse($clients as $client)
             <tr id="reader_{{ $client->id }}" class="reader" style="{{ $status_activity_style[$client->status_activity] }}" >
-                <td> {{ /*date_format($client->created_at, "d.m.Y")*/ $client->created_at }} </td>
+                <td> {{ date_format($client->created_at, "d.m.Y H:i:s") }} </td>
                 <td> {{ $client->phone }} </td>
                 <td> {{ $client->f_name.' '.$client->i_name.' '.$client->o_name }} </td>
                 {{--<td> {{ $client->f_name }} </td>--}}
@@ -70,6 +70,7 @@
                 </td>
             </tr>
             {{-- строка для редактирования --}}
+            <meta name="csrf-token" content="{{ csrf_token() }}" />
             <tr id="edit_reader_{{ $client->id }}" class="edit_reader" style="display: none;">
                 <td colspan="10">
                     <form class="form-inline" action="{{route('wpadmin.clients.update', $client)}}" method="post" enctype="multipart/form-data" >
