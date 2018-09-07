@@ -6,6 +6,7 @@ body {
 /*.readers_col-md {padding: 0 2px;}*/
 
 .readers_controls {}
+.reader_hide {display: none;}
 
 .wpadmin_btn_readers {height: 22px;width: 22px;padding: 0;border: none;cursor: pointer;margin:0;display: inline-block;}
     .wpadmin_btn_edit_reader {/*float:right;*/}

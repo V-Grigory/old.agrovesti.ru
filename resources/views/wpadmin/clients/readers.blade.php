@@ -16,15 +16,21 @@
                 <button type="submit" name="addClient" class="btn btn-primary" title="Добавить">Добавить</button>
             </form>
         </div>
-        {{-- фильтр --}}
+        {{-- поиск --}}
         <div class="col-md-3">
+            {{--<form class="form-inline" action="{{route('wpadmin.clients.store')}}" method="post" >--}}
+                {{--{{ csrf_field() }}--}}
+                <div class="form-group">
+                    <input type="text" name="search" class="form-control" placeholder="Поиск ..." />
+                </div>
+            {{--</form>--}}
+        </div>
+        {{-- фильтр --}}
+        <div class="col-md-6">
             <b style="display: block;">Фильтр:</b>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="new_client" value="new_client" checked> Новые</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="inactive" value="inactive" checked> Заблокированные</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="active" value="active" checked> Активные</label>
-        </div>
-        <div class="col-md-6">
-            22
         </div>
         <div style="clear: both;"></div>
     </div>

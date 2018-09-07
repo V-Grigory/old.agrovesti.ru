@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 
 class ClientController extends Controller
 {
+    /* вывод списка клиентов */
     public function readers(Request $request)
     {
         $clients_raw = Client::all();
@@ -70,6 +71,10 @@ class ClientController extends Controller
         return redirect()->route('wpadmin.clients.readers');
     }
 
+    public function search(Request $request)
+    {
+        return redirect()->route('wpadmin.clients.readers');
+    }
 
     //    public function create()
 //    {

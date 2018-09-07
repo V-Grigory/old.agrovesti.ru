@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     // клик для редактирования клиента
-
     // $(".wpadmin_btn_edit_reader").click(function () {
     //
     //     $('.reader').css("display","table-row");
@@ -13,6 +12,7 @@ $(document).ready(function() {
     //
     // });
 
+    // показ блока для редактирования
     $(".wpadmin_btn_edit_reader").click(function () {
         $('#edit_reader_'+$(this).attr('id')).css("display","block");
     });
@@ -28,16 +28,36 @@ $(document).ready(function() {
         language: 'ru'
     });
 
-    // ПАНЕЛЬ УПРАВЛЕНИЯ
+    // == ПАНЕЛЬ УПРАВЛЕНИЯ ==
     // фильтр
     $(".readers_filter").click(function () {
         // после клика стал checked
         if ($(this).is(':checked')) {
-            $('.reader_status_activity_'+$(this).val()).css("display","table-row");
+            //$('.reader_status_activity_'+$(this).val()).css("display","table-row");
+            //$('.reader_status_activity_'+$(this).val()).next().css("display","table-row"); // с блоком для редактирования
+            $('.reader_status_activity_'+$(this).val()).removeClass("reader_hide reader_hided_filter");
         } else {
-            $('.reader_status_activity_'+$(this).val()).css("display","none");
+            //$('.reader_status_activity_'+$(this).val()).css("display","none");
+            //$('.reader_status_activity_'+$(this).val()).next().css("display","none"); // с блоком для редактирования
+            $('.reader_status_activity_'+$(this).val()).addClass("reader_hide reader_hided_filter");
         }
     });
+    // поиск
+    $('input[name="search"]').on('input', function () {
+        dataEntered = $(this).val();
+        // цикл по реадерам, исключая скрытых фильтром
+        $("tr.reader").not('.reader_hided_filter').each(function (e) {
+            var $td = $(this).find('td');
+            searched = false;
+            // цикл столбцам текущей строки
+            $td.each(function(index) {
+                dataTD = $(this).text().trim().toLowerCase();
+                if( dataTD.indexOf(dataEntered) != -1) searched = true;
+            });
+            if(!searched) $td.parent().addClass("reader_hide"); else $td.parent().removeClass("reader_hide");
+        });
+    });
+
 
     // $('.form-inline').on('submit', function (e) {
     //
