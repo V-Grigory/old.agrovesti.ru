@@ -14,14 +14,15 @@ class ClientController extends Controller
     {
         $clients_raw = Client::all();
         $clients_new_client = $clients_raw->where('status_activity', 'new_client')->sortByDesc('created_at')->all();
+        $clients_trial_period = $clients_raw->where('status_activity', 'trial_period')->sortByDesc('created_at')->all();
         $clients_inactive = $clients_raw->where('status_activity', 'inactive')->sortByDesc('created_at')->all();
         $clients_active = $clients_raw->where('status_activity', 'active')->sortByDesc('created_at')->all();
 
         $collection  = new Collection;
-        $clients = $collection->merge($clients_new_client)->merge($clients_inactive)->merge($clients_active);
+        $clients = $collection->merge($clients_new_client)->merge($clients_trial_period)->merge($clients_inactive)->merge($clients_active);
 
         return view('wpadmin.clients.readers', [
-            'clients' => $clients, //Client::all()->sortByDesc('created_at'),
+            'clients' => $clients,
             'params'  => $request
         ]);
     }
