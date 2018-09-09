@@ -71,9 +71,9 @@
             @include('lk.login')
 
             <div class="container">
-                @if( session('reason_access_denied') == 'new_client' )
-                    <span class="wait_authorize_title">Вы еще не зарегистрированы в системе.</span><br>
-                @endif
+{{--                @if( session('reason_access_denied') !== null )--}}
+                    <span class="wait_authorize_title">{{ session('reason_access_denied') }}</span><br>
+                {{--@endif--}}
                 <div class="wait_authorize">
                     Для регистрации и получения доступа к материалам обратитесь в клиентский
                     отдел по телефонам:<br>8-905-858-88-19, 8-905-858-87-34 или по e-mail: agrotmn2016@mail.ru.

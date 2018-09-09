@@ -66,7 +66,6 @@ class ClientController extends Controller
                 $client = new Client();
                 $client->phone = $request->phone;
                 $client->save();
-                //$request->session()->flash('reason_access_denied', 'new_client');
             }
         }
         return redirect()->route('wpadmin.clients.readers');
