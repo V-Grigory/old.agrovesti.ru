@@ -85,7 +85,7 @@
             <th>Email</th>
             <th>Компания</th>
             <th>Оплата</th>
-            <th>Период оплаты</th>
+            <th>Период активности</th>
             <th>Статус</th>
             <th class="text-right"></th>
         </thead>

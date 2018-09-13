@@ -56,7 +56,7 @@ class Controller extends BaseController
         $src = '<?xml version="1.0" encoding="utf-8"?>';
         $src .= '<xml_request name="sms_send">';
         $src .= '<xml_user lgn="33417" pwd="26336481"/>';
-        $src .= "<sms sms_id='2' number='+7$phone' source_number='SMS-Zerno' ttl='10'>$smstext</sms>";
+        $src .= "<sms sms_id='2' number='+7$phone' source_number='Agrozerno' ttl='10'>$smstext</sms>";
         $src .= '</xml_request>';
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded','Content-Charset: UTF-8'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
