@@ -21,6 +21,7 @@ class Controller extends BaseController
         }
         // иначе если пришел реквест с телефоном из формы логина
         elseif(isset($request->phone)) {
+
             // если невалидный телефон
             if( !self::isPhoneValid($request->phone) ) {
                 $request->session()->flash('reason_access_denied', 'Неверный формат телефона');
@@ -31,19 +32,18 @@ class Controller extends BaseController
                 $client = new Client();
                 $client->phone = $request->phone;
                 $client->save();
-                //$request->session()->flash('reason_access_denied', 'Вы еще не зарегистрированы в системе');
-                return false;
-
-            // если зареган и активен (или на пробном периоде)
-            } elseif($client->status_activity == 'active' || $client->status_activity == 'trial_period') {
-                session(['phone' => $request->phone, 'client_id' => $client->id]);
-                self::sendSMS('9068255288', 'проверка');
-                return $request->phone;
-
-            // если зареган и заблокирован
-            } else {
+                $request->session()->flash('reason_access_denied', 'Вы еще не зарегистрированы в системе');
                 return false;
             }
+            // если зареган и активен (или на пробном периоде)
+            if($client->status_activity == 'active' || $client->status_activity == 'trial_period') {
+                session(['phone' => $request->phone, 'client_id' => $client->id]);
+                //self::sendSMS('9068255288', 'проверка');
+                return $request->phone;
+            }
+            // если зареган и заблокирован
+            $request->session()->flash('reason_access_denied', 'Вам не предоставлен доступ');
+            return false;
         }
         // не авторизован, не отправлен запрос на авторизацию\регистрацию, обычная загрузка страницы
         else

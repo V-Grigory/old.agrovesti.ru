@@ -17,19 +17,6 @@ $(document).ready(function() {
     });
 
     // == ПАНЕЛЬ УПРАВЛЕНИЯ ==
-    // фильтр
-    $(".readers_filter").click(function () {
-        // после клика стал checked
-        if ($(this).is(':checked')) {
-            //$('.reader_status_activity_'+$(this).val()).css("display","table-row");
-            //$('.reader_status_activity_'+$(this).val()).next().css("display","table-row"); // с блоком для редактирования
-            $('.reader_status_activity_'+$(this).val()).removeClass("reader_hide reader_hided_filter");
-        } else {
-            //$('.reader_status_activity_'+$(this).val()).css("display","none");
-            //$('.reader_status_activity_'+$(this).val()).next().css("display","none"); // с блоком для редактирования
-            $('.reader_status_activity_'+$(this).val()).addClass("reader_hide reader_hided_filter");
-        }
-    });
     // поиск
     $('input[name="search"]').on('input', function () {
         dataEntered = $(this).val();
@@ -44,6 +31,68 @@ $(document).ready(function() {
             });
             if(!searched) $td.parent().addClass("reader_hide"); else $td.parent().removeClass("reader_hide");
         });
+    });
+    // фильтр
+    $(".readers_filter").click(function () {
+        // после клика стал checked
+        if ($(this).is(':checked')) {
+          //$('.reader_status_activity_'+$(this).val()).css("display","table-row");
+          //$('.reader_status_activity_'+$(this).val()).next().css("display","table-row"); // с блоком для редактирования
+          $('.reader_status_activity_'+$(this).val()).removeClass("reader_hide reader_hided_filter");
+        } else {
+          //$('.reader_status_activity_'+$(this).val()).css("display","none");
+          //$('.reader_status_activity_'+$(this).val()).next().css("display","none"); // с блоком для редактирования
+          $('.reader_status_activity_'+$(this).val()).addClass("reader_hide reader_hided_filter");
+        }
+    });
+    // массовые действия
+    $("#mass_actions_select").change(function(){
+
+        readers_phone = [];
+        $(".reader_checkbox:checked").each(function() {
+          readers_phone.push($(this).val());
+        });
+        if( readers_phone.length == 0 ) {
+            alert('Не отмечено ни одной записи!');
+            $('#mass_actions_select option[value="change_action"]').prop("selected", true);
+            return false;
+        }
+
+        titles = {send_sms:'Отправить СМС', change_status_activity:'Сменить статус', delete:'Удалить'};
+
+        $('input[name=action]').val( $(this).val() );
+        $('input[name=readers_phone]').val( readers_phone.toString() );
+
+        if( $(this).val() == 'send_sms' ) {
+            $('#mass_actions_container').css("display","block");
+            $('#mass_actions_container .modal_container_title').text( titles[$(this).val()] );
+            $("#modal_container_content").html( "<textarea rows='4' style='width: 100%;' name='text_sms' placeholder='Введите текст СМС'></textarea>" );
+        }
+
+        if( $(this).val() == 'change_status_activity' ) {
+            $('#mass_actions_container').css("display","block");
+            $('#mass_actions_container .modal_container_title').text( titles[$(this).val()] );
+            $("#modal_container_content").html(
+                "<select class='form-control' name='change_status_activity'>" +
+                    "<option value='new_client'>Новый клиент</option>" +
+                    "<option value='trial_period'>Пробный период</option>" +
+                    "<option value='active'>Активен</option>" +
+                    "<option value='inactive'>Заблокирован</option>" +
+                "</select>"
+            );
+        }
+
+        if( $(this).val() == 'delete' ) {
+            $("#form_mass_actions").submit();
+        }
+
+        //if( $(this).val() != 'change_action' ) {
+         // console.log( 'Selected value: ' + $(this).val() );
+        //}
+    });
+    $("#btn_close_mass_actions_container").click(function (e) {
+        e.preventDefault();
+        $('.modal_container').css("display","none");
     });
 
 

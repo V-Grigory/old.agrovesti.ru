@@ -30,14 +30,6 @@ class ClientController extends Controller
     /* обновление клиента */
     public function update(Request $request)
     {
-
-       // echo 'DAAAA';
-//        $response = array(
-//            'status' => 'success',
-//            'msg' => 'Setting created successfully',
-//        );
-//        return \Response::json($response);
-
        if($request['phone'] != '') {
 
            $client = Client::find($request->id);
@@ -71,42 +63,71 @@ class ClientController extends Controller
         return redirect()->route('wpadmin.clients.readers');
     }
 
-    public function search(Request $request)
-    {
-        return redirect()->route('wpadmin.clients.readers');
-    }
-
-    //    public function create()
-//    {
-//        return redirect()->route('wpadmin.clients.readers');
-//    }
-
-//    public function show(Rubrik $rubrik)
-//    {
-//        $list_articles = Rubrik::with('articles')->orderByDesc('id')->where('id', $rubrik->id)->get();
-//
-//        return view('wpadmin.rubriks.list_articles', [
-//            'list_articles' => $list_articles[0]['articles'],
-//        ]);
-//    }
-
-//    public function edit(Client $client)
-//    {
-//        return view ('wpadmin.clients.readers', [
-//            'client'    => $client,
-//            'clients'   => Client::all(),
-//            //'rubriks'   => Rubrik::all(),
-//            'delimiter' => ''
-//        ]);
-//    }
-
-
-
     public function destroy(Client $client)
     {
-        //unlink(public_path().'/images/banners/'.$banner->image);
         $client->delete();
         return redirect()->route('wpadmin.clients.readers');
     }
+
+    public function massActions(Request $request)
+    {
+        $readers_phone = explode(',', $request->readers_phone);
+
+        //file_put_contents("mylog.txt",$request->readers_phone."\n", FILE_APPEND);
+
+        if( $request->action == 'send_sms' ) {
+            if( $request->text_sms == '' ) {
+                $request->session()->flash('mass_action_seccess', 'СМС НЕ разосланы, т.к. НЕ введен текст СМС');
+                return redirect()->route('wpadmin.clients.readers');
+            }
+            foreach ($readers_phone as $reader_phone) {
+                self::sendSMS($reader_phone, $request->text_sms);
+            }
+            $request->session()->flash('mass_action_seccess', 'СМС успешно разосланы');
+        }
+
+        if( $request->action == 'change_status_activity' ) {
+            Client::whereIn('phone', $readers_phone)->update(['status_activity'=>$request->change_status_activity]);
+            $request->session()->flash('mass_action_seccess', 'Статусы изменены');
+        }
+
+        if( $request->action == 'delete' ) {
+            Client::whereIn('phone', $readers_phone)->delete();
+            $request->session()->flash('mass_action_seccess', 'Записи удалены');
+        }
+
+        return redirect()->route('wpadmin.clients.readers');
+    }
+
+
+
+    /*public function search(Request $request)
+    {
+        return redirect()->route('wpadmin.clients.readers');
+    }*/
+
+    //    public function create()
+    //    {
+    //        return redirect()->route('wpadmin.clients.readers');
+    //    }
+
+    //    public function show(Rubrik $rubrik)
+    //    {
+    //        $list_articles = Rubrik::with('articles')->orderByDesc('id')->where('id', $rubrik->id)->get();
+    //
+    //        return view('wpadmin.rubriks.list_articles', [
+    //            'list_articles' => $list_articles[0]['articles'],
+    //        ]);
+    //    }
+
+    //    public function edit(Client $client)
+    //    {
+    //        return view ('wpadmin.clients.readers', [
+    //            'client'    => $client,
+    //            'clients'   => Client::all(),
+    //            //'rubriks'   => Rubrik::all(),
+    //            'delimiter' => ''
+    //        ]);
+    //    }
 
 }

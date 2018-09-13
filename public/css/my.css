@@ -11,7 +11,8 @@ body {
     .wpadmin_btn_save_reader {margin-top: 30px;background:url("/images/assets/btn_save.png") no-repeat;background-size: cover;}
     .wpadmin_btn_delete_reader {background:url("/images/assets/btn_delete.svg") no-repeat;background-size: cover;}
 
-.modal_edit_reader {position: fixed;top: 40%;border: 1px solid;padding:0 20px 20px 20px;background-color: #fff;width: 92%;left: 4%;
+.modal_container {position: fixed;top: 40%;border: 1px solid;padding:0 20px 20px 20px;background-color: #fff;width: 92%;left: 4%;
     -webkit-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.75); box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.75);}
-    .modal_edit_reader_title {padding: 1px 15px;background-color: grey;color: #ffffff;margin: 0 -20px 12px -20px;}
-    .modal_edit_reader_item_form {width: 150px;display: inline-block;}
+    .modal_container_title {padding: 1px 15px;background-color: grey;color: #ffffff;margin: 0 -20px 12px -20px;}
+
+.flash_mass_action_seccess {padding: 5px 15px;background-color: #239B56;color: #fff;}

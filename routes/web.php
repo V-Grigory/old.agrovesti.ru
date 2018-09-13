@@ -20,7 +20,8 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
     // ленино
     Route::get('/clients/readers', 'ClientController@readers')->name('wpadmin.clients.readers'); // вместо index
-    Route::post('/clients/search', 'ClientController@search')->name('wpadmin.clients.search'); // не используется (есть в контроллере)
+    //Route::post('/clients/search', 'ClientController@search')->name('wpadmin.clients.search'); // не используется (есть в контроллере)
+    Route::post('/clients/massActions', 'ClientController@massActions')->name('wpadmin.clients.massActions');
     Route::resource('/clients', 'ClientController', ['as'=>'wpadmin']);
 });
 
