@@ -37,7 +37,10 @@
                 <select id="mass_actions_select" class="form-control" name="mass_actions_select">
                     <option value="change_action">Выберите действие</option>
                     <option value="send_sms">Отправить СМС</option>
-                    <option value="change_status_activity">Сменить статус</option>
+                    <option value="update">Изменить</option>
+                    {{--<option value="change_status_pay">Сменить статус оплаты</option>--}}
+                    {{--<option value="change_range_pay">Сменить период активности</option>--}}
+                    {{--<option value="change_status_activity">Сменить статус активности</option>--}}
                     <option value="delete">Удалить</option>
                 </select>
             </div>
@@ -78,7 +81,7 @@
     {{-- === Вывод подписчиков === --}}
     <table class="table table-striped">
         <thead>
-            <th></th>
+            <th><input type="checkbox" id="all_readers_check" value=""></th>
             <th>Дата рег-ции</th>
             <th>Телефон</th>
             <th>ФИО</th>

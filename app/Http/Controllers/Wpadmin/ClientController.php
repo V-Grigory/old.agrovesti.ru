@@ -86,8 +86,13 @@ class ClientController extends Controller
             $request->session()->flash('mass_action_seccess', 'СМС успешно разосланы');
         }
 
-        if( $request->action == 'change_status_activity' ) {
-            Client::whereIn('phone', $readers_phone)->update(['status_activity'=>$request->change_status_activity]);
+        if( $request->action == 'update' ) {
+            $fields_update = [];
+            if($request->change_status_pay != 'no_change') $fields_update['status_pay'] = $request->change_status_pay;
+            if($request->change_range_pay != 'no_change') $fields_update['range_pay'] = $request->change_range_pay;
+            if($request->change_status_activity != 'no_change') $fields_update['status_activity'] = $request->change_status_activity;
+
+            Client::whereIn('phone', $readers_phone)->update($fields_update);
             $request->session()->flash('mass_action_seccess', 'Статусы изменены');
         }
 

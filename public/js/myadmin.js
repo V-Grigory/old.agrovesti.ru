@@ -10,11 +10,15 @@ $(document).ready(function() {
     });
 
     // календарь
-    $( ".datepicker" ).datepicker({
-        format: 'dd.mm.yyyy',
-        autoclose:true,
-        language: 'ru'
-    });
+    function bind_datepicker() {
+        $( ".datepicker" ).datepicker({
+          format: 'dd.mm.yyyy',
+          autoclose:true,
+          language: 'ru'
+        });
+    }
+
+    bind_datepicker();
 
     // == ПАНЕЛЬ УПРАВЛЕНИЯ ==
     // поиск
@@ -58,28 +62,49 @@ $(document).ready(function() {
             return false;
         }
 
-        titles = {send_sms:'Отправить СМС', change_status_activity:'Сменить статус', delete:'Удалить'};
+        titles = {send_sms:'Отправить СМС', update:'Обновить', delete:'Удалить'};
+        action = $(this).val();
 
-        $('input[name=action]').val( $(this).val() );
+        $('input[name=action]').val( action );
         $('input[name=readers_phone]').val( readers_phone.toString() );
 
-        if( $(this).val() == 'send_sms' ) {
+        if( action == 'send_sms' ) {
             $('#mass_actions_container').css("display","block");
             $('#mass_actions_container .modal_container_title').text( titles[$(this).val()] );
             $("#modal_container_content").html( "<textarea rows='4' style='width: 100%;' name='text_sms' placeholder='Введите текст СМС'></textarea>" );
         }
 
-        if( $(this).val() == 'change_status_activity' ) {
+        if( action == 'update' ) {
             $('#mass_actions_container').css("display","block");
             $('#mass_actions_container .modal_container_title').text( titles[$(this).val()] );
             $("#modal_container_content").html(
-                "<select class='form-control' name='change_status_activity'>" +
-                    "<option value='new_client'>Новый клиент</option>" +
-                    "<option value='trial_period'>Пробный период</option>" +
-                    "<option value='active'>Активен</option>" +
-                    "<option value='inactive'>Заблокирован</option>" +
-                "</select>"
+
+                "<div style='width: 170px;display: inline-block;'>" +
+                    "<label>Оплата</label>" +
+                    "<select class='form-control' name='change_status_pay'>" +
+                        "<option value='no_change'>НЕ МЕНЯТЬ</option>" +
+                        "<option value='notpaid'>Не оплачено</option>" +
+                        "<option value='paid'>Оплачено</option>" +
+                    "</select>" +
+                "</div>" +
+
+                "<div style='width: 170px;display: inline-block;'>" +
+                    "<label>Период</label>" +
+                    "<input type='text' class='form-control datepicker' name='change_range_pay' value='' style='width: 135px;' />" +
+                "</div>" +
+
+                "<div style='width: 170px;display: inline-block;'>" +
+                    "<label>Статус</label>" +
+                    "<select class='form-control' name='change_status_activity'>" +
+                        "<option value='no_change'>НЕ МЕНЯТЬ</option>" +
+                        "<option value='new_client'>Новый клиент</option>" +
+                        "<option value='trial_period'>Пробный период</option>" +
+                        "<option value='active'>Активен</option>" +
+                        "<option value='inactive'>Заблокирован</option>" +
+                    "</select>" +
+                "</div>"
             );
+            bind_datepicker();
         }
 
         if( $(this).val() == 'delete' ) {
@@ -93,6 +118,20 @@ $(document).ready(function() {
     $("#btn_close_mass_actions_container").click(function (e) {
         e.preventDefault();
         $('.modal_container').css("display","none");
+    });
+    // массовое выделение / снятие выделения
+    $('#all_readers_check').change(function() {
+      if ($(this).is(':checked')) {
+          $(".reader_checkbox").each(function() {
+              $(this).prop('checked', true);
+          });
+          console.log('check');
+      } else {
+          $(".reader_checkbox").each(function() {
+              $(this).prop('checked', false);
+          });
+          console.log('uncheck');
+      }
     });
 
 
