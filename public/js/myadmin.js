@@ -108,6 +108,10 @@ $(document).ready(function() {
         }
 
         if( $(this).val() == 'delete' ) {
+            $("#form_mass_actions").submit(function() {
+                var c = confirm("Уверены что хотите УДАЛИТЬ выделенные записи?");
+                return c;
+            });
             $("#form_mass_actions").submit();
         }
 
