@@ -7,43 +7,44 @@
     {{-- === Панель управления === --}}
     <div class="readers_controls">
         {{-- добавить нового --}}
-        <div class="col-md-3">
+        <div style="display: inline-block; width: 170px;">
             <form class="form-inline" action="{{route('wpadmin.clients.store')}}" method="post" >
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input type="text" name="phone" class="form-control" placeholder="Телефон" />
+                    <input type="text" name="phone" class="form-control" placeholder="Телефон" style="width: 110px;" />
                 </div>
-                <button type="submit" name="addClient" class="btn btn-primary" title="Добавить">Добавить</button>
+                <button type="submit" name="addClient" class="btn btn-primary" title="Добавить">+</button>
             </form>
         </div>
         {{-- поиск --}}
-        <div class="col-md-2">
-            <div class="form-group">
-                <input type="text" name="search" class="form-control" placeholder="Поиск ..." />
-            </div>
+        <div style="display: inline-block; width: 150px;">
+            <input type="text" name="search" class="form-control" placeholder="Поиск ..." style="width: 120px;" />
         </div>
         {{-- фильтр --}}
-        <div class="col-md-4">
+        <div style="display: inline-block; width: 260px;">
             <b style="display: block;">Фильтр:</b>
-            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="new_client" value="new_client" checked> Новые</label>
-            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="trial_period" value="trial_period" checked> Пробный период</label>
-            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="inactive" value="inactive" checked> Заблокированные</label>
-            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" id="active" value="active" checked> Активные</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="new_client" checked> Новые</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="trial_period" checked> Пробный период</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="inactive" checked> Заблокированные</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="active" checked> Активные</label>
+        </div>
+        {{-- выделить --}}
+        <div style="display: inline-block; width: 260px;">
+            <b style="display: block;">Выделить:</b>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="new_client" > Новые</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="trial_period" > Пробный период</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="inactive" > Заблокированные</label>
+            <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="active" > Активные</label>
         </div>
         {{-- массовые действия --}}
-        <div class="col-md-3">
+        <div style="display: inline-block;">
             <b style="display: block;">С выделенными:</b>
-            <div class="form-group">
-                <select id="mass_actions_select" class="form-control" name="mass_actions_select">
-                    <option value="change_action">Выберите действие</option>
-                    <option value="send_sms">Отправить СМС</option>
-                    <option value="update">Изменить</option>
-                    {{--<option value="change_status_pay">Сменить статус оплаты</option>--}}
-                    {{--<option value="change_range_pay">Сменить период активности</option>--}}
-                    {{--<option value="change_status_activity">Сменить статус активности</option>--}}
-                    <option value="delete">Удалить</option>
-                </select>
-            </div>
+            <select id="mass_actions_select" class="form-control" name="mass_actions_select">
+                <option value="change_action">Выберите действие</option>
+                <option value="send_sms">Отправить СМС</option>
+                <option value="update">Изменить</option>
+                <option value="delete">Удалить</option>
+            </select>
             {{-- контейнер для масс действий --}}
             <div id="mass_actions_container" class="modal_container" style="display: none;">
                 <p class="modal_container_title"></p>

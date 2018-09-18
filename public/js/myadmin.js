@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+    // федеральные округа с регионами
+    FO = {
+        'cfo':'Центральный федеральный окру',
+        'szfo':'Северо-Западный федеральный округ',
+        'yfo':'Южный федеральный округ',
+        'pfo':'Приволжский федеральный округ',
+        'ufo':'Уральский федеральный округ',
+        'sfo':'Сибирский федеральный округ',
+        'dfo':'Дальневосточный федеральный округ',
+    };
+
     // показ блока для редактирования
     $(".wpadmin_btn_edit_reader").click(function () {
         $('#edit_reader_'+$(this).attr('id')).css("display","block");
@@ -47,6 +58,15 @@ $(document).ready(function() {
           //$('.reader_status_activity_'+$(this).val()).css("display","none");
           //$('.reader_status_activity_'+$(this).val()).next().css("display","none"); // с блоком для редактирования
           $('.reader_status_activity_'+$(this).val()).addClass("reader_hide reader_hided_filter");
+        }
+    });
+    // выделение
+    $(".readers_select").click(function () {
+        // после клика стал checked
+        if ($(this).is(':checked')) {
+          $('.reader_status_activity_'+$(this).val()).not('.reader_hided_filter').children().children().prop('checked', true);
+        } else {
+          $('.reader_status_activity_'+$(this).val()).not('.reader_hided_filter').children().children('input').prop('checked', false);
         }
     });
     // массовые действия
@@ -115,9 +135,6 @@ $(document).ready(function() {
             $("#form_mass_actions").submit();
         }
 
-        //if( $(this).val() != 'change_action' ) {
-         // console.log( 'Selected value: ' + $(this).val() );
-        //}
     });
     $("#btn_close_mass_actions_container").click(function (e) {
         e.preventDefault();
@@ -127,14 +144,13 @@ $(document).ready(function() {
     $('#all_readers_check').change(function() {
       if ($(this).is(':checked')) {
           $(".reader_checkbox").each(function() {
-              $(this).prop('checked', true);
+              if( !$(this).parent().parent().hasClass('reader_hided_filter') )
+                $(this).prop('checked', true);
           });
-          console.log('check');
       } else {
           $(".reader_checkbox").each(function() {
               $(this).prop('checked', false);
           });
-          console.log('uncheck');
       }
     });
 
