@@ -19,7 +19,7 @@ $last_articles = \App\Article::with('rubriks')->orderBy('id', 'desc')->take(5)->
                 @endphp
         <a href="{{route('rubrika', $last_article->rubriks[0]->name_en)}}" class="title_rubrik">{{ $last_article->rubriks[0]->name_ru }}</a>
         <a href="{{route('article', $last_article->name_en)}}" class="title_article">{{ $last_article->name_ru }}</a>
-        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $last_article->updated_at }}</p>
+        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ date_format($last_article->updated_at, "d.m.Y H:i:s") }}</p>
         @php
             $norm = strip_tags($last_article->article); $words = explode(' ', $norm);
             if( sizeof($words) > 25 ) {	$words = array_slice($words, 0, 25); $norm = implode(' ', $words) . ''; }

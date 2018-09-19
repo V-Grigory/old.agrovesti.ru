@@ -8,7 +8,7 @@ use App\Page;
 use App\Comments;
 use App\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -20,16 +20,29 @@ class HomeController extends Controller
 
     public function rubrika($name_en)
     {
+        //== для панигации ==
+        $page_previous = ( isset($_GET['p']) && abs((int)$_GET['p']) > 1 ) ? abs((int)$_GET['p']) - 1 : 0;
+        $page_next = ( isset($_GET['p']) && abs((int)$_GET['p']) > 0 ) ? abs((int)$_GET['p']) + 1 : 2;
+        // общее кол-во статей (чтоб не показывать кн. Дальше)
+        $articles_cnt = Rubrik::with(['articles'])->where('name_en', $name_en)->get();
+        if( $page_next - 1 == ceil(count($articles_cnt[0]['articles']) / 6) ) $page_next = 'no_articles_more';
+
+
         $list_articles = Rubrik::with(
                                 ['articles' => function ($query) {
-                                    $query->orderBy('updated_at', 'desc');
+                                    $page = isset($_GET['p']) ? abs((int)$_GET['p']) : 1;
+                                    $skip = ($page - 1) * 6;
+                                    $query->skip($skip)->take(6)->orderBy('updated_at', 'desc');
+                                    //$query->orderBy('updated_at', 'desc');
                                 }]
                             )->where('name_en', $name_en)->get();
 
         if(isset($list_articles[0])) {
             return view('rubrika', [
                 'list_articles' => $list_articles[0]['articles'],
-                'rubrika_name_ru' => $list_articles[0]['name_ru']
+                'rubrika_name_ru' => $list_articles[0]['name_ru'],
+                'page_previous' => $page_previous,
+                'page_next' => $page_next,
             ]);
         } else {
             return view('404');

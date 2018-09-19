@@ -18,7 +18,7 @@
             <a class="other_articles_link" href="{{route('article', $other_article->name_en)}}">
                 {{ $other_article->name_ru }}
             </a>
-            <p class="item_article_meta" style="margin:0;"><span class="fa fa-clock-o"></span>{{ $other_article->updated_at }}</p>
+            <p class="item_article_meta" style="margin:0;"><span class="fa fa-clock-o"></span>{{ date_format($other_article->updated_at, "d.m.Y") }}</p>
         </div>
     </div>
 

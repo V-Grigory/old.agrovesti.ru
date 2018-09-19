@@ -23,7 +23,7 @@
                         <a class="item_article_title" href="{{route('article', $article->name_en)}}">
                             {{ $article->name_ru }}
                         </a>
-                        <p class="item_article_meta"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+                        <p class="item_article_meta"><span class="fa fa-clock-o"></span>{{ date_format($article->updated_at, "d.m.Y H:i:s") }}</p>
                         @php
                             $norm = strip_tags($article->article); $words = explode(' ', $norm);
                             if( sizeof($words) > 15 ) {	$words = array_slice($words, 0, 15); $norm = implode(' ', $words) . ''; }

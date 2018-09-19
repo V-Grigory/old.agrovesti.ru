@@ -17,7 +17,7 @@
                         <a class="item_article_title item_article_title_wide" href="'. route('article', $article->name_en) .'">
                             '. $article->name_ru .'
                         </a>
-                        <p class="item_article_meta"><span class="fa fa-clock-o"></span>'. $article->updated_at .'</p>
+                        <p class="item_article_meta"><span class="fa fa-clock-o"></span>'. date_format($article->updated_at, "d.m.Y H:i:s") .'</p>
                         <p class="item_article_content item_article_content_wide">'. limit_words($article->article, 30) .'</p>
                         <div class="tochki"></div>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="item_article">
                     <img class="item_article_img" src="'. asset('images/'.$article->image) .'" />
                     <a class="item_article_title" href="'. route('article', $article->name_en) .'">'. $article->name_ru .'</a>
-                    <p class="item_article_meta"><span class="fa fa-clock-o"></span>'. $article->updated_at .'</p>
+                    <p class="item_article_meta"><span class="fa fa-clock-o"></span>'. date_format($article->updated_at, "d.m.Y H:i:s") .'</p>
                     <p class="item_article_content">'. limit_words($article->article, 30) .'</p>
                     <div class="tochki"></div>
                 </div>';
