@@ -41,7 +41,7 @@
                             @endphp
                         </div>
                         <div class="article_meta">
-                            <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+                            <p class="meta_block"><span class="fa fa-clock-o"></span>{{ date_format($article->updated_at, "d.m.Y H:i:s") }}</p>
                         </div>
                     </div>
                 {{-- иначе отдельная страница --}}
@@ -55,7 +55,7 @@
                 @endphp
                 <div class="container">
                     <div class="article_meta">
-                        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ $article->updated_at }}</p>
+                        <p class="meta_block"><span class="fa fa-clock-o"></span>{{ date_format($article->updated_at, "d.m.Y H:i:s") }}</p>
                     </div>
                 </div>
             @endif
@@ -102,7 +102,7 @@
                 @foreach($comments as $comment)
                     {{--@php echo '<pre>'; var_dump($comment); echo '</pre>'; @endphp--}}
                     <div class="item_comment">
-                        <div class="item_comment_date"><span class="item_comment_notes">Дата:</span> {{ $comment->updated_at }}</div>
+                        <div class="item_comment_date"><span class="item_comment_notes">Дата:</span> {{ date_format($comment->updated_at, "d.m.Y H:i:s") }}</div>
                         <div class="item_comment_client"><span class="item_comment_notes">Автор:</span>
                             {{ $comment->client['i_name'] }} {{ $comment->client['o_name'] }}, {{ $comment->client['company'] }}
                         </div>
