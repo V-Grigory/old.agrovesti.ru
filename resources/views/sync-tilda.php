@@ -41,6 +41,8 @@ function savePageFromTilda($page_id) {
 /* /sync-tilda?projectid=627900&publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&pageid=2848220 */
 if( isset($_GET["projectid"]) && isset($_GET["pageid"]) && isset($_GET["publickey"]) && isset($_GET["secretkey"]) ) {
 
+    file_put_contents(public_path().'/test_tilda.txt', 'added_from_WebHook'.date('d.m.Y H:i:s')."\n", FILE_APPEND);
+
     if( $_GET["projectid"] == '627900' && $_GET["publickey"] == 'vgne4ejqrfpj09moy8wl' && $_GET["secretkey"] == 'mw39g6nc6c72sugw90m1' ) {
         ob_end_clean();
         header("Connection: close\r\n");  header("Content-Encoding: none\r\n");
@@ -58,6 +60,8 @@ if( isset($_GET["projectid"]) && isset($_GET["pageid"]) && isset($_GET["publicke
 
 } else {
     /* загрузка ВСЕГО */
+
+    file_put_contents(public_path().'/test_tilda.txt', 'added_from_ALL'.date('d.m.Y H:i:s')."\n", FILE_APPEND);
 
     $dirs['images'] = public_path().'/tilda/images';
     $dirs['css'] = public_path().'/tilda/css';
