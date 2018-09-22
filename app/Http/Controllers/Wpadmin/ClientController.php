@@ -33,6 +33,8 @@ class ClientController extends Controller
        if($request['phone'] != '') {
 
            $client = Client::find($request->id);
+           $client->fed_okrug = $request->fed_okrug;
+           $client->region = $request->region;
            $client->phone = $request->phone;
            $client->f_name = $request->f_name;
            $client->i_name = $request->i_name;
@@ -54,10 +56,17 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         if( isset($request["addClient"]) && $request->phone != '' ) {
-            if( !$client = Client::where('phone', $request->phone)->first() ) {
-                $client = new Client();
-                $client->phone = $request->phone;
-                $client->save();
+            if( self::isPhoneValid($request->phone) ) {
+                if( !$client = Client::where('phone', $request->phone)->first() ) {
+                    $client = new Client();
+                    $client->phone = $request->phone;
+                    $client->save();
+                    $request->session()->flash('flash_for_wpadmin', 'Клиент добавлен');
+                } else {
+                    $request->session()->flash('flash_for_wpadmin', 'Клиент с таким номером УЖЕ добавлен. Клиент НЕ добавлен');
+                }
+            } else {
+                $request->session()->flash('flash_for_wpadmin', 'Клиент НЕ добавлен. Невалидный телефон. Правильный формат: 9991112233');
             }
         }
         return redirect()->route('wpadmin.clients.readers');
@@ -77,13 +86,13 @@ class ClientController extends Controller
 
         if( $request->action == 'send_sms' ) {
             if( $request->text_sms == '' ) {
-                $request->session()->flash('mass_action_seccess', 'СМС НЕ разосланы, т.к. НЕ введен текст СМС');
+                $request->session()->flash('flash_for_wpadmin', 'СМС НЕ разосланы, т.к. НЕ введен текст СМС');
                 return redirect()->route('wpadmin.clients.readers');
             }
             foreach ($readers_phone as $reader_phone) {
                 self::sendSMS($reader_phone, $request->text_sms);
             }
-            $request->session()->flash('mass_action_seccess', 'СМС успешно разосланы');
+            $request->session()->flash('flash_for_wpadmin', 'СМС успешно разосланы');
         }
 
         if( $request->action == 'update' ) {
@@ -93,12 +102,12 @@ class ClientController extends Controller
             if($request->change_status_activity != 'no_change') $fields_update['status_activity'] = $request->change_status_activity;
 
             Client::whereIn('phone', $readers_phone)->update($fields_update);
-            $request->session()->flash('mass_action_seccess', 'Статусы изменены');
+            $request->session()->flash('flash_for_wpadmin', 'Статусы изменены');
         }
 
         if( $request->action == 'delete' ) {
             Client::whereIn('phone', $readers_phone)->delete();
-            $request->session()->flash('mass_action_seccess', 'Записи удалены');
+            $request->session()->flash('flash_for_wpadmin', 'Записи удалены');
         }
 
         return redirect()->route('wpadmin.clients.readers');

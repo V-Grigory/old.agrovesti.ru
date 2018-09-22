@@ -2,22 +2,74 @@ $(document).ready(function() {
 
     // федеральные округа с регионами
     FO = {
-        'cfo':'Центральный федеральный окру',
-        'szfo':'Северо-Западный федеральный округ',
-        'yfo':'Южный федеральный округ',
-        'pfo':'Приволжский федеральный округ',
-        'ufo':'Уральский федеральный округ',
-        'sfo':'Сибирский федеральный округ',
-        'dfo':'Дальневосточный федеральный округ',
+        'Не_выбрано': {
+            'name':'Не_выбрано',
+            'regions': ['Не_выбрано']
+        },
+        'Центральный': {
+            'name':'Центральный',
+            'regions': ['Не_выбрано']
+        },
+        'Северо-Западный': {
+            'name':'Северо-Западный',
+            'regions': ['Не_выбрано']
+        },
+        'Южный': {
+            'name':'Южный',
+            'regions': ['Не_выбрано']
+        },
+        'Приволжский': {
+            'name':'Приволжский',
+            'regions': ['Не_выбрано']
+        },
+        'Уральский': {
+            'name':'Уральский',
+            'regions': ['Курганский','Свердловский','Тюменский','Ханты-Мансийский АО','Ямало-Ненецкий АО','Челябинский']
+        },
+        'Сибирский': {
+            'name':'Сибирский',
+            'regions': ['Не_выбрано']
+        },
+        'Дальневосточный': {
+            'name':'Дальневосточный',
+            'regions': ['Не_выбрано']
+        }
     };
+
+    function fill_okrug_and_region(reader_id, only_region ) {
+        // заполнение селекта округами
+        if( only_region === false) {
+          fed_okrug = reader_id.find("select[name='fed_okrug']");
+          for (key in FO) {
+            fed_okrug.append('<option value="' + key + '">' + FO[key].name + '</option>');
+          }
+        }
+        // заполнение селекта регионами, соответствующими выбранному округу
+        region = reader_id.find("select[name='region']");
+        region.find('option').remove();
+        for (key in FO) {
+            if( key == fed_okrug.val() ) {
+              for (regions in FO[key].regions) {
+                region.append('<option value="' + FO[key].regions[regions] + '">' + FO[key].regions[regions] + '</option>');
+              }
+            }
+        }
+    }
 
     // показ блока для редактирования
     $(".wpadmin_btn_edit_reader").click(function () {
-        $('#edit_reader_'+$(this).attr('id')).css("display","block");
+        reader_id = $('#edit_reader_'+$(this).attr('id'));
+        reader_id.css("display","block");
+        fill_okrug_and_region( reader_id, false );
     });
     $(".btn_close_edit_reader").click(function (e) {
         e.preventDefault();
         $('#edit_reader_'+$(this).attr('id')).css("display","none");
+    });
+
+    // перестроить селект регионов при смене округа
+    $("select[name='fed_okrug']").change(function(){
+        fill_okrug_and_region( reader_id, true );
     });
 
     // календарь
@@ -47,27 +99,30 @@ $(document).ready(function() {
             if(!searched) $td.parent().addClass("reader_hide"); else $td.parent().removeClass("reader_hide");
         });
     });
-    // фильтр
+    // фильтр - чекбоксы
     $(".readers_filter").click(function () {
         // после клика стал checked
         if ($(this).is(':checked')) {
-          //$('.reader_status_activity_'+$(this).val()).css("display","table-row");
-          //$('.reader_status_activity_'+$(this).val()).next().css("display","table-row"); // с блоком для редактирования
-          $('.reader_status_activity_'+$(this).val()).removeClass("reader_hide reader_hided_filter");
+          $('.reader_'+$(this).val()).removeClass("reader_hide reader_hided_filter");
         } else {
-          //$('.reader_status_activity_'+$(this).val()).css("display","none");
-          //$('.reader_status_activity_'+$(this).val()).next().css("display","none"); // с блоком для редактирования
-          $('.reader_status_activity_'+$(this).val()).addClass("reader_hide reader_hided_filter");
+          $('.reader_'+$(this).val()).addClass("reader_hide reader_hided_filter");
         }
     });
-    // выделение
+    // фильтр - селекты
+    //$("#mass_actions_select").change(function(){
+    //});
+    // выделение - чекбоксы
     $(".readers_select").click(function () {
         // после клика стал checked
         if ($(this).is(':checked')) {
-          $('.reader_status_activity_'+$(this).val()).not('.reader_hided_filter').children().children().prop('checked', true);
+          $('.reader_'+$(this).val()).not('.reader_hided_filter').children().children().prop('checked', true);
         } else {
-          $('.reader_status_activity_'+$(this).val()).not('.reader_hided_filter').children().children('input').prop('checked', false);
+          $('.reader_'+$(this).val()).not('.reader_hided_filter').children().children('input').prop('checked', false);
         }
+    });
+    // выделение - селекты
+    $(".readers_select_by_select").change(function(){
+        $('.reader_'+$(this).val()).not('.reader_hided_filter').children().children().prop('checked', true);
     });
     // массовые действия
     $("#mass_actions_select").change(function(){

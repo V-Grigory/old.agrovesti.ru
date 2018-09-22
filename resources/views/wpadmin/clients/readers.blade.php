@@ -7,7 +7,7 @@
     {{-- === Панель управления === --}}
     <div class="readers_controls">
         {{-- добавить нового --}}
-        <div style="display: inline-block; width: 170px;">
+        <div style="display: inline-block; width: 170px; float: left;">
             <form class="form-inline" action="{{route('wpadmin.clients.store')}}" method="post" >
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -17,27 +17,51 @@
             </form>
         </div>
         {{-- поиск --}}
-        <div style="display: inline-block; width: 150px;">
+        <div style="display: inline-block; width: 150px; float: left;">
             <input type="text" name="search" class="form-control" placeholder="Поиск ..." style="width: 120px;" />
         </div>
+        {{-- наполнение <option> для селектов округов и регионов --}}
+        @php
+            $fed_okrug_options = []; $region_options = [];
+            foreach($clients as $client) {
+                $fed_okrug_options[$client->fed_okrug] = "<option value='$client->fed_okrug' > $client->fed_okrug </option>";
+                $region_options[$client->region] = "<option value='$client->region' > $client->region </option>";
+            }
+        @endphp
         {{-- фильтр --}}
-        <div style="display: inline-block; width: 260px;">
+        <div style="display: inline-block; width: 280px; float: left;">
             <b style="display: block;">Фильтр:</b>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="new_client" checked> Новые</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="trial_period" checked> Пробный период</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="inactive" checked> Заблокированные</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_filter" value="active" checked> Активные</label>
+            {{--округа--}}
+            {{--<select class="form-control" class="readers_filter" style="width: 130px; display: inline-block;">--}}
+                {{--@php foreach($fed_okrug_options as $fed_okrug_option) echo $fed_okrug_option; @endphp--}}
+            {{--</select>--}}
+            {{--регионы--}}
+            {{--<select class="form-control" class="readers_filter" style="width: 130px; display: inline-block;">--}}
+                {{--@php foreach($region_options as $region_option) echo $region_option; @endphp--}}
+            {{--</select>--}}
         </div>
         {{-- выделить --}}
-        <div style="display: inline-block; width: 260px;">
+        <div style="display: inline-block; width: 280px; float: left;">
             <b style="display: block;">Выделить:</b>
             <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="new_client" > Новые</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="trial_period" > Пробный период</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="inactive" > Заблокированные</label>
             <label class="checkbox-inline"><input type="checkbox" class="readers_select" value="active" > Активные</label>
+            {{--округа--}}
+            <select class="form-control readers_select_by_select" style="width: 130px; display: inline-block;">
+                @php foreach($fed_okrug_options as $fed_okrug_option) echo $fed_okrug_option; @endphp
+            </select>
+            {{--регионы--}}
+            <select class="form-control readers_select_by_select" style="width: 130px; display: inline-block;">
+                @php foreach($region_options as $region_option) echo $region_option; @endphp
+            </select>
         </div>
         {{-- массовые действия --}}
-        <div style="display: inline-block;">
+        <div style="display: inline-block; float: left;">
             <b style="display: block;">С выделенными:</b>
             <select id="mass_actions_select" class="form-control" name="mass_actions_select">
                 <option value="change_action">Выберите действие</option>
@@ -63,7 +87,7 @@
         </div>
         <div style="clear: both;"></div>
     </div>
-    @if( session('mass_action_seccess') !== null ) <div class="flash_mass_action_seccess">{{ session('mass_action_seccess') }}</div> @endif
+    @if( session('flash_for_wpadmin') !== null ) <div class="flash_for_wpadmin">{{ session('flash_for_wpadmin') }}</div> @endif
     <hr style="margin: 10px 0;" />
 
 
@@ -84,6 +108,7 @@
         <thead>
             <th><input type="checkbox" id="all_readers_check" value=""></th>
             <th>Дата рег-ции</th>
+            <th>Фед.округ-Регион</th>
             <th>Телефон</th>
             <th>ФИО</th>
             <th>Email</th>
@@ -95,10 +120,13 @@
         </thead>
         <tbody>
         @forelse($clients as $client)
-            <tr id="reader_{{ $client->id }}" class="reader reader_status_activity_{{ $client->status_activity }}"
-            style="{{ $status_activity_style[$client->status_activity] }}" >
+            <tr id="reader_{{ $client->id }}"
+                class="reader reader_{{ $client->status_activity }} reader_{{ $client->fed_okrug }} reader_{{ $client->region }}"
+                style="{{ $status_activity_style[$client->status_activity] }}"
+            >
                 <td> <input type="checkbox" class="reader_checkbox" value="{{ $client->phone }}"> </td>
                 <td> {{ date_format($client->created_at, "d.m.Y H:i:s") }} </td>
+                <td> {{ $client->fed_okrug }} - {{ $client->region }} </td>
                 <td> {{ $client->phone }} </td>
                 <td> {{ $client->f_name.' '.$client->i_name.' '.$client->o_name }} </td>
                 <td> {{ $client->email }} </td>
@@ -133,6 +161,18 @@
                             <input type="hidden" name="id" value="{{$client->id}}" />
                             {{ csrf_field() }}
 
+                            <div style="width: 150px;display: inline-block;">
+                                <label>Фед. округ</label>
+                                <select class="form-control" name="fed_okrug" style="width: 100%;">
+
+                                </select>
+                            </div>
+                            <div style="width: 150px;display: inline-block;">
+                                <label>Регион</label>
+                                <select class="form-control" name="region" style="width: 100%;">
+
+                                </select>
+                            </div>
                             <div style="width: 150px;display: inline-block;">
                                 <label>Телефон</label>
                                 <input type="text" class="form-control" name="phone" value="{{$client->phone}}" style="width: 100%;" />

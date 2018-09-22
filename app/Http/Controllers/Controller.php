@@ -68,11 +68,6 @@ class Controller extends BaseController
 
     public static function isPhoneValid($phone)
     {
-//        if( is_numeric($phone) && (substr($phone, 0, 1) == '9') && (strlen($phone) == 10) ) {
-//            return true;
-//        } else {
-//            return false;
-//        }
         return is_numeric($phone) && (substr($phone, 0, 1) == '9') && (strlen($phone) == 10);
     }
 
