@@ -18,6 +18,8 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::post('/rubrik/uploadImageTemplate', 'RubrikController@uploadImageTemplate')->name('wpadmin.rubrik.uploadImageTemplate');
     Route::resource('/article', 'ArticleController', ['as'=>'wpadmin']);
     Route::resource('/banners', 'BannerController', ['as'=>'wpadmin']);
+
+    Route::get('/tilda', 'TildaController@articles')->name('wpadmin.tilda.articles'); // вместо index
     // ленино
     Route::get('/clients/readers', 'ClientController@readers')->name('wpadmin.clients.readers'); // вместо index
     //Route::post('/clients/search', 'ClientController@search')->name('wpadmin.clients.search'); // не используется (есть в контроллере)

@@ -8,6 +8,14 @@
 //echo ceil(4,5);
 //echo ceil(5 / 6);
 
+//$getpageslist = file_get_contents('http://api.tildacdn.info/v1/getpageslist/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=627900');
+//$pageslist=json_decode($getpageslist, true);
+//echo '<pre>';
+//var_dump($pageslist);
+//echo '</pre>';
+//exit();
+
+//file_put_contents(public_path().'/test_tilda.txt', 'added_from_WebHook'.date('d.m.Y H:i:s')."\n", FILE_APPEND);
 //if( $curl = curl_init() ) {
 //    curl_setopt($curl, CURLOPT_URL, 'http://api.tildacdn.info/v1/getpageslist/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=627900');
 //    curl_setopt($curl, CURLOPT_RETURNTRANSFER,true);

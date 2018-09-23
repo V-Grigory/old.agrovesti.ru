@@ -83,6 +83,7 @@
                         {{-- если зашла Анжела --}}
                         @if( Auth::user()->email == 'agrotmn2016@mail.ru' )
 
+                            <li><a href="/wpadmin/tilda">Тильда</a></li>
                             <li><a href="/wpadmin/banners">Баннеры</a></li>
                             <li class="active"><a href="/wpadmin/rubrik">Рубрики</a></li>
                             <li><a href="{{route('wpadmin.article.create')}}">Добавить статью</a></li>

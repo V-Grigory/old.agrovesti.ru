@@ -1,14 +1,7 @@
 <?php
 use App\Article;
-//use App\Rubrik;
+use App\Tilda;
 use Illuminate\Support\Str;
-
-//$getpageslist = file_get_contents('http://api.tildacdn.info/v1/getpageslist/?publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&projectid=627900');
-//$pageslist=json_decode($getpageslist, true);
-//echo '<pre>';
-//var_dump($pageslist);
-//echo '</pre>';
-//exit();
 
 function savePageFromTilda($page_id) {
 
@@ -41,27 +34,27 @@ function savePageFromTilda($page_id) {
 /* /sync-tilda?projectid=627900&publickey=vgne4ejqrfpj09moy8wl&secretkey=mw39g6nc6c72sugw90m1&pageid=2848220 */
 if( isset($_GET["projectid"]) && isset($_GET["pageid"]) && isset($_GET["publickey"]) && isset($_GET["secretkey"]) ) {
 
-    file_put_contents(public_path().'/test_tilda.txt', 'added_from_WebHook'.date('d.m.Y H:i:s')."\n", FILE_APPEND);
-
     if( $_GET["projectid"] == '627900' && $_GET["publickey"] == 'vgne4ejqrfpj09moy8wl' && $_GET["secretkey"] == 'mw39g6nc6c72sugw90m1' ) {
-        ob_end_clean();
-        header("Connection: close\r\n");  header("Content-Encoding: none\r\n");
-        ignore_user_abort(true); // optional
-        ob_start();
-        echo ('ok');
-        $size = ob_get_length();
-        header("Content-Length: $size");
-        ob_end_flush();
-        flush();
-        ob_end_clean();
 
-        savePageFromTilda($_GET["pageid"]);
+        if(!$tilda = Tilda::where('pageid', $_GET["pageid"])->first()) {
+            $tilda = new Tilda();
+            $tilda->pageid = $_GET["pageid"];
+        }
+        $tilda->status = 'published';
+        $tilda->save();
+        //savePageFromTilda($_GET["pageid"]);
     }
+}
 
-} else {
+// -- если зашла Анжела --
+if( Auth::user()->email == 'agrotmn2016@mail.ru' ) {
+
+
+    echo 'SSS11';
+}
+
+    exit();
     /* загрузка ВСЕГО */
-
-    file_put_contents(public_path().'/test_tilda.txt', 'added_from_ALL'.date('d.m.Y H:i:s')."\n", FILE_APPEND);
 
     $dirs['images'] = public_path().'/tilda/images';
     $dirs['css'] = public_path().'/tilda/css';
@@ -94,5 +87,3 @@ if( isset($_GET["projectid"]) && isset($_GET["pageid"]) && isset($_GET["publicke
     foreach ($pageslist['result'] as $key=>$value) {
         savePageFromTilda($value['id']);
     }
-
-}
