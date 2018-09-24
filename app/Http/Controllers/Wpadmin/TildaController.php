@@ -46,6 +46,15 @@ class TildaController extends Controller
         $cnt_for_add = 0;
         $array_articles = [];
 
+        if( isset($_GET["start_sync_by_pageid"]) ) {
+            if( $_GET["pageid"] != '' ) {
+                self::savePageFromTilda((int)$_GET["pageid"]);
+                $msg = 'Синхронизация завершена!';
+            } else {
+                $msg = 'Не указан идентификатор статьи!';
+            }
+        }
+
         if( isset($_GET["start_sync"]) ) {
             if( count($tilda_articles = Tilda::where('status', 'published')->get()) > 0 ) {
 

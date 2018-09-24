@@ -30,4 +30,15 @@
         <a href="?start_sync" type="button" class="btn btn-primary">СИНХРОНИЗИРОВАТЬ</a>
     @endif
 
+    {{-- обновление с указнием pageid --}}
+    <hr />
+    <p><b>Введите идентификатор статьи.<br />Например: page3635144.html - идентификатор: 3635144</b></p>
+    <form action="{{route('wpadmin.tilda.articles')}}" method="get">
+        {{--{{ csrf_field() }}--}}
+        <div class="form-group">
+            <input type="text" name="pageid" value="" />
+            <button type="submit" name="start_sync_by_pageid" class="btn btn-primary">СТАРТ</button>
+        </div>
+    </form>
+
 @endsection
