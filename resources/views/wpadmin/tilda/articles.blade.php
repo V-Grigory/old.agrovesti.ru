@@ -26,7 +26,7 @@
 
     <hr />
 
-    @if($cnt_for_update > 0)
+    @if($cnt_for_add > 0 || $cnt_for_update > 0)
         <a href="?start_sync" type="button" class="btn btn-primary">СИНХРОНИЗИРОВАТЬ</a>
     @endif
 
