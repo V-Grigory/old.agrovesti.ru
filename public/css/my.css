@@ -15,4 +15,7 @@ body {
     -webkit-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.75); box-shadow: 0px 0px 28px -4px rgba(0,0,0,0.75);}
     .modal_container_title {padding: 1px 15px;background-color: grey;color: #ffffff;margin: 0 -20px 12px -20px;}
 
-.flash_for_wpadmin {padding: 5px 15px;background-color: #239B56;color: #fff;}
+.info_panel {background-color: #707b7c; color: #fff; padding: 3px 13px; margin: 8px 0 0 0;}
+    .info_panel > span {display: inline-block; border-left: 1px solid; padding-left: 10px; margin-left: 10px;}
+
+.flash_for_wpadmin {padding: 5px 15px;background-color: #239B56;color: #fff;margin: 5px 0 0 0;}

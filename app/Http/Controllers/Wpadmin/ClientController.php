@@ -21,8 +21,11 @@ class ClientController extends Controller
         $collection  = new Collection;
         $clients = $collection->merge($clients_new_client)->merge($clients_trial_period)->merge($clients_inactive)->merge($clients_active);
 
+        $count_clients = count($clients);
+
         return view('wpadmin.clients.readers', [
             'clients' => $clients,
+            'count_clients' => $count_clients,
             'params'  => $request
         ]);
     }
@@ -63,7 +66,7 @@ class ClientController extends Controller
                     $client->save();
                     $request->session()->flash('flash_for_wpadmin', 'Клиент добавлен');
                 } else {
-                    $request->session()->flash('flash_for_wpadmin', 'Клиент с таким номером УЖЕ добавлен. Клиент НЕ добавлен');
+                    $request->session()->flash('flash_for_wpadmin', 'Клиент с таким номером УЖЕ добавлен');
                 }
             } else {
                 $request->session()->flash('flash_for_wpadmin', 'Клиент НЕ добавлен. Невалидный телефон. Правильный формат: 9991112233');

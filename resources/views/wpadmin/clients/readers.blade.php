@@ -87,6 +87,11 @@
         </div>
         <div style="clear: both;"></div>
     </div>
+
+    <div class="info_panel">
+        Всего клиентов: {{ $count_clients }} <span>Выделено: <mytag id="count_checked_readers">0</mytag></span>
+    </div>
+
     @if( session('flash_for_wpadmin') !== null ) <div class="flash_for_wpadmin">{{ session('flash_for_wpadmin') }}</div> @endif
     <hr style="margin: 10px 0;" />
 
