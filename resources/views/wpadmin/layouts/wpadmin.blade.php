@@ -15,7 +15,7 @@
     <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my.css') }}" rel="stylesheet">
     <!-- redactor -->
-    <link rel="stylesheet" href="/redactor/assets/redactor.css" />
+    {{--<link rel="stylesheet" href="/redactor/assets/redactor.css" />--}}
 
 </head>
 
@@ -118,15 +118,29 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/redactor/assets/redactor.js"></script>
+    {{--<script src="/redactor/assets/redactor.js"></script>--}}
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/locales/bootstrap-datepicker.ru.min.js') }}"></script>
     <script src="{{ asset('js/myadmin.js') }}"></script>
-    <script type="text/javascript">
-        $(function()
-        {
-            $('#content_article').redactor();
-        });
-    </script>
+    {{--<script type="text/javascript">--}}
+        {{--$(function()--}}
+        {{--{--}}
+            {{--$('#content_article').redactor();--}}
+        {{--});--}}
+    {{--</script>--}}
+    @php
+        if(strpos(URL::current(), '/wpadmin/article/') !== false) {
+    @endphp
+        <script src="/js/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript">
+            $(function()
+            {
+                //$('#content_article').redactor();
+                CKEDITOR.replace( 'content_article',{
+                    filebrowserBrowseUrl : '/elfinder/ckeditor'
+                } );
+            });
+        </script>
+    @php } @endphp
 </body>
 </html>
