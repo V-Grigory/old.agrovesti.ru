@@ -129,7 +129,7 @@
         {{--});--}}
     {{--</script>--}}
     @php
-        if(strpos(URL::current(), '/wpadmin/article/') !== false) {
+        if(strpos(URL::current(), '/wpadmin/article') !== false) {
     @endphp
         <script src="/js/ckeditor/ckeditor.js"></script>
         <script type="text/javascript">
