@@ -131,7 +131,7 @@
                         <li><div class="main_menu_delimiter"></div></li>
                         <li><a href="{{route('rubrika', 'innovacii')}}">Инновации</a></li>
                         <li><div class="main_menu_delimiter"></div></li>
-                        <li><a href="/rubrika/article/kontakty">Контакты</a></li>
+                        <li><a href="/rubrika/article/kontakty-2019">Контакты</a></li>
                         {{--@if(!session()->has('phone'))--}}
                             {{--<li><a class="lid lk" href="/lk">Войти</a></li>--}}
                         {{--@endif--}}
