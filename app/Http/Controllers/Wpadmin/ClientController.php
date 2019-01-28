@@ -29,6 +29,12 @@ class ClientController extends Controller
             'params'  => $request
         ]);
     }
+    
+    public function readersVue(Request $request) {
+        return view('wpadmin.clients.readersVue', [
+            'clients' => ['11'=>'aa', '22'=>'bb']
+        ]);
+    }
 
     /* обновление клиента */
     public function update(Request $request)

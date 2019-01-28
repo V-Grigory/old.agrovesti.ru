@@ -122,6 +122,8 @@
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/locales/bootstrap-datepicker.ru.min.js') }}"></script>
     <script src="{{ asset('js/myadmin.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    <script src="{{ asset('js/clients.js') }}"></script>
     {{--<script type="text/javascript">--}}
         {{--$(function()--}}
         {{--{--}}
