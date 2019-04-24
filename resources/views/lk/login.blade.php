@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label" style="padding-right:20px;">Ваш телефон</label>
                             <div class="col-md-6" style="position:relative;">
-                                <p style="position:absolute;left:-9px;top:6px;font-size:15px;">+7</p>
+                                <p style="position:absolute;left:-9px;top:6px;font-size:15px;">8</p>
                                 <input id="phone" type="text" class="form-control" name="phone" style="height:34px; {{ $style_input_phone }}" height="34" value="" >
                             </div>
                         </div>

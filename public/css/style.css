@@ -108,6 +108,8 @@ body { font-family: 'Merriweather', serif; /*min-height: 2000px;*/ /*padding-top
         .close_article_ul > li {margin: 9px 0;color: #666362;}
     .wait_authorize {padding: 14px;font-size: 16px; /*background-color: #3EA99F;color: #fff;margin: 10px 0;*/}
         .wait_authorize_title {font-size: 18px;color: green;font-weight: bold;}
+     #offer_describe {margin: 0;cursor: pointer;display: inline-block;border-bottom: 1px dotted #000;font-size: 20px;}
+        #offer_describe:hover {border-color: #fff;}
 
 /* комменты к статьям */
 .comment_note {margin: 30px 0 0 0;font-size: 18px;padding: 8px 0;border-top: 1px solid #c0c0c0;}

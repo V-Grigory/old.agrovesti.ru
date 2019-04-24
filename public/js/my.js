@@ -11,4 +11,12 @@ $(document).ready(function() {
          }
     });
 
+    $('#offer_describe').click(function () {
+        if($('.wrap_offer_describe').css('display') == 'none') {
+            $('.wrap_offer_describe').css('display', 'block');
+        } else {
+            $('.wrap_offer_describe').css('display', 'none');
+        }
+    })
+
 });
