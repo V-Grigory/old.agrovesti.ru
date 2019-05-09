@@ -6,17 +6,11 @@
 
     <div id="readers_vue">
 
-        @php
-        print_r($clients);
-        @endphp
+        <table-clients>
 
-        <ul>
-            <li v-for="item in items">
-                {{--@{{ item.message }}--}}
-                11
-            </li>
-            {{--@{{name}}--}}
-        </ul>
+            <client v-for="client in clients" :data_client="client"></client>
+
+        </table-clients>
 
     </div>
 

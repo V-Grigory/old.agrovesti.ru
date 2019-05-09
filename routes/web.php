@@ -23,6 +23,8 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     // ленино
     Route::get('/clients/readers', 'ClientController@readers')->name('wpadmin.clients.readers'); // вместо index
     Route::get('/clients/readersvue', 'ClientController@readersVue')->name('wpadmin.clients.readersvue');
+    Route::get('/clients/readersvuejson', 'ClientController@readersVueJSON');
+    //Route::get('/clients/readersvue', function (){ return json_encode(['11'=>'aa2', '22'=>'bb2']); });
     //Route::post('/clients/search', 'ClientController@search')->name('wpadmin.clients.search'); // не используется (есть в контроллере)
     Route::post('/clients/massActions', 'ClientController@massActions')->name('wpadmin.clients.massActions');
     Route::resource('/clients', 'ClientController', ['as'=>'wpadmin']);
