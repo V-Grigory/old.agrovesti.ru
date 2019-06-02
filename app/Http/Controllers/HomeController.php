@@ -119,7 +119,7 @@ class HomeController extends Controller
 //
 //        $count_clients = count($clients);
 
-        $clients = Client::orderBy('id', 'desc')->limit(4)->get();
+        $clients = Client::orderBy('id', 'desc')->get();
 
         return json_encode(['clients' => $clients]);
         //return json_encode(['clients' => 'qwqwqw11']);
