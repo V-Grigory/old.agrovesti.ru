@@ -23,10 +23,10 @@ class Controller extends BaseController
         elseif(isset($request->phone)) {
 
             // если невалидный телефон
-            if( !self::isPhoneValid($request->phone) ) {
-                $request->session()->flash('reason_access_denied', 'Неверный формат телефона');
-                return false;
-            }
+//            if( !self::isPhoneValid($request->phone) ) {
+//                $request->session()->flash('reason_access_denied', 'Неверный формат телефона');
+//                return false;
+//            }
             // если не зареган, зарегим как "Новый клиент"
             if( !$client = Client::where('phone', $request->phone)->first() ) {
                 $client = new Client();
@@ -36,7 +36,7 @@ class Controller extends BaseController
                 return false;
             }
             // если зареган и активен (или на пробном периоде)
-            if($client->status_activity == 'active' || $client->status_activity == 'trial_period') {
+            if($client->status_activity == 'Активен' || $client->status_activity == 'Пробный период') {
                 session(['phone' => $request->phone, 'client_id' => $client->id]);
                 //self::sendSMS('9068255288', 'проверка');
                 return $request->phone;
