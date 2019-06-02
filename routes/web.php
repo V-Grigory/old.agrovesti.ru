@@ -22,9 +22,8 @@ Route::group(['prefix'=>'wpadmin', 'namespace'=>'Wpadmin', 'middleware'=>['auth'
     Route::get('/tilda', 'TildaController@articles')->name('wpadmin.tilda.articles'); // вместо index
     // ленино
     Route::get('/clients/readers', 'ClientController@readers')->name('wpadmin.clients.readers'); // вместо index
-    Route::get('/clients/readersvue', 'ClientController@readersVue')->name('wpadmin.clients.readersvue');
-    Route::get('/clients/readersvuejson', 'ClientController@readersVueJSON');
-    //Route::get('/clients/readersvue', function (){ return json_encode(['11'=>'aa2', '22'=>'bb2']); });
+    //Route::get('/clients/readersvue', 'ClientController@readersVue')->name('wpadmin.clients.readersvue');
+    //Route::get('/clients/readersvuejson', 'ClientController@readersVueJSON');
     //Route::post('/clients/search', 'ClientController@search')->name('wpadmin.clients.search'); // не используется (есть в контроллере)
     Route::post('/clients/massActions', 'ClientController@massActions')->name('wpadmin.clients.massActions');
     Route::resource('/clients', 'ClientController', ['as'=>'wpadmin']);
@@ -37,6 +36,9 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/dev', 'DevController@dev');
+// API админки. Временно.
+Route::get('clientsJSON', 'HomeController@clientsJSON')->name('clientsJSON');
+Route::get('updateClients', 'HomeController@updateClients')->name('updateClients');
 
 Route::get('/rubrika/articles/{name_en}', 'HomeController@rubrika')->name('rubrika');
 Route::get('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
