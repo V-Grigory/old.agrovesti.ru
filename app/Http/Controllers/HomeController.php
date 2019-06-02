@@ -8,6 +8,7 @@ use App\Page;
 use App\Comments;
 use App\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 //use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -103,6 +104,70 @@ class HomeController extends Controller
 
     public function checkClientsRangePay() {
         Client::where('range_pay', date("d.m.Y"))->update(['status_pay'=>'notpaid','status_activity'=>'inactive']);
+    }
+
+    public function clientsJSON(Request $request) {
+        header('Access-Control-Allow-Origin: *');
+//        $clients_raw = Client::all();
+//        $clients_new_client = $clients_raw->where('status_activity', 'Новый клиент')->sortByDesc('created_at')->all();
+//        $clients_trial_period = $clients_raw->where('status_activity', 'Пробный период')->sortByDesc('created_at')->all();
+//        $clients_inactive = $clients_raw->where('status_activity', 'Заблокирован')->sortByDesc('created_at')->all();
+//        $clients_active = $clients_raw->where('status_activity', 'Активен')->sortByDesc('created_at')->all();
+//
+//        $collection  = new Collection;
+//        $clients = $collection->merge($clients_new_client)->merge($clients_trial_period)->merge($clients_inactive)->merge($clients_active);
+//
+//        $count_clients = count($clients);
+
+        $clients = Client::orderBy('id', 'desc')->limit(4)->get();
+
+        return json_encode(['clients' => $clients]);
+        //return json_encode(['clients' => 'qwqwqw11']);
+    }
+
+    public function updateClients(Request $request) {
+        header('Access-Control-Allow-Origin: *');
+        //file_put_contents("/home/grigory/projects/debug.txt", json_encode($request->all()) . "\n", FILE_APPEND);
+
+        if($request->action === 'delete') {
+            Client::destroy($request->id);
+            return json_encode('OK');
+        }
+
+        if($request->id) {
+            $client = Client::find($request->id);
+        } else {
+            $client = new Client;
+        }
+
+        if($request->fed_okrug)
+            $client->fed_okrug = $request->fed_okrug;
+        if($request->region)
+            $client->region = $request->region;
+        if($request->phone)
+            $client->phone = $request->phone;
+        else
+            $client->phone = time();
+        if($request->f_name)
+            $client->f_name = $request->f_name;
+        if($request->i_name)
+            $client->i_name = $request->i_name;
+        if($request->o_name)
+            $client->o_name = $request->o_name;
+        if($request->email)
+            $client->email = $request->email;
+        if($request->company)
+            $client->company = $request->company;
+        if($request->status_pay)
+            $client->status_pay = $request->status_pay;
+        if($request->range_pay)
+            $client->range_pay = $request->range_pay;
+        if($request->status_activity)
+            $client->status_activity = $request->status_activity;
+
+        $client->save();
+
+        return json_encode($client);
     }
 
 }

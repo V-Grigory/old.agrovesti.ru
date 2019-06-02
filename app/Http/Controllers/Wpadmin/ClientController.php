@@ -29,6 +29,27 @@ class ClientController extends Controller
             'params'  => $request
         ]);
     }
+    
+//    public function readersVue(Request $request) {
+//        header('Access-Control-Allow-Origin: *');
+//        return view('wpadmin.clients.readersVue');
+//    }
+
+//    public function readersVueJSON(Request $request) {
+//        $clients_raw = Client::all();
+//        $clients_new_client = $clients_raw->where('status_activity', 'new_client')->sortByDesc('created_at')->all();
+//        $clients_trial_period = $clients_raw->where('status_activity', 'trial_period')->sortByDesc('created_at')->all();
+//        $clients_inactive = $clients_raw->where('status_activity', 'inactive')->sortByDesc('created_at')->all();
+//        $clients_active = $clients_raw->where('status_activity', 'active')->sortByDesc('created_at')->all();
+//
+//        $collection  = new Collection;
+//        $clients = $collection->merge($clients_new_client)->merge($clients_trial_period)->merge($clients_inactive)->merge($clients_active);
+//
+//        $count_clients = count($clients);
+//
+//        header('Access-Control-Allow-Origin: *');
+//        return json_encode(['clients' => $clients, 'count_clients' => $count_clients]);
+//    }
 
     /* обновление клиента */
     public function update(Request $request)

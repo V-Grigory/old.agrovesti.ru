@@ -117,17 +117,25 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    {{--<script src="/redactor/assets/redactor.js"></script>--}}
-    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('js/locales/bootstrap-datepicker.ru.min.js') }}"></script>
-    <script src="{{ asset('js/myadmin.js') }}"></script>
-    {{--<script type="text/javascript">--}}
+    @php if(strpos(URL::current(), '/wpadmin/clients/readersvue') !== false) { @endphp
+        <script src="{{ asset('js/vue.js') }}"></script>
+        <script src="{{ asset('js/vue-resource.js') }}"></script>
+        {{--<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>--}}
+        <script src="{{ asset('js/clients.js') }}"></script>
+    @php } else { @endphp
+        {{--<script src="/redactor/assets/redactor.js"></script>--}}
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('js/locales/bootstrap-datepicker.ru.min.js') }}"></script>
+        <script src="{{ asset('js/myadmin.js') }}"></script>
+        {{--<script type="text/javascript">--}}
         {{--$(function()--}}
         {{--{--}}
-            {{--$('#content_article').redactor();--}}
+        {{--$('#content_article').redactor();--}}
         {{--});--}}
-    {{--</script>--}}
+        {{--</script>--}}
+    @php } @endphp
+
     @php
         if(strpos(URL::current(), '/wpadmin/article') !== false) {
     @endphp
