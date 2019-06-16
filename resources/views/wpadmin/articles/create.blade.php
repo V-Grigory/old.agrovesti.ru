@@ -99,6 +99,16 @@
                 <textarea id="content_article" class="form-control" name="article">{{$article->article or ""}}</textarea>
             </div>
 
+            <b>Описание</b>
+            <div class="form-group">
+                <textarea id="content_description" class="form-control" name="description">{{$article->description or ""}}</textarea>
+            </div>
+
+            <b>Из статьи вы узнаете</b>
+            <div class="form-group">
+                <textarea id="content_introduce" class="form-control" name="introduce">{{$article->introduce or ""}}</textarea>
+            </div>
+
             <input type="hidden" name="id" value="{{$article->id or ""}}" />
 
             <div class="form-group">

@@ -17,8 +17,22 @@ class RubrikController extends Controller
      */
     public function index()
     {
-			$res = Rubrik::with('articles')->limit(10)->get();
-			return new RubriksResource($res);
+        header('Access-Control-Allow-Origin: *');
+        // $res = Rubrik::with('articles')->limit(10)->get();
+
+        $rubriks = Rubrik::with('children')->with(
+            ['articles' => function ($query) {
+                $query->select(
+                    'name_ru', 'name_en', 'image', 'description', 'introduce', 'on_main', 'updated_at'
+                )->where('on_main', '=', 1)
+                    ->orderBy('updated_at', 'desc');
+            }]
+        )->where('on_main', 1)
+            ->orderBy('position_number', 'asc')
+            ->limit(10)
+            ->get();
+
+        return new RubriksResource($rubriks);
     }
 
     /**

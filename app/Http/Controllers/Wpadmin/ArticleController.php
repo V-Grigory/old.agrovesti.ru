@@ -87,6 +87,9 @@ class ArticleController extends Controller
                 ? $this->changeFeatures('add', 'in_footer_block_3', $articleBD->features)
                 : $this->changeFeatures('remove', 'in_footer_block_3', $articleBD->features);
 
+            $articleBD->description = $request->description;
+            $articleBD->introduce = json_decode($request->introduce);
+
             $articleBD->save();
             $articleBD->rubriks()->sync($request->rubrik_id);
             $article_saved = 'Статья успешно сохранена';
@@ -103,6 +106,8 @@ class ArticleController extends Controller
         $article->article = $request->article;
         $article->features = $request->disable_comments . $request->in_footer_block_1
                              . $request->in_footer_block_2 . $request->in_footer_block_3;
+        $article->description = $request->description;
+        $article->introduce = $request->introduce;
         //return redirect()->route('wpadmin.article.create', $error_validate);
         return view ('wpadmin.articles.create', [
             'article'    => $article,
@@ -138,6 +143,8 @@ class ArticleController extends Controller
         $article->need_pay = ($articleBD->need_pay == 1) ? 1 : NULL;
         $article->article = $articleBD->article;
         $article->features = $articleBD->features;
+        $article->description = $articleBD->description;
+        $article->introduce = $articleBD->introduce;
 
         $error_validate = ''; $article_saved = '';
         return view ('wpadmin.articles.create', [
