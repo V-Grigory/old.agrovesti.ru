@@ -15,7 +15,7 @@ class AddColumnInArticlesDescriptionIntroduce extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->longText('description')->nullable();
-            $table->jsonb('introduce')->nullable();
+            $table->string('introduce')->default('');
         });
     }
 
