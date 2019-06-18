@@ -88,7 +88,13 @@ class ArticleController extends Controller
                 : $this->changeFeatures('remove', 'in_footer_block_3', $articleBD->features);
 
             $articleBD->description = $request->description;
-            $articleBD->introduce = json_decode($request->introduce);
+            // $articleBD->introduce = json_encode($request->introduce);
+						$introduce = [];
+						for($i = 0; $i < 10; $i++) {
+							if($request->{'introduce_'.$i})
+								$introduce[] = $request->{'introduce_'.$i};
+						}
+            $articleBD->introduce = json_encode($introduce);
 
             $articleBD->save();
             $articleBD->rubriks()->sync($request->rubrik_id);

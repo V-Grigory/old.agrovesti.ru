@@ -101,13 +101,20 @@
 
             <b>Описание</b>
             <div class="form-group">
-                <textarea id="content_description" class="form-control" name="description">{{$article->description or ""}}</textarea>
+                <textarea id="content_description" rows="4" class="form-control" name="description">{{$article->description or ""}}</textarea>
             </div>
 
             <b>Из статьи вы узнаете</b>
-            <div class="form-group">
-                <textarea id="content_introduce" class="form-control" name="introduce">{{$article->introduce or ""}}</textarea>
-            </div>
+            @php
+                $introduce = json_decode($article->introduce);
+            @endphp
+            @for($i = 0; $i < 6; $i++)
+                <div class="form-group">
+                    <textarea
+                      class="form-control" name="introduce_<?=$i;?>" rows="1"
+                        >{{$introduce[$i] or ""}}</textarea>
+                </div>
+            @endfor
 
             <input type="hidden" name="id" value="{{$article->id or ""}}" />
 

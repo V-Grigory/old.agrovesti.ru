@@ -8,11 +8,13 @@ use Illuminate\Support\Str;
 class Rubrik extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['parent_id', 'name_ru', 'name_en', 'order', 'on_main', 'position_number', 'template_number', 'icon_number'];
+    protected $fillable = ['parent_id', 'name_ru', 'name_en', 'order',
+			'on_main', 'position_number', 'template_number', 'icon_number', 'target'];
 
     public function setNameEnAttribute($value) {
         $this->attributes['name_en'] = Str::slug(
-            mb_substr($this->name_ru,0,40)."=".\Carbon\Carbon::now()->format('dmyHi'), '-'
+            mb_substr($this->name_ru,0,40)."="
+						.\Carbon\Carbon::now()->format('dmyHi'), '-'
         );
     }
 

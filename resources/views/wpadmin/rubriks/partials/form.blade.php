@@ -46,6 +46,16 @@
         <input type="text" class="form-control" name="position_number" value="{{$rubrik->position_number or "0"}}"  />
     </div>
 
+    <!-- ====== ВЕРСИЯ САЙТА ДЛЯ ВЫВОДА ====== -->
+    <br><br>
+    <div class="form-group">
+        <p style="margin:0 10px 8px 0;color:#666666;"><b>Версия сайта для вывода</b></p>
+        <select class="form-control" name="target">
+            <option value="old_site" @if($rubrik && $rubrik->target == 'old_site') selected="selected" @endif >Старый</option>
+            <option value="new_site" @if($rubrik && $rubrik->target == 'new_site') selected="selected" @endif >Новый</option>
+        </select>
+    </div>
+
     <!-- ====== ШАБЛОН ====== -->
     <br><br>
     <div class="form-group">

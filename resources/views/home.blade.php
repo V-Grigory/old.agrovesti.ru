@@ -9,7 +9,10 @@
                     ['articles' => function ($query) {
                         $query->where('on_main', '=', 1)->orderBy('updated_at', 'desc');
                     }]
-               )->where('on_main', 1)->orderBy('position_number', 'asc')->get();
+               )
+               ->where('on_main', 1)
+               ->where('target', 'old_site')
+               ->orderBy('position_number', 'asc')->get();
     @endphp
 
     @if($rubriks)

@@ -68,7 +68,7 @@
         <table class="table table-striped">
             <thead>
                 <th>Наименование</th><th>Позиция в рубрикаторе</th><th>На главной</th><th>Позиция на главной</th>
-                <th>Иконка рубрики</th><th>№ шаблона</th><th class="text-right">Действие</th>
+                <th>Иконка рубрики</th><th>№ шаблона</th><th>Версия сайта</th><th class="text-right">Действие</th>
             </thead>
             <tbody>
                 @forelse($rubriks as $rubrik)
@@ -94,6 +94,9 @@
                         </td>
                         <td>
                             @if ($rubrik->on_main == 1) {{$rubrik->template_number}} @endif
+                        </td>
+                        <td>
+                            @if ($rubrik->target == 'old_site') На старом @else <b>На новом</b> @endif
                         </td>
                         <td class="text-right" style="padding: 0;">
                             <form onsubmit="if(confirm('Удалить?')){ return true } else { return false }"
