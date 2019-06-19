@@ -15,12 +15,11 @@ class RubrikResource extends Resource
     public function toArray($request)
     {
         // return parent::toArray($request);
-				return [
-					'name_ru'          => $this->name_ru,
-					'id'            => 'sdfsdf', //(string)$this->id,
-					'attributes'    => [
-						'title' => 'sdfsdf'//$this->title,
-					],
-				];
+        return [
+            'name_ru' => $this,
+            //'name_en' => $this->name_en,
+            //'article' => $this->article,
+            //'image' => $this->image,
+        ];
     }
 }

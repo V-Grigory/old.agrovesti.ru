@@ -106,7 +106,9 @@
 
             <b>Из статьи вы узнаете</b>
             @php
-                $introduce = json_decode($article->introduce);
+                if(isset($article->introduce)) {
+                    $introduce = json_decode($article->introduce);
+                }
             @endphp
             @for($i = 0; $i < 6; $i++)
                 <div class="form-group">

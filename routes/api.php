@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 Route::get('/', 'ApiV1\RubrikController@index');
-Route::get('/rubrik/{id}', 'ApiV1\RubrikController@show');
+Route::get('/articles/{id}', 'ApiV1\RubrikController@show');

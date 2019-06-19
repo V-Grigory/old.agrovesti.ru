@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ApiV1;
 
 use App\Rubrik;
+use App\Article;
 use App\Http\Resources\RubrikResource;
 use App\Http\Resources\RubriksResource;
 use Illuminate\Http\Request;
@@ -18,18 +19,38 @@ class RubrikController extends Controller
     public function index()
     {
         header('Access-Control-Allow-Origin: *');
-        // $res = Rubrik::with('articles')->limit(10)->get();
 
-        $rubriks = Rubrik::with('children')->with(
-            ['articles' => function ($query) {
-                $query->select(
-                    'name_ru', 'name_en', 'image', 'description', 'introduce', 'on_main', 'updated_at'
-                )->where('on_main', '=', 1)
-                    ->orderBy('updated_at', 'desc');
-            }]
+//        $rubriks = Rubrik::with('children')->with(
+//            ['articles' => function ($query) {
+//                $query->select(
+//                    'name_ru', 'name_en', 'image', 'description', 'introduce',
+//                    'on_main', 'main_article', 'updated_at'
+//                )->where('on_main', '=', 1)
+//                    ->orderBy('main_article', 'desc');
+//            }]
+//        )->where('on_main', 1)
+//            ->where('target', 'new_site')
+//            ->orderBy('position_number', 'asc')
+//            ->limit(10)
+//            ->get();
+
+        $rubriks = Rubrik::with(
+            [
+                'children' => function ($query) {
+                    $query->orderBy('order', 'asc');
+                },
+                'articles' => function ($query) {
+                    $query->select(
+                        'name_ru', 'name_en', 'image', 'description', 'introduce',
+                        'on_main', 'main_article', 'updated_at'
+                    )->where('on_main', '=', 1)
+                        ->orderBy('main_article', 'desc');
+                }
+            ]
         )->where('on_main', 1)
+            ->where('target', 'new_site')
             ->orderBy('position_number', 'asc')
-            ->limit(10)
+            //->limit(10)
             ->get();
 
         return new RubriksResource($rubriks);
@@ -64,9 +85,21 @@ class RubrikController extends Controller
      */
     public function show($id)
     {
-			$res = Rubrik::limit(10)->get();
-			//$res = Rubrik::find(22);
-      return RubrikResource::collection($res);
+      header('Access-Control-Allow-Origin: *');
+
+      $article = Article::with('rubriks')
+          ->where('name_en', $id)->firstOrFail();
+
+      if($article->tilda_filename) {
+          //$article->tilda = include(public_path().'/tilda/'.$article->tilda_filename);
+          $article->tilda_content = file_get_contents(
+              public_path().'/tilda/'.$article->tilda_filename
+          );
+      }
+
+      return $article;
+      // return json_encode($article);
+      // return new RubrikResource($article);
     }
 
     /**
