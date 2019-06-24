@@ -18,4 +18,5 @@ use Illuminate\Http\Request;
 //});
 
 Route::get('/', 'ApiV1\RubrikController@index');
-Route::get('/articles/{id}', 'ApiV1\RubrikController@show');
+Route::get('/rubrics/{id}', 'ApiV1\RubrikController@showRubrik');
+Route::get('/articles/{id}', 'ApiV1\RubrikController@showArticle');

@@ -119,6 +119,30 @@
             <label for="template_number_9">№ 9</label>
             <img style="width:190px;" src="/images/assets/preview_template_number_9.png">
         </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="template_number" value="10" id="template_number_10"
+                   @if($rubrik && $rubrik->template_number == 10) checked @endif >
+            <label for="template_number_10">№ 10</label>
+            <img style="width:190px;" src="/images/assets/preview_template_number_10.png">
+        </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="template_number" value="11" id="template_number_11"
+                   @if($rubrik && $rubrik->template_number == 11) checked @endif >
+            <label for="template_number_11">№ 11</label>
+            <img style="width:190px;" src="/images/assets/preview_template_number_11.png">
+        </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="template_number" value="12" id="template_number_12"
+                   @if($rubrik && $rubrik->template_number == 12) checked @endif >
+            <label for="template_number_12">№ 12</label>
+            <img style="width:190px;" src="/images/assets/preview_template_number_12.png">
+        </div>
+        <div style="display: inline-block;margin: 3px;">
+            <input type="radio" name="template_number" value="13" id="template_number_13"
+                   @if($rubrik && $rubrik->template_number == 13) checked @endif >
+            <label for="template_number_13">№ 13</label>
+            <img style="width:190px;" src="/images/assets/preview_template_number_13.png">
+        </div>
     </div>
 
     <!-- ====== ИКОНКА РУБРИКИ ====== -->

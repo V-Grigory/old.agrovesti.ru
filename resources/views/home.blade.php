@@ -11,7 +11,7 @@
                     }]
                )
                ->where('on_main', 1)
-               ->where('target', 'old_site')
+               // ->where('target', 'old_site')
                ->orderBy('position_number', 'asc')->get();
     @endphp
 

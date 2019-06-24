@@ -4,7 +4,7 @@ namespace App\Http\Controllers\ApiV1;
 
 use App\Rubrik;
 use App\Article;
-use App\Http\Resources\RubrikResource;
+// use App\Http\Resources\RubrikResource;
 use App\Http\Resources\RubriksResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -77,13 +77,25 @@ class RubrikController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function showRubrik($id)
+    {
+        header('Access-Control-Allow-Origin: *');
+
+        $rubrik = Rubrik::with([
+            'articles' => function ($query) {
+                $query->select(
+                    'name_ru', 'name_en', 'image', 'description', 'introduce',
+                    'on_main', 'main_article', 'updated_at'
+                )->where('on_main', '=', 1)
+                    ->orderBy('main_article', 'desc');
+            }
+        ])
+            ->where('name_en', $id)->firstOrFail();
+
+        return $rubrik;
+    }
+
+    public function showArticle($id)
     {
       header('Access-Control-Allow-Origin: *');
 
