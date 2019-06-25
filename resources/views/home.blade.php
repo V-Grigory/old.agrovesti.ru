@@ -12,6 +12,7 @@
                )
                ->where('on_main', 1)
                // ->where('target', 'old_site')
+               ->where('template_number', '<', 10)
                ->orderBy('position_number', 'asc')->get();
     @endphp
 
