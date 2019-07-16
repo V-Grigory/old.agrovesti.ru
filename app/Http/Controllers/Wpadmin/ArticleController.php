@@ -113,7 +113,7 @@ class ArticleController extends Controller
         $article->features = $request->disable_comments . $request->in_footer_block_1
                              . $request->in_footer_block_2 . $request->in_footer_block_3;
         $article->description = $request->description;
-        $article->introduce = $request->introduce;
+        $article->introduce = $introduce ? json_encode($introduce) : $request->introduce;
         //return redirect()->route('wpadmin.article.create', $error_validate);
         return view ('wpadmin.articles.create', [
             'article'    => $article,
