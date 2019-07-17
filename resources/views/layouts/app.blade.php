@@ -89,8 +89,8 @@
     <body>
         <div class="top_menu">
             <div class="container">
-                <a class="top_menu_a" href="/rubrika/article/podpiska-v2">ПОДПИСАТЬСЯ</a>
-                <a class="top_menu_a" href="/rubrika/article/vasha-istoriya">ВАША ИСТОРИЯ</a>
+                {{--<a class="top_menu_a" href="/rubrika/article/podpiska-v2">ПОДПИСАТЬСЯ</a>--}}
+                {{--<a class="top_menu_a" href="/rubrika/article/vasha-istoriya">ВАША ИСТОРИЯ</a>--}}
             </div>
         </div>
         <div class="container">
