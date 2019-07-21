@@ -174,7 +174,29 @@
         </div>
     </div>
 
+    <!-- ====== ОПЦИИ ====== -->
+    <br><br>
+    <div class="form-group">
+        <p style="margin:0 0 8px 0;color:#666666;"><b>Опции</b></p>
 
+        <label class="checkbox-inline">
+          <input type="hidden" name="params[show_in_main_menu]" value="0" />
+          <input type="checkbox" name="params[show_in_main_menu]" value="1"
+            @if(
+            isset($rubrik->params['show_in_main_menu']) && $rubrik->params['show_in_main_menu'] == 1
+            ) checked @endif
+          >Выводить в главном меню (сверху)
+        </label>
+        <br />
+        <label class="checkbox-inline">
+            <input type="hidden" name="params[show_in_footer_menu]" value="0" />
+            <input type="checkbox" name="params[show_in_footer_menu]" value="1"
+               @if(
+               isset($rubrik->params['show_in_footer_menu']) && $rubrik->params['show_in_footer_menu'] == 1
+               ) checked @endif
+            >Выводить в нижнем меню
+        </label>
+    </div>
 
     <!-- ====== КНОПКА ====== -->
     <br>

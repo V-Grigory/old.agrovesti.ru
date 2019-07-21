@@ -11,6 +11,19 @@ use App\Http\Controllers\Controller;
 
 class RubrikController extends Controller
 {
+
+    public function menu() {
+        header('Access-Control-Allow-Origin: *');
+
+//        $rubrik = Rubrik::where('params->show_in_main_menu', '1')
+//            ->get();
+
+        return [
+            'main_menu' => Rubrik::where('params->show_in_main_menu', '1')->get(),
+            'footer_menu' => Rubrik::where('params->show_in_footer_menu', '1')->get()
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -88,7 +101,8 @@ class RubrikController extends Controller
                     'on_main', 'main_article', 'updated_at'
                 )->where('on_main', '=', 1)
                     ->orderBy('main_article', 'desc');
-            }
+            },
+            'parent'
         ])
             ->where('name_en', $id)->firstOrFail();
 
@@ -99,7 +113,9 @@ class RubrikController extends Controller
     {
       header('Access-Control-Allow-Origin: *');
 
-      $article = Article::with('rubriks')
+      $article = Article::with(
+          ['rubriks' => function($query) { $query->with('parent'); }]
+      )
           ->where('name_en', $id)->firstOrFail();
 
       if($article->tilda_filename) {
