@@ -14,7 +14,7 @@ class AddColumnParamsInRubriks extends Migration
     public function up()
     {
         Schema::table('rubriks', function (Blueprint $table) {
-            $table->json('params')->nullable();
+            $table->longText('params')->nullable();
         });
     }
 
