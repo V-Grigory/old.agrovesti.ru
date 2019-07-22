@@ -15,13 +15,27 @@ class RubrikController extends Controller
     public function menu() {
         header('Access-Control-Allow-Origin: *');
 
-//        $rubrik = Rubrik::where('params->show_in_main_menu', '1')
-//            ->get();
+        $rubriks = Rubrik::get();
+        $main_menu = [];
+        $footer_menu = [];
 
+        foreach ($rubriks as $rubrik) {
+        	if($rubrik->params['show_in_main_menu'] == '1') {
+        		$main_menu[] = $rubrik;
+					}
+					if($rubrik->params['show_in_footer_menu'] == '1') {
+						$footer_menu[] = $rubrik;
+					}
+				}
         return [
-            'main_menu' => Rubrik::where('params->show_in_main_menu', '1')->get(),
-            'footer_menu' => Rubrik::where('params->show_in_footer_menu', '1')->get()
-        ];
+					'main_menu' => $main_menu,
+					'footer_menu' => $footer_menu
+				];
+
+//        return [
+//            'main_menu' => Rubrik::where('params->show_in_main_menu', '1')->get(),
+//            'footer_menu' => Rubrik::where('params->show_in_footer_menu', '1')->get()
+//        ];
     }
 
     /**
