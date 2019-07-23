@@ -89,6 +89,14 @@
                     @if(isset($article->features) && strpos($article->features,'in_footer_block_3') !== false) checked @endif >
                     Выводить в подвале - Контакты
                 </label>
+                <br/>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="params[show_in_footer_menu]" value="1"
+                      @if(isset($article->params['show_in_footer_menu'])
+                      && $article->params['show_in_footer_menu'] == 1)
+                      checked @endif
+                    >Выводить в подвале - На новом сайте
+                </label>
             </div>
 
             <div class="form-group">

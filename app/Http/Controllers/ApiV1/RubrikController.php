@@ -16,26 +16,49 @@ class RubrikController extends Controller
         header('Access-Control-Allow-Origin: *');
 
         $rubriks = Rubrik::get();
-        $main_menu = [];
-        $footer_menu = [];
+        $rubriks_main_menu = [];
+        $rubriks_footer_menu = [];
 
         foreach ($rubriks as $rubrik) {
-        	if($rubrik->params['show_in_main_menu'] == '1') {
-        		$main_menu[] = $rubrik;
+        	if(isset($rubrik->params['show_in_main_menu'])
+						&& $rubrik->params['show_in_main_menu'] == '1')
+        	{
+						$rubriks_main_menu[] = $rubrik;
 					}
-					if($rubrik->params['show_in_footer_menu'] == '1') {
-						$footer_menu[] = $rubrik;
+					if(isset($rubrik->params['show_in_footer_menu'])
+						&& $rubrik->params['show_in_footer_menu'] == '1')
+					{
+						$rubriks_footer_menu[] = $rubrik;
 					}
 				}
-        return [
-					'main_menu' => $main_menu,
-					'footer_menu' => $footer_menu
-				];
 
-//        return [
-//            'main_menu' => Rubrik::where('params->show_in_main_menu', '1')->get(),
-//            'footer_menu' => Rubrik::where('params->show_in_footer_menu', '1')->get()
-//        ];
+				$articles = Article::get();
+				$articles_main_menu = [];
+				$articles_footer_menu = [];
+
+				foreach ($articles as $article) {
+					if(isset($article->params['show_in_main_menu'])
+						&& $article->params['show_in_main_menu'] == '1')
+					{
+						$articles_main_menu[] = $article;
+					}
+					if(isset($article->params['show_in_footer_menu'])
+						&& $article->params['show_in_footer_menu'] == '1')
+					{
+						$articles_footer_menu[] = $article;
+					}
+				}
+
+				return [
+        	'rubriks' => [
+						'main_menu' => $rubriks_main_menu,
+						'footer_menu' => $rubriks_footer_menu
+					],
+					'articles' => [
+						'main_menu' => $articles_main_menu,
+						'footer_menu' => $articles_footer_menu
+					]
+				];
     }
 
     /**
@@ -46,20 +69,6 @@ class RubrikController extends Controller
     public function index()
     {
         header('Access-Control-Allow-Origin: *');
-
-//        $rubriks = Rubrik::with('children')->with(
-//            ['articles' => function ($query) {
-//                $query->select(
-//                    'name_ru', 'name_en', 'image', 'description', 'introduce',
-//                    'on_main', 'main_article', 'updated_at'
-//                )->where('on_main', '=', 1)
-//                    ->orderBy('main_article', 'desc');
-//            }]
-//        )->where('on_main', 1)
-//            ->where('target', 'new_site')
-//            ->orderBy('position_number', 'asc')
-//            ->limit(10)
-//            ->get();
 
         $rubriks = Rubrik::with(
             [
@@ -74,11 +83,12 @@ class RubrikController extends Controller
                         ->orderBy('main_article', 'desc');
                 }
             ]
-        )->where('on_main', 1)
-            ->where('target', 'new_site')
-            ->orderBy('position_number', 'asc')
-            //->limit(10)
-            ->get();
+        )
+					->where('on_main', 1)
+          ->where('target', 'new_site')
+          ->orderBy('position_number', 'asc')
+          //->limit(10)
+          ->get();
 
         return new RubriksResource($rubriks);
     }
@@ -113,8 +123,9 @@ class RubrikController extends Controller
                 $query->select(
                     'name_ru', 'name_en', 'image', 'description', 'introduce',
                     'on_main', 'main_article', 'updated_at'
-                )->where('on_main', '=', 1)
-                    ->orderBy('main_article', 'desc');
+                )
+									// ->where('on_main', '=', 1)
+                  ->orderBy('main_article', 'desc');
             },
             'parent'
         ])

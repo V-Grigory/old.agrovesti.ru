@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
 
+		protected $casts = [
+			'params' => 'array'
+		];
+
     public function rubriks()
     {
         return $this->belongsToMany('App\Rubrik');

@@ -86,6 +86,7 @@ class ArticleController extends Controller
             $articleBD->features = (isset($request->in_footer_block_3))
                 ? $this->changeFeatures('add', 'in_footer_block_3', $articleBD->features)
                 : $this->changeFeatures('remove', 'in_footer_block_3', $articleBD->features);
+						$articleBD->params = $request->params;
 
             $articleBD->description = $request->description;
             // $articleBD->introduce = json_encode($request->introduce);
@@ -112,6 +113,7 @@ class ArticleController extends Controller
         $article->article = $request->article;
         $article->features = $request->disable_comments . $request->in_footer_block_1
                              . $request->in_footer_block_2 . $request->in_footer_block_3;
+				$article->params = $request->params;
         $article->description = $request->description;
         $article->introduce = $introduce ? json_encode($introduce) : $request->introduce;
         //return redirect()->route('wpadmin.article.create', $error_validate);
