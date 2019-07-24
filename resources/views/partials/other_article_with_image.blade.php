@@ -5,7 +5,8 @@
 @php
     $other_one_article_in_current_rubriks = App\Rubrik::with(
                     ['articles' => function ($query) {
-                        $query->where('on_main', '=', 0)->orderby('updated_at', 'desc')->limit(1);
+                        $query->where('features', 'not like', '%on_main_in_old_site%')
+                        ->orderby('updated_at', 'desc')->limit(1);
                     }]
                )->find($rubrik->id);
 @endphp
