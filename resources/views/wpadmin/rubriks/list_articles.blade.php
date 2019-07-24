@@ -18,7 +18,7 @@
                                 style="white-space:normal;text-align:left;line-height: 1.3;" >
                                 {{$article->name_ru}}
                             </button>
-                            @if($article->on_main == 1)
+                            @if( strpos($article->features,'on_main_in_old_site') !== false )
                                 <span class="mark_art_on_main">Выводится на главной</span>
                             @endif
                             @if($article->main_article == 1)
