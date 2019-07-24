@@ -78,7 +78,7 @@ class RubrikController extends Controller
                 'articles' => function ($query) {
                     $query->select(
                         'name_ru', 'name_en', 'image', 'description', 'introduce',
-                        'on_main', 'main_article', 'updated_at'
+                        'main_article', 'updated_at'
                     )->where('features', 'like', '%on_main_in_new_site%')
                         ->orderBy('main_article', 'desc');
                 }
@@ -122,7 +122,7 @@ class RubrikController extends Controller
             'articles' => function ($query) {
                 $query->select(
                     'name_ru', 'name_en', 'image', 'description', 'introduce',
-                    'on_main', 'main_article', 'updated_at'
+                    'main_article', 'updated_at'
                 )
 									// ->where('on_main', '=', 1)
                   ->orderBy('main_article', 'desc');
