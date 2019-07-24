@@ -79,7 +79,7 @@ class RubrikController extends Controller
                     $query->select(
                         'name_ru', 'name_en', 'image', 'description', 'introduce',
                         'on_main', 'main_article', 'updated_at'
-                    )->where('on_main', '=', 1)
+                    )->where('features', 'like', '%on_main_in_new_site%')
                         ->orderBy('main_article', 'desc');
                 }
             ]

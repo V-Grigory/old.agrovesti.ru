@@ -7,7 +7,9 @@
     @php
     $rubriks = App\Rubrik::with(
                     ['articles' => function ($query) {
-                        $query->where('on_main', '=', 1)->orderBy('updated_at', 'desc');
+                        // $query->where('on_main', '=', 1)->orderBy('updated_at', 'desc');
+                        $query->where('features', 'like', '%on_main_in_old_site%')
+                        ->orderBy('updated_at', 'desc');
                     }]
                )
                ->where('on_main', 1)
