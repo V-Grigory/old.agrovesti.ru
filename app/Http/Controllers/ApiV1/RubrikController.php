@@ -114,21 +114,25 @@ class RubrikController extends Controller
         //
     }
 
-    public function showRubrik($id)
+    public function showRubrik($id, Request $request)
     {
         header('Access-Control-Allow-Origin: *');
 
+				$page = $request->input('p') ? $request->input('p') : 1;
+				$limit = 7;
+				// file_put_contents('/home/grigory/projects/debug_api.txt', $page . "\n\n", FILE_APPEND);
+
         $rubrik = Rubrik::with([
-            'articles' => function ($query) {
+            'articles' => function ($query) use ($page, $limit) {
                 $query->select(
-                    'name_ru', 'name_en', 'image', 'description', 'introduce',
-                    'main_article', 'updated_at'
+									'articles.id', 'name_ru', 'name_en', 'image', 'description', 'introduce'
                 )
-									// ->where('on_main', '=', 1)
-                  ->orderBy('main_article', 'desc');
+                  ->orderBy('articles.id', 'desc')
+									->skip($page * $limit - $limit)->take($limit);
             },
             'parent'
         ])
+						->withCount('articles')
             ->where('name_en', $id)->firstOrFail();
 
         return $rubrik;
