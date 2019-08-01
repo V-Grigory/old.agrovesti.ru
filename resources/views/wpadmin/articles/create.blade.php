@@ -104,11 +104,19 @@
                 </label>
                 <br/>
                 <label class="checkbox-inline">
-                    <input type="checkbox" name="params[show_in_footer_menu]" value="1"
-                      @if(isset($article->params['show_in_footer_menu'])
-                      && $article->params['show_in_footer_menu'] == 1)
+                    <input type="checkbox" name="params[show_in_footer_menu_1]" value="1"
+                      @if(isset($article->params['show_in_footer_menu_1'])
+                      && $article->params['show_in_footer_menu_1'] == 1)
                       checked @endif
-                    >Выводить в подвале - На новом сайте
+                    >Выводить в подвале на новом сайте - блок "Размещение рекламы"
+                </label>
+                <br/>
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="params[show_in_footer_menu_2]" value="1"
+                       @if(isset($article->params['show_in_footer_menu_2'])
+                       && $article->params['show_in_footer_menu_2'] == 1)
+                       checked @endif
+                    >Выводить в подвале на новом сайте - блок "О нас"
                 </label>
             </div>
 

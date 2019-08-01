@@ -15,49 +15,45 @@ class RubrikController extends Controller
     public function menu() {
         header('Access-Control-Allow-Origin: *');
 
-        $rubriks = Rubrik::get();
-        $rubriks_main_menu = [];
-        $rubriks_footer_menu = [];
+        $rubriks = Rubrik::select('name_ru','name_en','params')->get();
+        $m1 = []; $m2 = [];
 
         foreach ($rubriks as $rubrik) {
         	if(isset($rubrik->params['show_in_main_menu'])
 						&& $rubrik->params['show_in_main_menu'] == '1')
         	{
-						$rubriks_main_menu[] = $rubrik;
+						$m1[] = $rubrik;
 					}
 					if(isset($rubrik->params['show_in_footer_menu'])
 						&& $rubrik->params['show_in_footer_menu'] == '1')
 					{
-						$rubriks_footer_menu[] = $rubrik;
+						$m2[] = $rubrik;
 					}
 				}
+        $rubriks_m = ['main_menu' => $m1, 'footer_menu' => $m2];
 
-				$articles = Article::get();
-				$articles_main_menu = [];
-				$articles_footer_menu = [];
+				$articles = Article::select('name_ru','name_en','params')->get();
+				$m1 = []; $m2 = [];
 
 				foreach ($articles as $article) {
-					if(isset($article->params['show_in_main_menu'])
-						&& $article->params['show_in_main_menu'] == '1')
+					if(isset($article->params['show_in_footer_menu_1'])
+						&& $article->params['show_in_footer_menu_1'] == '1')
 					{
-						$articles_main_menu[] = $article;
+						$m1[] = $article;
 					}
-					if(isset($article->params['show_in_footer_menu'])
-						&& $article->params['show_in_footer_menu'] == '1')
+					if(isset($article->params['show_in_footer_menu_2'])
+						&& $article->params['show_in_footer_menu_2'] == '1')
 					{
-						$articles_footer_menu[] = $article;
+						$m2[] = $article;
 					}
 				}
+				$articles_m = [
+					'footer_menu' => ['menu_1' => $m1, 'menu_2' => $m2]
+				];
 
 				return [
-        	'rubriks' => [
-						'main_menu' => $rubriks_main_menu,
-						'footer_menu' => $rubriks_footer_menu
-					],
-					'articles' => [
-						'main_menu' => $articles_main_menu,
-						'footer_menu' => $articles_footer_menu
-					]
+        	'rubriks' => $rubriks_m,
+					'articles' => $articles_m
 				];
     }
 
