@@ -4,10 +4,12 @@ namespace App\Http\Controllers\ApiV1;
 
 use App\Rubrik;
 use App\Article;
+use App\Client;
 // use App\Http\Resources\RubrikResource;
 use App\Http\Resources\RubriksResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class RubrikController extends Controller
 {
@@ -57,13 +59,7 @@ class RubrikController extends Controller
 				];
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index() {
         header('Access-Control-Allow-Origin: *');
 
         $rubriks = Rubrik::with(
@@ -87,27 +83,6 @@ class RubrikController extends Controller
           ->get();
 
         return new RubriksResource($rubriks);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     public function showRubrik($id, Request $request)
@@ -154,6 +129,38 @@ class RubrikController extends Controller
       // return json_encode($article);
       // return new RubrikResource($article);
     }
+
+		public function getAuthToken(Request $request) {
+    	$client = Client::where('phone', $request->accessCode)->firstOrFail();
+    	if($client && (
+					$client->status_activity == 'Активен'
+					|| $client->status_activity == 'Пробный период'
+				)
+			) {
+				return Str::random(32);
+			}
+		}
+
+		/**
+		 * Show the form for creating a new resource.
+		 *
+		 * @return \Illuminate\Http\Response
+		 */
+		public function create()
+		{
+			//
+		}
+
+		/**
+		 * Store a newly created resource in storage.
+		 *
+		 * @param  \Illuminate\Http\Request  $request
+		 * @return \Illuminate\Http\Response
+		 */
+		public function store(Request $request)
+		{
+			//
+		}
 
     /**
      * Show the form for editing the specified resource.
