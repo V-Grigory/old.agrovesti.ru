@@ -131,6 +131,8 @@ class RubrikController extends Controller
     }
 
 		public function getAuthToken(Request $request) {
+			header('Access-Control-Allow-Origin: *');
+
     	$client = Client::where('phone', $request->accessCode)->firstOrFail();
     	if($client && (
 					$client->status_activity == 'Активен'
