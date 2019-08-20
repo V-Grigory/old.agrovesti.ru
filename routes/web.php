@@ -57,5 +57,3 @@ Route::group(['prefix'=>'lk', /*'middleware'=>['auth']*/], function () {
 Route::post('lk', 'LkController@profile')->name('profile');
 Route::post('lk/profile', 'LkController@profile')->name('profile');
 Route::post('/rubrika/article/{name_en}', 'HomeController@article')->name('article');
-
-Route::get('sendemail', 'MailController@send');

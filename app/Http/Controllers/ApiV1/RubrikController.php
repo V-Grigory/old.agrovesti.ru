@@ -10,6 +10,8 @@ use App\Http\Resources\RubriksResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use App\Mail\MyMailer;
+use Illuminate\Support\Facades\Mail;
 
 class RubrikController extends Controller
 {
@@ -137,10 +139,32 @@ class RubrikController extends Controller
     	if($client && (
 					$client->status_activity == 'Активен'
 					|| $client->status_activity == 'Пробный период'
+					|| $client->status_activity == 'Новый клиент'
 				)
 			) {
 				return Str::random(32);
 			}
+		}
+
+		public function clientRegistration(Request $request) {
+			header('Access-Control-Allow-Origin: *');
+
+			$allowCode = false;
+			while(!$allowCode) {
+				$code = rand(999, 9999);
+				if(!$client = Client::where('phone', $code)->first()) {
+					$allowCode = true;
+				}
+			}
+			$client = new Client();
+			$client->phone = $code;
+			$client->email = $request->email;
+			$client->save();
+
+			$mailData = new \stdClass();
+			$mailData->kod = $code;
+
+			Mail::to($request->email)->send(new MyMailer($mailData));
 		}
 
 		/**
