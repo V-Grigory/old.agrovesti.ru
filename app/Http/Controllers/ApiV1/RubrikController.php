@@ -156,11 +156,14 @@ class RubrikController extends Controller
 					$allowCode = true;
 				}
 			}
-			$client = new Client();
+			if(!$client = Client::where('email', $request->email)->first()) {
+				$client = new Client();
+			}
 			$client->phone = $code;
 			$client->email = $request->email;
 			$client->save();
 
+			// return 'ok';
 			$mailData = new \stdClass();
 			$mailData->kod = $code;
 
