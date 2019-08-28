@@ -149,6 +149,10 @@ class RubrikController extends Controller
 		public function clientRegistration(Request $request) {
 			header('Access-Control-Allow-Origin: *');
 
+			if($client = Client::where('email', $request->email)->first()) {
+				return 'already_registered';
+			}
+
 			$allowCode = false;
 			while(!$allowCode) {
 				$code = rand(999, 9999);
@@ -156,18 +160,17 @@ class RubrikController extends Controller
 					$allowCode = true;
 				}
 			}
-			if(!$client = Client::where('email', $request->email)->first()) {
-				$client = new Client();
-			}
+
+			$client = new Client();
 			$client->phone = $code;
 			$client->email = $request->email;
 			$client->save();
 
-			// return 'ok';
 			$mailData = new \stdClass();
 			$mailData->kod = $code;
 
 			Mail::to($request->email)->send(new MyMailer($mailData));
+			return 'success_registered';
 		}
 
 		/**
