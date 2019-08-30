@@ -23,3 +23,4 @@ Route::get('/rubrics/{id}', 'ApiV1\RubrikController@showRubrik');
 Route::get('/articles/{id}', 'ApiV1\RubrikController@showArticle');
 Route::get('/getAuthToken', 'ApiV1\RubrikController@getAuthToken');
 Route::get('/clientRegistration', 'ApiV1\RubrikController@clientRegistration');
+Route::get('/search', 'ApiV1\RubrikController@search');

@@ -173,6 +173,20 @@ class RubrikController extends Controller
 			return 'success_registered';
 		}
 
+		public function search(Request $request) {
+			header('Access-Control-Allow-Origin: *');
+
+			$articles = Article::select('name_ru','name_en')
+				->where('name_ru', 'like', "%{$request->text}%")
+				->Orwhere('description', 'like', "%{$request->text}%")
+				->Orwhere('introduce', 'like', "%{$request->text}%")
+				->get();
+
+			//file_put_contents('/home/grigory/projects/debug_api.txt', json_encode($articles) . "\n\n", FILE_APPEND);
+			//file_put_contents('/home/grigory/projects/debug_api.txt', $articles->toSql() . "\n\n", FILE_APPEND);
+			return $articles;
+	}
+
 		/**
 		 * Show the form for creating a new resource.
 		 *
