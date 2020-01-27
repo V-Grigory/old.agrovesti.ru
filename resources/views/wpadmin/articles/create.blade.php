@@ -36,6 +36,11 @@
             </div>
 
             <div class="form-group">
+                <p style="margin:0 0 8px 0;color:#666666;"><b>Подзаголовок (для вывода на главной)</b></p>
+                <input type="text" class="form-control" name="subtitle" value="{{$article->subtitle or ""}}" />
+            </div>
+
+            <div class="form-group">
                 <p style="margin:0 0 8px 0;color:#666666;"><b>В каких рубриках</b></p>
                 @foreach($rubriks as $rubrik_list)
                     <label class="checkbox-inline">
@@ -133,7 +138,17 @@
                 <textarea id="content_description" rows="4" class="form-control" name="description">{{$article->description or ""}}</textarea>
             </div>
 
-            <b>Из статьи вы узнаете</b>
+            <b>Тег</b>
+            <div class="form-group">
+                <input type="text" class="form-control" name="tag" value="{{$article->tag or ""}}" />
+            </div>
+
+            <b>Заголовок "Из материала вы узнаете"</b>
+            <div class="form-group">
+                <input type="text" class="form-control" name="title_introduce" value="{{$article->title_introduce or ""}}" />
+            </div>
+
+            <b>Из материала вы узнаете</b>
             @php
                 if(isset($article->introduce)) {
                     $introduce = json_decode($article->introduce);

@@ -64,6 +64,7 @@ class ArticleController extends Controller
                 $articleBD->name_en = Str::slug(mb_substr($request->name_ru,0,40)."=".\Carbon\Carbon::now()->format('dmyHi'), '-');
             }
             $articleBD->name_ru = $request->name_ru;
+						$articleBD->subtitle = $request->subtitle;
             $articleBD->article = $request->article;
             if(isset($request->image)) {
                 $name_image = Str::slug(\Carbon\Carbon::now()->format('dmyHi').'-'.mb_substr($request->file('image')->getClientOriginalName(),0,40));
@@ -96,6 +97,8 @@ class ArticleController extends Controller
 						$articleBD->params = $request->params;
 
             $articleBD->description = $request->description;
+            $articleBD->tag = $request->tag;
+            $articleBD->title_introduce = $request->title_introduce;
             // $articleBD->introduce = json_encode($request->introduce);
 						$introduce = [];
 						for($i = 0; $i < 10; $i++) {
@@ -113,6 +116,7 @@ class ArticleController extends Controller
         $article->id = $insertedId;
         $article->name_ru = $request->name_ru;
         $article->name_en = $request->name_en;
+				$article->subtitle = $request->subtitle;
         $article->rubrik_id = $request->rubrik_id;
         // $article->on_main = $request->on_main;
         $article->main_article = $request->main_article;
@@ -127,6 +131,8 @@ class ArticleController extends Controller
 					$request->in_footer_block_3;
 				$article->params = $request->params;
         $article->description = $request->description;
+        $article->tag = $request->tag;
+        $article->title_introduce = $request->title_introduce;
         $article->introduce = $introduce ? json_encode($introduce) : $request->introduce;
         //return redirect()->route('wpadmin.article.create', $error_validate);
         return view ('wpadmin.articles.create', [
@@ -156,6 +162,7 @@ class ArticleController extends Controller
             $rubrik_id[] = $rubr->id;
         }
         $article->name_ru = $articleBD->name_ru;
+        $article->subtitle = $articleBD->subtitle;
         $article->name_en = $articleBD->name_en;
         $article->rubrik_id = $rubrik_id;
         // $article->on_main = ($articleBD->on_main == 1) ? 1 : NULL;
@@ -164,6 +171,8 @@ class ArticleController extends Controller
         $article->article = $articleBD->article;
         $article->features = $articleBD->features;
         $article->description = $articleBD->description;
+        $article->tag = $articleBD->tag;
+        $article->title_introduce = $articleBD->title_introduce;
         $article->introduce = $articleBD->introduce;
 
         $error_validate = ''; $article_saved = '';
