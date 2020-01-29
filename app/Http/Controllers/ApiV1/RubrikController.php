@@ -99,7 +99,8 @@ class RubrikController extends Controller
         $rubrik = Rubrik::with([
             'articles' => function ($query) use ($page, $limit) {
                 $query->select(
-									'articles.id', 'name_ru', 'name_en', 'image', 'description', 'introduce'
+									'articles.id', 'tag', 'name_ru', 'name_en', 'image',
+									'description', 'subtitle', 'title_introduce', 'introduce'
                 )
                   ->orderBy('articles.id', 'desc')
 									->skip($page * $limit - $limit)->take($limit);
