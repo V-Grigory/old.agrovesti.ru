@@ -55,9 +55,24 @@ class RubrikController extends Controller
 					'footer_menu' => ['menu_1' => $m1, 'menu_2' => $m2]
 				];
 
+				// рубрики для страниц Рубрика и Статья
+				$rubricator = Rubrik::select('id', 'name_ru', 'name_en')
+					->with([
+						'children' => function ($query) {
+							$query->select('id', 'parent_id', 'name_ru', 'name_en')
+								->orderBy('order', 'asc');
+						}
+					])
+					//->where('id', 89)
+					->where('on_main', 1)
+					->where('target', 'new_site')
+					->orderBy('position_number', 'asc')
+					->get();
+
 				return [
         	'rubriks' => $rubriks_m,
-					'articles' => $articles_m
+					'articles' => $articles_m,
+					'rubricator' => $rubricator
 				];
     }
 
