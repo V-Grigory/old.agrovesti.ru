@@ -144,6 +144,20 @@ class RubrikController extends Controller
           );
       }
 
+			if($article) {
+				$article['readMore'] = Article::select(
+					'id','name_ru','name_en','image','description','created_at'
+				)
+					//->with('rubriks')
+					->whereHas('rubriks', function ($query) use ($article) {
+						$query->where('rubriks.id', $article->rubriks[0]->id);
+					})
+					->where('id', '<>', $article->id)
+					->orderBy('id', 'desc')
+					->limit(4)
+					->get();
+			}
+
       return $article;
       // return json_encode($article);
       // return new RubrikResource($article);
@@ -193,15 +207,26 @@ class RubrikController extends Controller
 		public function search(Request $request) {
 			header('Access-Control-Allow-Origin: *');
 
-			$articles = Article::select('name_ru','name_en')
+			$page = $request->input('p') ? $request->input('p') : 1;
+			$limit = 8;
+
+			$articles = Article::select('name_ru','name_en','image','description','created_at')
 				->where('name_ru', 'like', "%{$request->text}%")
 				->Orwhere('description', 'like', "%{$request->text}%")
-				->Orwhere('introduce', 'like', "%{$request->text}%")
-				->get();
+				//->Orwhere('introduce', 'like', "%{$request->text}%")
+				->skip($page * $limit - $limit)->take($limit)->get();
+
+			$totalCountArticles = Article::where('name_ru', 'like', "%{$request->text}%")
+				->Orwhere('description', 'like', "%{$request->text}%")
+				//->Orwhere('introduce', 'like', "%{$request->text}%")
+				->count();
 
 			//file_put_contents('/home/grigory/projects/debug_api.txt', json_encode($articles) . "\n\n", FILE_APPEND);
 			//file_put_contents('/home/grigory/projects/debug_api.txt', $articles->toSql() . "\n\n", FILE_APPEND);
-			return $articles;
+			return [
+				'totalCountSearchResults' => $totalCountArticles,
+				'searchResults' => $articles
+			];
 	}
 
 		/**

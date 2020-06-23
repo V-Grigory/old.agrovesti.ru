@@ -18,8 +18,10 @@ class TildaController extends Controller
         $pagefullexport=json_decode($getpagefullexport, true);
 
         // загрузим картинки со страницы
+				$filesGetOptions = ["ssl" => ["verify_peer" => false,"verify_peer_name" => false]];
         foreach ($pagefullexport['result']['images'] as $k=>$v) {
-            $get_resource = file_get_contents($v['from']);
+					// $response = file_get_contents("", false, stream_context_create($arrContextOptions));
+					$get_resource = file_get_contents($v['from'], false, stream_context_create($filesGetOptions));
             file_put_contents(public_path().'/tilda/images/'.$v['to'], $get_resource);
         }
         // созданим файл страницы
