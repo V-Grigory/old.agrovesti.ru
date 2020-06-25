@@ -61,64 +61,64 @@
     <div class="form-group">
         <p style="margin:0 0 8px 0;color:#666666;"><b>№ шаблона</b></p>
 
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="1" id="template_number_1"
-                   @if($rubrik)
-                        @if($rubrik->template_number == 1) checked @endif
-                   @else
-                        checked
-                   @endif >
-            <label for="template_number_1">№ 1</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_1.png">
-        </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="2" id="template_number_2"
-                    @if($rubrik && $rubrik->template_number == 2) checked @endif >
-            <label for="template_number_2">№ 2</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_2.png">
-        </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="3" id="template_number_3"
-                   @if($rubrik && $rubrik->template_number == 3) checked @endif >
-            <label for="template_number_3">№ 3</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_3.png">
-        </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="4" id="template_number_4"
-                   @if($rubrik && $rubrik->template_number == 4) checked @endif >
-            <label for="template_number_4">№ 4</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_4.png">
-        </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="5" id="template_number_5"
-                   @if($rubrik && $rubrik->template_number == 5) checked @endif >
-            <label for="template_number_5">№ 5</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_5.png">
-        </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="6" id="template_number_6"
-                   @if($rubrik && $rubrik->template_number == 6) checked @endif >
-            <label for="template_number_6">№ 6</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_6.png">
-        </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="7" id="template_number_7"
-                   @if($rubrik && $rubrik->template_number == 7) checked @endif >
-            <label for="template_number_7">№ 7</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_7.png">
-        </div>
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="1" id="template_number_1"--}}
+                   {{--@if($rubrik)--}}
+                        {{--@if($rubrik->template_number == 1) checked @endif--}}
+                   {{--@else--}}
+                        {{--checked--}}
+                   {{--@endif >--}}
+            {{--<label for="template_number_1">№ 1</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_1.png">--}}
+        {{--</div>--}}
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="2" id="template_number_2"--}}
+                    {{--@if($rubrik && $rubrik->template_number == 2) checked @endif >--}}
+            {{--<label for="template_number_2">№ 2</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_2.png">--}}
+        {{--</div>--}}
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="3" id="template_number_3"--}}
+                   {{--@if($rubrik && $rubrik->template_number == 3) checked @endif >--}}
+            {{--<label for="template_number_3">№ 3</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_3.png">--}}
+        {{--</div>--}}
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="4" id="template_number_4"--}}
+                   {{--@if($rubrik && $rubrik->template_number == 4) checked @endif >--}}
+            {{--<label for="template_number_4">№ 4</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_4.png">--}}
+        {{--</div>--}}
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="5" id="template_number_5"--}}
+                   {{--@if($rubrik && $rubrik->template_number == 5) checked @endif >--}}
+            {{--<label for="template_number_5">№ 5</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_5.png">--}}
+        {{--</div>--}}
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="6" id="template_number_6"--}}
+                   {{--@if($rubrik && $rubrik->template_number == 6) checked @endif >--}}
+            {{--<label for="template_number_6">№ 6</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_6.png">--}}
+        {{--</div>--}}
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="7" id="template_number_7"--}}
+                   {{--@if($rubrik && $rubrik->template_number == 7) checked @endif >--}}
+            {{--<label for="template_number_7">№ 7</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_7.png">--}}
+        {{--</div>--}}
         <div style="display: inline-block;margin: 3px;">
             <input type="radio" name="template_number" value="8" id="template_number_8"
                    @if($rubrik && $rubrik->template_number == 8) checked @endif >
             <label for="template_number_8">№ 8</label>
             <img style="width:190px;" src="/images/assets/preview_template_number_8.png">
         </div>
-        <div style="display: inline-block;margin: 3px;">
-            <input type="radio" name="template_number" value="9" id="template_number_9"
-                   @if($rubrik && $rubrik->template_number == 9) checked @endif >
-            <label for="template_number_9">№ 9</label>
-            <img style="width:190px;" src="/images/assets/preview_template_number_9.png">
-        </div>
+        {{--<div style="display: inline-block;margin: 3px;">--}}
+            {{--<input type="radio" name="template_number" value="9" id="template_number_9"--}}
+                   {{--@if($rubrik && $rubrik->template_number == 9) checked @endif >--}}
+            {{--<label for="template_number_9">№ 9</label>--}}
+            {{--<img style="width:190px;" src="/images/assets/preview_template_number_9.png">--}}
+        {{--</div>--}}
         <div style="display: inline-block;margin: 3px;">
             <input type="radio" name="template_number" value="10" id="template_number_10"
                    @if($rubrik && $rubrik->template_number == 10) checked @endif >
