@@ -22,7 +22,8 @@ class TildaController extends Controller
         foreach ($pagefullexport['result']['images'] as $k=>$v) {
 					// $response = file_get_contents("", false, stream_context_create($arrContextOptions));
 					$get_resource = file_get_contents($v['from'], false, stream_context_create($filesGetOptions));
-            file_put_contents(public_path().'/tilda/images/'.$v['to'], $get_resource);
+//            file_put_contents(public_path().'/tilda/images/'.$v['to'], $get_resource);
+            file_put_contents(public_path().'/'.$v['to'], $get_resource);
         }
         // созданим файл страницы
         file_put_contents(public_path().'/tilda/'.$pagefullexport['result']['filename'], $pagefullexport['result']['html']);
